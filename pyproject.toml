@@ -1,0 +1,85 @@
+[project]
+name = "smb-dataplatformv2"
+version = "0.1.0"
+description = "Data Platform as a Service for SMB E-commerce"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+
+# Dependencies for the Ingestion Pipeline (Cloud Run Job A)
+etl = [
+    "dlt[bigquery,duckdb]>=0.4.0",
+    "pandas>=2.0.0"
+]
+
+# Dependencies for Transformation (Cloud Run Job B)
+dbt = [
+    "dbt-core>=1.7.0",
+    "dbt-bigquery>=1.7.0",
+]
+
+# Dependencies for Local Dev & Testing
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.1.0",  # Super fast linter
+    "black>=24.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pipelines"]
+
+# Configure Pytest
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[dependency-groups]
+dev = [
+    "poethepoet>=0.38.0",
+]
+
+[tool.poe.tasks]
+# --- 1. Quality & Testing ---
+test = "pytest tests/"
+lint = "ruff check ."
+format = "ruff format ."
+check = ["format", "lint", "test"]  # Runs all 3 in sequence, use: uv run poe check
+
+# --- 2. Ingestion (dlt) ---
+# Runs the pipeline script. 
+# We use 'cmd' to ensure it runs with the 'etl' extras context if needed.
+run-pipeline = { cmd = "python pipelines/run_pipeline.py", help = "Run the local data pipeline" }
+
+# --- 3. Transformation (dbt) ---
+# dbt commands need to run inside the dbt_project folder
+dbt-deps = { cmd = "dbt deps", cwd = "dbt_project", help = "Install dbt packages" }
+dbt-debug = { cmd = "dbt debug", cwd = "dbt_project", help = "Test dbt connection" }
+dbt-run = { cmd = "dbt run", cwd = "dbt_project", help = "Run dbt models" }
+dbt-test = { cmd = "dbt test", cwd = "dbt_project", help = "Run dbt data tests" }
+
+# --- 4. AI Bot (Local) ---
+run-bot = { cmd = "python ai_bot/src/main.py", help = "Run the Telegram bot locally" }
+
+# --- 5. Infrastructure (Terraform) ---
+tf-init = { cmd = "terraform init", cwd = "terraform", help = "Initialize Terraform" }
+tf-plan = { cmd = "terraform plan", cwd = "terraform", help = "Preview infra changes" }
+tf-apply = { cmd = "terraform apply", cwd = "terraform", help = "Apply infra changes" }
+
+# --- 6. Deployment (GCP) ---
+# These assume you have gcloud CLI installed and authenticated
+deploy-bot = { shell = "gcloud run deploy telegram-bot --source ai_bot/ --region us-central1 --allow-unauthenticated" }
