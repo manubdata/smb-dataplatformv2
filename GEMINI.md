@@ -80,3 +80,5 @@ This project uses `uv` and `poethepoet` to manage dependencies and run tasks.
 *   **Branching:** Create a new branch for each new feature or bug fix.
 
 # Rules
+
+* https://dlthub.com/docs/dlt-ecosystem/verified-sources/rest_api/ is @dlt-rest-api

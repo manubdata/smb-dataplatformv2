@@ -26,6 +26,7 @@ dbt = [
 # Dependencies for Local Dev & Testing
 dev = [
     "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
     "ruff>=0.1.0",  # Super fast linter
     "black>=24.0.0",
 ]
@@ -63,7 +64,7 @@ check = ["format", "lint", "test"]  # Runs all 3 in sequence, use: uv run poe ch
 # --- 2. Ingestion (dlt) ---
 # Runs the pipeline script. 
 # We use 'cmd' to ensure it runs with the 'etl' extras context if needed.
-run-pipeline = { cmd = "python dlt_pipelines/run_pipeline.py", help = "Run the local data pipeline" }
+run-pipeline = { cmd = "python dlt_pipelines/shopify/shopify_pipeline.py", help = "Run the local data pipeline" }
 
 # --- 3. Transformation (dbt) ---
 # dbt commands need to run inside the dbt_project folder

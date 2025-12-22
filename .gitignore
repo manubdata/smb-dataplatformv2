@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+shopify.duckdb
 
 # Virtual environments
 .venv
