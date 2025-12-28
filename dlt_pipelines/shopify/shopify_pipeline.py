@@ -4,25 +4,42 @@ from dlt.sources.helpers import requests
 
 @dlt.source(name="shopify", section="shopify")
 def shopify_source(
-    api_secret_key: str = dlt.secrets.value, shop_url: str = dlt.secrets.value
+    shop_url: str = dlt.secrets.value,
+    client_id: str = dlt.secrets.value,
+    client_secret: str = dlt.secrets.value,
 ):
-    base_url = f"https://{shop_url}/admin/api/2024-04/"
+    # First, get a fresh access token using client credentials
+    token_url = f"https://{shop_url}/admin/oauth/access_token"
+    payload = {
+        "grant_type": "client_credentials",
+        "client_id": client_id,
+        "client_secret": client_secret,
+    }
+    response = requests.post(token_url, json=payload)
+    response.raise_for_status()
+    access_token = response.json()["access_token"]
 
+    # Now, use the obtained access token for subsequent API calls
+    base_url = f"https://{shop_url}/admin/api/2024-04/"
     headers = {
         "Content-Type": "application/json",
-        "X-Shopify-Access-Token": api_secret_key,
+        "X-Shopify-Access-Token": access_token,
     }
 
     @dlt.resource(primary_key="id", write_disposition="merge")
-    def products():
+    def products(updated_at=dlt.sources.incremental("updated_at", initial_value="2023-01-01T00:00:00Z")):
         url = base_url + "products.json"
+        params = {"updated_at_min": updated_at.last_value, "order": "updated_at asc"}
 
         while url:
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers, params=params)
             response.raise_for_status()
             data = response.json()
 
             yield data.get("products", [])
+
+            # For the next paginated request, Shopify includes the parameters in the Link header URL
+            params = {}
 
             # https://shopify.dev/docs/api/admin-rest/2024-04/resources/product#get-products?page_info
             # The page_info is a header, we need to parse it to get the next url
@@ -38,15 +55,19 @@ def shopify_source(
                 url = None
 
     @dlt.resource(primary_key="id", write_disposition="merge")
-    def orders():
+    def orders(updated_at=dlt.sources.incremental("updated_at", initial_value="2023-01-01T00:00:00Z")):
         url = base_url + "orders.json"
+        params = {"updated_at_min": updated_at.last_value, "order": "updated_at asc", "status": "any"}
+
 
         while url:
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers, params=params)
             response.raise_for_status()
             data = response.json()
 
             yield data.get("orders", [])
+
+            params = {}
 
             if "Link" in response.headers:
                 links = requests.utils.parse_header_links(response.headers["Link"])
@@ -60,15 +81,18 @@ def shopify_source(
                 url = None
 
     @dlt.resource(primary_key="id", write_disposition="merge")
-    def customers():
+    def customers(updated_at=dlt.sources.incremental("updated_at", initial_value="2023-01-01T00:00:00Z")):
         url = base_url + "customers.json"
+        params = {"updated_at_min": updated_at.last_value, "order": "updated_at asc"}
 
         while url:
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers, params=params)
             response.raise_for_status()
             data = response.json()
 
             yield data.get("customers", [])
+
+            params = {}
 
             if "Link" in response.headers:
                 links = requests.utils.parse_header_links(response.headers["Link"])
