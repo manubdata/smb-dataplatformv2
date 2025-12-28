@@ -1,22 +1,25 @@
-import pytest
 import dlt
 from dlt.sources import DltResource
 
 from dlt_pipelines.shopify.shopify_pipeline import shopify_source, run_pipeline
 
+
 def test_shopify_source_returns_resources():
-    
-    source = shopify_source(api_secret_key="dummy_key", shop_url="dummy_shop.myshopify.com")
+    source = shopify_source(
+        api_secret_key="dummy_key", shop_url="dummy_shop.myshopify.com"
+    )
     assert isinstance(source.resources["products"], DltResource)
     assert isinstance(source.resources["orders"], DltResource)
     assert isinstance(source.resources["customers"], DltResource)
 
 
 def test_pipeline_run(mocker):
-    
     # Mock the dlt.pipeline function
     mock_pipeline = mocker.MagicMock()
-    mocker.patch("dlt_pipelines.shopify.shopify_pipeline.dlt.pipeline", return_value=mock_pipeline)
+    mocker.patch(
+        "dlt_pipelines.shopify.shopify_pipeline.dlt.pipeline",
+        return_value=mock_pipeline,
+    )
 
     # Mock the shopify_source
     mock_shopify_source = mocker.MagicMock()
@@ -34,4 +37,3 @@ def test_pipeline_run(mocker):
         dataset_name="shopify_data",
     )
     mock_pipeline.run.assert_called_once_with(mock_shopify_source)
-
