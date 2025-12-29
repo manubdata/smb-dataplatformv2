@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: int_daily_orders
+    description: "Intermediate model that aggregates order data per day."
+    columns:
+      - name: date_day
+        description: "The date of aggregation."
+        tests:
+          - unique
+          - not_null
+
+  - name: int_daily_ad_spend
+    description: "Intermediate model that aggregates ad spend data per day."
+    columns:
+      - name: date_day
+        description: "The date of aggregation."
+        tests:
+          - unique
+          - not_null
+      - name: total_ad_spend
+        description: "Total ad spend across all platforms for the day."
+        tests:
+          - not_negative
+      - name: facebook_spend
+        description: "Ad spend on Facebook for the day."
+        tests:
+          - not_negative
+      - name: instagram_spend
+        description: "Ad spend on Instagram for the day."
+        tests:
+          - not_negative
+      - name: tiktok_spend
+        description: "Ad spend on TikTok for the day."
+        tests:
+          - not_negative

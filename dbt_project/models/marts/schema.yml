@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: rpt_kpis
+    description: "Final KPI reporting table with daily marketing and sales metrics."
+    columns:
+      - name: date_day
+        description: "The date for which the metrics are calculated."
+        tests:
+          - unique
+          - not_null
+      - name: total_net_sales
+        description: "The total net sales for the day."
+        tests:
+          - not_negative
+      - name: total_ad_spend
+        description: "The total ad spend for the day across all platforms."
+        tests:
+          - not_negative
+      - name: facebook_spend
+        description: "Total ad spend on Facebook for the day."
+        tests:
+          - not_negative
+      - name: instagram_spend
+        description: "Total ad spend on Instagram for the day."
+        tests:
+          - not_negative
+      - name: tiktok_spend
+        description: "Total ad spend on TikTok for the day."
+        tests:
+          - not_negative
+      - name: contribution_margin
+        description: "Net Sales - COGS - Shipping - Transaction Fees - Total Ad Spend"
+      - name: mer_total_paid_ads
+        description: "Marketing Efficiency Ratio (MER) for all paid ads: Net Sales / (Facebook Spend + Instagram Spend + TikTok Spend)"
+        tests:
+          - not_negative
+      - name: mer_facebook
+        description: "Marketing Efficiency Ratio (MER) for Facebook: Net Sales / Facebook Spend"
+        tests:
+          - not_negative
+      - name: mer_instagram
+        description: "Marketing Efficiency Ratio (MER) for Instagram: Net Sales / Instagram Spend"
+        tests:
+          - not_negative
+      - name: nc_cpa
+        description: "New Customer Cost Per Acquisition: Total Ad Spend / Count(First Time Orders)"
+        tests:
+          - not_negative
+      - name: npoas
+        description: "Net Profit on Ad Spend: Contribution Margin / Total Ad Spend"
+      - name: ltv_cac_ratio
+        description: "LTV:CAC Ratio: ((Avg Order Value * Purchase Freq) / ncCPA)"
+        tests:
+          - not_negative

@@ -1,0 +1,30 @@
+name: 'smb_dataplatform'
+version: '1.0.0'
+config-version: 2
+
+# This profile is defined in dbt_profiles/profiles.yml
+profile: 'smb_dataplatform_profile'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Default materializations are defined here to enforce the silver/gold layer strategy.
+# Silver layer (staging) models will be views.
+# Gold layer (marts) models will be tables.
+models:
+  smb_dataplatform:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      intermediate:
+        +materialized: table

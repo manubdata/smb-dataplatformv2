@@ -1,0 +1,68 @@
+version: 2
+
+sources:
+  - name: shopify_raw
+    database: shopify_db
+    schema: shopify_data
+    description: "Raw data from Shopify, stored in the 'shopify_data' schema in DuckDB."
+    tables:
+      - name: orders
+        description: "Raw orders data from Shopify."
+
+  - name: meta_raw
+    database: facebook_db
+    schema: main
+    description: "Raw ad spend data from Meta (Facebook), stored in the 'main' schema in DuckDB."
+    tables:
+      - name: ads_insights
+        description: "Raw daily ad spend from Meta."
+
+  - name: tiktok_raw
+    database: tiktok_db
+    schema: main
+    description: "Raw ad spend data from TikTok, stored in the 'main' schema in DuckDB."
+    tables:
+      - name: ad_reports
+        description: "Raw daily ad spend from TikTok."
+
+models:
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: net_sales
+        tests:
+          - not_negative
+      - name: cogs
+        tests:
+          - not_negative
+  - name: stg_meta_ads
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+      - name: spend
+        tests:
+          - not_negative
+      - name: publisher_platform
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['facebook', 'instagram']
+  - name: stg_tiktok_ads
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+      - name: spend
+        tests:
+          - not_negative

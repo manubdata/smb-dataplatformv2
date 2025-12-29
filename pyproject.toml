@@ -21,6 +21,7 @@ etl = [
 dbt = [
     "dbt-core>=1.7.0",
     "dbt-bigquery>=1.7.0",
+    "dbt-duckdb>=1.7.0",
 ]
 
 # Dependencies for Local Dev & Testing
@@ -69,10 +70,12 @@ run-pipeline = { cmd = "python dlt_pipelines/shopify/shopify_pipeline.py", help 
 
 # --- 3. Transformation (dbt) ---
 # dbt commands need to run inside the dbt_project folder
-dbt-deps = { cmd = "dbt deps", cwd = "dbt_project", help = "Install dbt packages" }
-dbt-debug = { cmd = "dbt debug", cwd = "dbt_project", help = "Test dbt connection" }
-dbt-run = { cmd = "dbt run", cwd = "dbt_project", help = "Run dbt models" }
-dbt-test = { cmd = "dbt test", cwd = "dbt_project", help = "Run dbt data tests" }
+dbt-deps = { cmd = "dbt deps --profiles-dir ../dbt_profiles", cwd = "dbt_project", help = "Install dbt packages" }
+dbt-debug = { cmd = "dbt debug --profiles-dir ../dbt_profiles", cwd = "dbt_project", help = "Test dbt connection" }
+dbt-run = { cmd = "dbt run --profiles-dir ../dbt_profiles", cwd = "dbt_project", help = "Run dbt models" }
+dbt-test = { cmd = "dbt test --profiles-dir ../dbt_profiles", cwd = "dbt_project", help = "Run dbt data tests" }
+dbt-build = { cmd = "dbt build --profiles-dir ../dbt_profiles", cwd = "dbt_project", help = "Run dbt models and tests" }
+dbt-clean = { cmd = "dbt clean --profiles-dir ../dbt_profiles", cwd = "dbt_project", help = "Clean dbt target and packages directories" }
 
 # --- 4. AI Bot (Local) ---
 run-bot = { cmd = "python ai_bot/src/main.py", help = "Run the Telegram bot locally" }

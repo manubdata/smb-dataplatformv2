@@ -1,0 +1,13 @@
+smb_dataplatform_profile:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/dbt_metrics.duckdb'
+      attach:
+        - path: 'C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/shopify.duckdb'
+          alias: shopify_db
+        - path: 'C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/facebook_ads.duckdb'
+          alias: facebook_db
+        - path: 'C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/tiktok_ads.duckdb'
+          alias: tiktok_db

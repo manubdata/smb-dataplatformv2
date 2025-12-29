@@ -37,6 +37,11 @@ This project uses `uv` and `poethepoet` to manage dependencies and run tasks.
     uv pip install -e .[etl,dbt,dev]
     ```
 
+*   **Run scripts:**
+    ```bash
+    uv run script.py
+    ```
+
 *   **Run the data ingestion pipeline:**
     ```bash
     uv run poe run-pipeline

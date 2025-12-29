@@ -5,7 +5,6 @@ build/
 dist/
 wheels/
 *.egg-info
-shopify.duckdb
 
 # Virtual environments
 .venv
@@ -21,3 +20,6 @@ shopify.duckdb
 
 # Secrets
 .dlt/
+
+# DBT
+dbt_profiles/.user.yml
