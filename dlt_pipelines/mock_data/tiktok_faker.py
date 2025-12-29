@@ -118,7 +118,7 @@ def main() -> None:
     """
     parser = argparse.ArgumentParser(description="Generate mock TikTok Ads data and save to DuckDB.")
     parser.add_argument("--count", type=int, default=8, help="Number of campaigns to generate.")
-    parser.add_argument("--output_dir", type=str, default="./mock_data", help="Directory to save the DuckDB file.")
+    parser.add_argument("--output_dir", type=str, default="./duckdb_files", help="Directory to save the DuckDB file.")
     parser.add_argument("--db_name", type=str, default="tiktok_ads.duckdb", help="Name of the DuckDB database file.")
     parser.add_argument("--days", type=int, default=30, help="Number of days for report data.")
     args = parser.parse_args()

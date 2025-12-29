@@ -48,7 +48,7 @@ You can run the pipeline using the following `poe` command:
 uv run poe run-pipeline
 ```
 
-The data will be loaded into a local DuckDB database at `shopify.duckdb`.
+The data will be loaded into a local DuckDB database at `./duckdb_files/shopify.duckdb`.
 
 ---
 
@@ -64,7 +64,7 @@ To generate mock Meta Ads data, run the following script:
 uv run python dlt_pipelines/mock_data/meta_faker.py --count 10 --days 30
 ```
 
-This will create a `facebook_ads.duckdb` file in the `./mock_data` directory, containing `campaigns`, `adsets`, `ads`, and `ads_insights` tables.
+This will create a `facebook_ads.duckdb` file in the `./duckdb_files` directory, containing `campaigns`, `adsets`, `ads`, and `ads_insights` tables.
 
 ### TikTok Ads
 
@@ -74,7 +74,7 @@ To generate mock TikTok Ads data, run the following script:
 uv run python dlt_pipelines/mock_data/tiktok_faker.py --count 10 --days 30
 ```
 
-This will create a `tiktok_ads.duckdb` file in the `./mock_data` directory, containing `campaigns`, `adgroups`, `ads`, and `ad_reports` tables.
+This will create a `tiktok_ads.duckdb` file in the `./duckdb_files` directory, containing `campaigns`, `adgroups`, `ads`, and `ad_reports` tables.
 
 ---
 

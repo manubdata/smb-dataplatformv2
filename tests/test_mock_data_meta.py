@@ -7,7 +7,7 @@ import duckdb
 from dlt_pipelines.mock_data.meta_faker import AdsDataGenerator, main
 
 # Define the path for the test DuckDB database
-TEST_DB_PATH = "./mock_data/test_facebook_ads.duckdb"
+TEST_DB_PATH = "./duckdb_files/test_facebook_ads.duckdb"
 
 
 @pytest.fixture
@@ -134,7 +134,7 @@ def test_main_function_creates_duckdb_and_tables(
     # Configure argparse mock
     mock_args = mock_argparse.return_value.parse_args.return_value
     mock_args.count = 2
-    mock_args.output_dir = "./mock_data"
+    mock_args.output_dir = "./duckdb_files"
     mock_args.db_name = "test_facebook_ads.duckdb"
     mock_args.days = 1
 
@@ -147,15 +147,15 @@ def test_main_function_creates_duckdb_and_tables(
     main()
 
     # Assert that output directory is created
-    mock_makedirs.assert_called_once_with("./mock_data", exist_ok=True)
+    mock_makedirs.assert_called_once_with("./duckdb_files", exist_ok=True)
 
     # Assert duckdb connection is made twice (once for writing, once for example query)
     assert mock_duckdb_connect.call_count == 2
     mock_duckdb_connect.assert_any_call(
-        os.path.join("./mock_data", "test_facebook_ads.duckdb"), read_only=False
+        os.path.join("./duckdb_files", "test_facebook_ads.duckdb"), read_only=False
     )
     mock_duckdb_connect.assert_any_call(
-        os.path.join("./mock_data", "test_facebook_ads.duckdb"), read_only=True
+        os.path.join("./duckdb_files", "test_facebook_ads.duckdb"), read_only=True
     )
     
     # Assert tables are created. We expect 4 tables to be created

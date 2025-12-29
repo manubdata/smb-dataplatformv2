@@ -56,5 +56,6 @@ def test_pipeline_run(mocker):
         pipeline_name="shopify",
         destination="duckdb",
         dataset_name="shopify_data",
+        credentials={"database": "./duckdb_files/shopify.duckdb"}
     )
     mock_pipeline.run.assert_called_once_with(mock_shopify_source)

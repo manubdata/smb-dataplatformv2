@@ -106,27 +106,29 @@ class AdsDataGenerator:
         ad_map = ads_df[['id', 'adset_id', 'campaign_id']].set_index('id').to_dict('index')
         for ad_id in ads_df["id"]:
             for i in range(days):
-                imp, clicks, spend, conv = self._generate_base_metrics()
-                cpc = (spend / clicks) if clicks > 0 else 0
-                ctr = (clicks / imp) * 100 if imp > 0 else 0
                 insight_date = datetime.now() - timedelta(days=i)
-                insight = {
-                    "campaign_id": ad_map[ad_id]['campaign_id'],
-                    "adset_id": ad_map[ad_id]['adset_id'],
-                    "ad_id": ad_id,
-                    "date_start": insight_date.strftime("%Y-%m-%d"),
-                    "date_stop": insight_date.strftime("%Y-%m-%d"),
-                    "impressions": imp,
-                    "clicks": clicks,
-                    "spend": spend,
-                    "cpc": cpc,
-                    "ctr": ctr,
-                    "actions": json.dumps([
-                        {"action_type": "link_click", "value": str(clicks)},
-                        {"action_type": "offsite_conversion.fb_pixel_purchase", "value": str(conv)},
-                    ]),
-                }
-                insights.append(insight)
+                for platform in ["facebook", "instagram"]: # Simulate breakdown by platform
+                    imp, clicks, spend, conv = self._generate_base_metrics()
+                    cpc = (spend / clicks) if clicks > 0 else 0
+                    ctr = (clicks / imp) * 100 if imp > 0 else 0
+                    insight = {
+                        "campaign_id": ad_map[ad_id]['campaign_id'],
+                        "adset_id": ad_map[ad_id]['adset_id'],
+                        "ad_id": ad_id,
+                        "date_start": insight_date.strftime("%Y-%m-%d"),
+                        "date_stop": insight_date.strftime("%Y-%m-%d"),
+                        "publisher_platform": platform, # Add publisher platform
+                        "impressions": imp,
+                        "clicks": clicks,
+                        "spend": spend,
+                        "cpc": cpc,
+                        "ctr": ctr,
+                        "actions": json.dumps([
+                            {"action_type": "link_click", "value": str(clicks)},
+                            {"action_type": "offsite_conversion.fb_pixel_purchase", "value": str(conv)},
+                        ]),
+                    }
+                    insights.append(insight)
         return insights
 
 
@@ -141,7 +143,7 @@ def main() -> None:
     parser.add_argument(
         "--output_dir",
         type=str,
-        default="./mock_data",
+        default="./duckdb_files",
         help="Directory to save the DuckDB file.",
     )
     parser.add_argument(

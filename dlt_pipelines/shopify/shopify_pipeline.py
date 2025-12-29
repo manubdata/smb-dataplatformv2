@@ -117,6 +117,7 @@ def run_pipeline():
         pipeline_name="shopify",
         destination="duckdb",
         dataset_name="shopify_data",
+        credentials={"database": "./duckdb_files/shopify.duckdb"}
     )
 
     load_info = pipeline.run(shopify_source())

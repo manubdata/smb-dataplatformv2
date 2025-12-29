@@ -8,7 +8,7 @@ import duckdb
 from dlt_pipelines.mock_data.tiktok_faker import TikTokAdsDataGenerator, main
 
 # Define the path for the test DuckDB database
-TEST_DB_PATH = "./mock_data/test_tiktok_ads.duckdb"
+TEST_DB_PATH = "./duckdb_files/test_tiktok_ads.duckdb"
 
 
 @pytest.fixture
@@ -87,7 +87,7 @@ def test_main_function_creates_duckdb_and_tables(
     # Configure argparse mock
     mock_args = mock_argparse.return_value.parse_args.return_value
     mock_args.count = 1
-    mock_args.output_dir = "./mock_data"
+    mock_args.output_dir = "./duckdb_files"
     mock_args.db_name = "test_tiktok_ads.duckdb"
     mock_args.days = 1
 
@@ -100,10 +100,10 @@ def test_main_function_creates_duckdb_and_tables(
     main()
 
     # Assertions
-    mock_makedirs.assert_called_once_with("./mock_data", exist_ok=True)
+    mock_makedirs.assert_called_once_with("./duckdb_files", exist_ok=True)
     assert mock_duckdb_connect.call_count == 2
-    mock_duckdb_connect.assert_any_call(os.path.join("./mock_data", "test_tiktok_ads.duckdb"), read_only=False)
-    mock_duckdb_connect.assert_any_call(os.path.join("./mock_data", "test_tiktok_ads.duckdb"), read_only=True)
+    mock_duckdb_connect.assert_any_call(os.path.join("./duckdb_files", "test_tiktok_ads.duckdb"), read_only=False)
+    mock_duckdb_connect.assert_any_call(os.path.join("./duckdb_files", "test_tiktok_ads.duckdb"), read_only=True)
     
     expected_tables = ["campaigns", "adgroups", "ads", "ad_reports"]
     create_table_calls = [call for call in mock_con.execute.call_args_list if "CREATE OR REPLACE TABLE" in call.args[0]]
