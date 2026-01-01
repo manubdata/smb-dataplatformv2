@@ -1,0 +1,92 @@
+main:
+  params: [args]
+  steps:
+    - init:
+        assign:
+          - project: ${sys.get_env("GOOGLE_CLOUD_PROJECT_ID")}
+          - location: "us-central1"
+          - ingestion_job_name: "smb-dataplatform-ingestion-runner"
+          - transformation_job_name: "smb-dataplatform-transformation-runner"
+          - poll_interval_seconds: 10
+          - max_polls: 180 # 30 minutes (180 * 10 seconds)
+
+    - run_ingestion:
+        call: googleapis.run.v2.projects.locations.jobs.run
+        args:
+          name: ${"projects/" + project + "/locations/" + location + "/jobs/" + ingestion_job_name}
+        result: ingestion_operation
+
+    - poll_ingestion:
+        call: poll_operation
+        args:
+          operation_name: ${ingestion_operation.name}
+          poll_interval_seconds: ${poll_interval_seconds}
+          max_polls: ${max_polls}
+        result: final_ingestion_lro_status
+
+    - check_ingestion_result:
+        switch:
+          - condition: ${final_ingestion_lro_status.body.error}
+            next: fail_ingestion
+        next: run_transformation
+
+    - run_transformation:
+        call: googleapis.run.v2.projects.locations.jobs.run
+        args:
+          name: ${"projects/" + project + "/locations/" + location + "/jobs/" + transformation_job_name}
+        result: transformation_operation
+
+    - poll_transformation:
+        call: poll_operation
+        args:
+          operation_name: ${transformation_operation.name}
+          poll_interval_seconds: ${poll_interval_seconds}
+          max_polls: ${max_polls}
+        result: final_transformation_lro_status
+
+    - check_transformation_result:
+        switch:
+          - condition: ${final_transformation_lro_status.body.error}
+            next: fail_transformation
+        next: success
+
+    - fail_ingestion:
+        raise: "Ingestion job failed"
+    - fail_transformation:
+        raise: "Transformation job failed"
+    - success:
+        return: "All jobs completed successfully."
+
+poll_operation:
+  params: [operation_name, poll_interval_seconds, max_polls]
+  steps:
+    - init_polling_vars:
+        assign:
+          - poll_count: 0
+    - poll_loop_start:
+        switch:
+          - condition: ${poll_count < max_polls}
+            next: get_lro_status
+          - condition: ${poll_count >= max_polls}
+            raise: "Operation timed out after ${max_polls} polls."
+    - get_lro_status:
+        call: http.get
+        args:
+          url: ${"https://run.googleapis.com/v2/" + operation_name}
+          auth:
+            type: OAuth2
+        result: lro_status
+    - check_lro_done:
+        switch:
+          - condition: ${lro_status.body.done}
+            return: ${lro_status} # Return the final status
+        next: increment_poll_count
+    - increment_poll_count:
+        assign:
+          - poll_count: ${poll_count + 1}
+        next: sleep_before_next_poll
+    - sleep_before_next_poll:
+        call: sys.sleep
+        args:
+          seconds: ${poll_interval_seconds}
+        next: poll_loop_start

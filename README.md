@@ -170,3 +170,125 @@ To run all dbt models and tests (including Python tests is outside dbt scope):
 ```bash
 uv run poe dbt-build
 ```
+
+---
+
+## ☁️ Cloud Infrastructure and Deployment
+
+The project is designed to be deployed on Google Cloud Platform (GCP) using a serverless architecture defined with Terraform.
+
+### Architecture Overview
+
+The cloud infrastructure consists of the following key components:
+
+*   **Artifact Registry**: A Docker registry to store the container images for our services.
+*   **Cloud Run Jobs**: Two separate, serverless jobs for handling different parts of the pipeline:
+    *   **Ingestion Job**: Runs the `dlt` pipeline to ingest data.
+    *   **Transformation Job**: Runs the `dbt` models to transform the data.
+*   **Cloud Workflows**: An orchestration service that ensures the transformation job runs only after the ingestion job has completed successfully.
+*   **Cloud Scheduler**: A single cron job that triggers the Cloud Workflow on a daily schedule.
+
+This architecture decouples the ingestion and transformation processes and uses an event-driven approach to ensure data dependency is respected.
+
+### Deployment Steps
+
+Before deploying, make sure you have authenticated with Google Cloud:
+
+```bash
+gcloud auth login
+gcloud config set project smb-dataplatform
+```
+
+#### 1. Build and Push Docker Images
+
+The project uses two separate Docker images for the ingestion and transformation services.
+
+**Build and push the ingestion image:**
+
+```bash
+# Build
+docker build -f ingestion.Dockerfile -t ingestion:latest .
+
+# Tag
+docker tag ingestion:latest us-central1-docker.pkg.dev/smb-dataplatform/smb-dataplatform-artifact-repo/ingestion:latest
+
+# Push
+docker push us-central1-docker.pkg.dev/smb-dataplatform/smb-dataplatform-artifact-repo/ingestion:latest
+```
+
+**Build and push the transformation image:**
+
+```bash
+# Build
+docker build -f transformation.Dockerfile -t transformation:latest .
+
+# Tag
+docker tag transformation:latest us-central1-docker.pkg.dev/smb-dataplatform/smb-dataplatform-artifact-repo/transformation:latest
+
+# Push
+docker push us-central1-docker.pkg.dev/smb-dataplatform/smb-dataplatform-artifact-repo/transformation:latest
+```
+
+#### 2. Deploy Infrastructure with Terraform
+
+Once the images are pushed, you can deploy the infrastructure using the provided `poe` tasks, which wrap the Terraform commands.
+
+```bash
+# Initialize Terraform (only needed once)
+uv run poe tf-init
+
+# Plan and apply the changes
+uv run poe tf-apply
+```
+
+### Managing the Pipeline
+
+You can easily activate or deactivate the entire pipeline to manage costs.
+
+#### Deactivating the Pipeline (Pausing)
+
+To temporarily stop the pipeline and prevent any jobs from running, you can pause the Cloud Scheduler.
+
+1.  Open the `terraform/main.tf` file.
+2.  In the `google_cloud_scheduler_job.workflow_scheduler` resource, set the `paused` argument to `true`:
+
+    ```terraform
+    resource "google_cloud_scheduler_job" "workflow_scheduler" {
+      # ... other arguments
+      paused = true
+    }
+    ```
+
+3.  Apply the change:
+
+    ```bash
+    uv run poe tf-apply
+    ```
+
+#### Activating the Pipeline (Unpausing)
+
+To resume the daily pipeline runs:
+
+1.  In `terraform/main.tf`, set the `paused` argument back to `false`:
+
+    ```terraform
+    resource "google_cloud_scheduler_job" "workflow_scheduler" {
+      # ... other arguments
+      paused = false
+    }
+    ```
+
+2.  Apply the change:
+
+    ```bash
+    uv run poe tf-apply
+    ```
+
+#### Tearing Down the Infrastructure
+
+To completely remove all deployed cloud resources and stop all associated costs, you can run `terraform destroy`.
+
+```bash
+terraform destroy
+```
+**Note**: You will need to navigate to the `terraform` directory to run this command (`cd terraform`).
