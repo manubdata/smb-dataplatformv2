@@ -14,7 +14,9 @@ dependencies = [
 # Dependencies for the Ingestion Pipeline (Cloud Run Job A)
 etl = [
     "dlt[bigquery,duckdb]>=0.4.0",
-    "pandas>=2.0.0"
+    "pandas>=2.0.0",
+    "google-cloud-bigquery>=3.0.0",
+    "google-cloud-bigquery-storage>=2.0.0",
 ]
 
 # Dependencies for Transformation (Cloud Run Job B)
@@ -59,6 +61,7 @@ dev = [
 [tool.poe.tasks]
 # --- 1. Quality & Testing ---
 test = "pytest tests/"
+test-integration = { cmd = "pytest -m integration", help = "Run integration tests" }
 lint = "ruff check ."
 format = "ruff format ."
 check = ["format", "lint", "test"]  # Runs all 3 in sequence, use: uv run poe check
@@ -67,6 +70,7 @@ check = ["format", "lint", "test"]  # Runs all 3 in sequence, use: uv run poe ch
 # Runs the pipeline script. 
 # We use 'cmd' to ensure it runs with the 'etl' extras context if needed.
 run-pipeline = { cmd = "python dlt_pipelines/shopify/shopify_pipeline.py", help = "Run the local data pipeline" }
+run-pipeline-gcp = { cmd = "python dlt_pipelines/shopify/shopify_pipeline.py --destination bigquery", help = "Run the ingestion pipeline to GCP BigQuery" }
 
 # --- 3. Transformation (dbt) ---
 # dbt commands need to run inside the dbt_project folder

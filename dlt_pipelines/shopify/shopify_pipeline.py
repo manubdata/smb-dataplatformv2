@@ -112,13 +112,25 @@ def shopify_source(
     )
 
 
-def run_pipeline():
-    pipeline = dlt.pipeline(
-        pipeline_name="shopify",
-        destination="duckdb",
-        dataset_name="shopify_data",
-        credentials={"database": "./duckdb_files/shopify.duckdb"}
-    )
+import argparse
+
+
+def run_pipeline(destination: str):
+    if destination == "bigquery":
+        print("Running pipeline to BigQuery")
+        pipeline = dlt.pipeline(
+            pipeline_name="shopify_prod",
+            destination="bigquery",
+            dataset_name="shopify_data_raw",
+        )
+    else:
+        print("Running pipeline to DuckDB")
+        pipeline = dlt.pipeline(
+            pipeline_name="shopify_dev",
+            destination="duckdb",
+            dataset_name="shopify_data",
+            credentials={"database": "./duckdb_files/shopify.duckdb"},
+        )
 
     load_info = pipeline.run(shopify_source())
 
@@ -126,4 +138,13 @@ def run_pipeline():
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--destination",
+        required=False,
+        default="duckdb",
+        help="The destination to load data to (duckdb or bigquery)",
+    )
+    args = parser.parse_args()
+
+    run_pipeline(destination=args.destination)
