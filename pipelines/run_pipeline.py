@@ -1,22 +1,18 @@
-import dlt
+"""
+This script runs the Shopify DLT pipeline.
+"""
+
+from dlt_pipelines.shopify.shopify_pipeline import run_pipeline
+
 
 def main():
     """
-    This is a placeholder for the main data pipeline.
-    It currently does nothing.
+    Runs the Shopify DLT pipeline with the default destination.
     """
-    print("Starting data pipeline...")
-    # TODO: Add your data pipeline logic here
-    # For example, loading data from a source to a destination:
-    # pipeline = dlt.pipeline(
-    #     pipeline_name="my_pipeline",
-    #     destination="bigquery",
-    #     dataset_name="my_dataset"
-    # )
-    # data = [{"id": 1, "name": "test"}] # Example data
-    # info = pipeline.run(data, table_name="my_table")
-    # print(info)
-    print("Data pipeline finished.")
+    print("Starting Shopify DLT pipeline...")
+    run_pipeline(destination="bigquery")
+    print("Shopify DLT pipeline finished.")
+
 
 if __name__ == "__main__":
     main()
