@@ -12,3 +12,6 @@ COPY . .
 
 # Install transformation (dbt) dependencies
 RUN uv pip install --system --no-cache .[dbt]
+
+# Set the command to run the dbt build for production
+CMD ["uv", "run", "poe", "dbt-build-prod"]

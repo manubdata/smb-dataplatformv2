@@ -26,7 +26,10 @@ def shopify_source(
         "X-Shopify-Access-Token": access_token,
     }
 
-    @dlt.resource(primary_key="id", write_disposition="merge")
+    @dlt.resource(primary_key="id", write_disposition="merge", columns={
+        "template_suffix": {"data_type": "text"},
+        "image": {"data_type": "text"}, # This is a complex object, might need more specific handling
+    })
     def products(updated_at=dlt.sources.incremental("updated_at", initial_value="2023-01-01T00:00:00Z")):
         url = base_url + "products.json"
         params = {"updated_at_min": updated_at.last_value, "order": "updated_at asc"}
@@ -54,7 +57,46 @@ def shopify_source(
             else:
                 url = None
 
-    @dlt.resource(primary_key="id", write_disposition="merge")
+    @dlt.resource(primary_key="id", write_disposition="merge", columns={
+        "browser_ip": {"data_type": "text"},
+        "cancel_reason": {"data_type": "text"},
+        "cancelled_at": {"data_type": "timestamp"},
+        "cart_token": {"data_type": "text"},
+        "checkout_id": {"data_type": "text"},
+        "checkout_token": {"data_type": "text"},
+        "client_details": {"data_type": "text"},
+        "closed_at": {"data_type": "timestamp"},
+        "current_total_additional_fees_set": {"data_type": "text"},
+        "current_total_duties_set": {"data_type": "text"},
+        "customer_locale": {"data_type": "text"},
+        "device_id": {"data_type": "text"},
+        "fulfillment_status": {"data_type": "text"},
+        "landing_site": {"data_type": "text"},
+        "landing_site_ref": {"data_type": "text"},
+        "location_id": {"data_type": "bigint"},
+        "merchant_of_record_app_id": {"data_type": "text"},
+        "note": {"data_type": "text"},
+        "original_total_additional_fees_set": {"data_type": "text"},
+        "original_total_duties_set": {"data_type": "text"},
+        "phone": {"data_type": "text"},
+        "po_number": {"data_type": "text"},
+        "reference": {"data_type": "text"},
+        "referring_site": {"data_type": "text"},
+        "source_identifier": {"data_type": "text"},
+        "source_url": {"data_type": "text"},
+        "user_id": {"data_type": "bigint"},
+        "billing_address__address2": {"data_type": "text"},
+        "billing_address__company": {"data_type": "text"},
+        "customer__note": {"data_type": "text"},
+        "customer__multipass_identifier": {"data_type": "text"},
+        "customer__email_marketing_consent__consent_updated_at": {"data_type": "timestamp"},
+        "customer__sms_marketing_consent__consent_updated_at": {"data_type": "timestamp"},
+        "customer__default_address__company": {"data_type": "text"},
+        "customer__default_address__address2": {"data_type": "text"},
+        "payment_terms": {"data_type": "text"},
+        "shipping_address__address2": {"data_type": "text"},
+        "shipping_address__company": {"data_type": "text"},
+    })
     def orders(updated_at=dlt.sources.incremental("updated_at", initial_value="2023-01-01T00:00:00Z")):
         url = base_url + "orders.json"
         params = {"updated_at_min": updated_at.last_value, "order": "updated_at asc", "status": "any"}
@@ -80,7 +122,12 @@ def shopify_source(
             else:
                 url = None
 
-    @dlt.resource(primary_key="id", write_disposition="merge")
+    @dlt.resource(primary_key="id", write_disposition="merge", columns={
+        "multipass_identifier": {"data_type": "text"},
+        "email_marketing_consent__consent_updated_at": {"data_type": "timestamp"},
+        "sms_marketing_consent__consent_updated_at": {"data_type": "timestamp"},
+        "default_address__address2": {"data_type": "text"},
+    })
     def customers(updated_at=dlt.sources.incremental("updated_at", initial_value="2023-01-01T00:00:00Z")):
         url = base_url + "customers.json"
         params = {"updated_at_min": updated_at.last_value, "order": "updated_at asc"}
@@ -112,13 +159,24 @@ def shopify_source(
     )
 
 
-def run_pipeline():
-    pipeline = dlt.pipeline(
-        pipeline_name="shopify",
-        destination="duckdb",
-        dataset_name="shopify_data",
-        credentials={"database": "./duckdb_files/shopify.duckdb"}
-    )
+import argparse
+
+def run_pipeline(destination: str):
+    if destination == "bigquery":
+        print("Running pipeline to BigQuery")
+        pipeline = dlt.pipeline(
+            pipeline_name="shopify_prod",
+            destination="bigquery",
+            dataset_name="shopify_data_raw",
+        )
+    else:
+        from dlt.destinations import duckdb
+        print("Running pipeline to DuckDB")
+        pipeline = dlt.pipeline(
+            pipeline_name="shopify_dev",
+            destination=duckdb(credentials="./duckdb_files/shopify.duckdb"),
+            dataset_name="shopify_data",
+        )
 
     load_info = pipeline.run(shopify_source())
 
@@ -126,4 +184,13 @@ def run_pipeline():
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--destination",
+        required=False,
+        default="duckdb",
+        help="The destination to load data to (duckdb or bigquery)",
+    )
+    args = parser.parse_args()
+
+    run_pipeline(destination=args.destination)

@@ -12,3 +12,6 @@ COPY . .
 
 # Install ingestion (ETL) dependencies
 RUN uv pip install --system --no-cache .[etl]
+
+# Set the command to run the ingestion pipeline for GCP
+CMD ["uv", "run", "poe", "run-pipeline-gcp"]

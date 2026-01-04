@@ -1,0 +1,36 @@
+# Git
+.git/
+.gitignore
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# dbt
+dbt_project/target/
+dbt_project/logs/
+dbt_project/dbt_packages/
+
+# dlt
+.dlt/
+
+# pytest
+.pytest_cache/
+
+# ruff
+.ruff_cache/
+
+# DuckDB files
+duckdb_files/
+
+# IDE
+.idea/
+.vscode/
+
+# Other
+*.swp
+*.swo
+*.swn

@@ -11537,3 +11537,2072 @@ having count(*) > 1
 [0m18:22:57.994776 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E56566DA10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E56538E110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E56538DD90>]}
 [0m18:22:57.994776 [debug] [MainThread]: Flushing usage events
 [0m18:22:58.902772 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:08:32.600831 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B57E80610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B57E83910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B57E83D10>]}
+
+
+============================== 08:08:32.604831 | a18c2254-2a04-4d32-9e55-ed258af9a68b ==============================
+[0m08:08:32.604831 [info ] [MainThread]: Running with dbt=1.10.17
+[0m08:08:32.605834 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': '../dbt_profiles', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt deps --profiles-dir ../dbt_profiles', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\manubdata\\Desktop\\Workspace\\smb-dataplatformV2\\dbt_project\\logs'}
+[0m08:08:32.742831 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a18c2254-2a04-4d32-9e55-ed258af9a68b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B58F08490>]}
+[0m08:08:32.820832 [debug] [MainThread]: Set downloads directory='C:\Users\MANUBD~1\AppData\Local\Temp\dbt-downloads-k6x7840t'
+[0m08:08:32.820832 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m08:08:33.244834 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m08:08:33.245835 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m08:08:33.558833 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m08:08:33.562833 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m08:08:34.277831 [info ] [MainThread]: Installed from version 1.1.1
+[0m08:08:34.278833 [info ] [MainThread]: Updated version available: 1.3.3
+[0m08:08:34.278833 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'a18c2254-2a04-4d32-9e55-ed258af9a68b', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B57DA2290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B57E83B90>]}
+[0m08:08:34.279831 [info ] [MainThread]: 
+[0m08:08:34.279831 [info ] [MainThread]: Updates available for packages: ['dbt-labs/dbt_utils']                 
+Update your versions in packages.yml, then run dbt deps
+[0m08:08:34.281831 [debug] [MainThread]: Command `dbt deps` succeeded at 08:08:34.281831 after 1.76 seconds
+[0m08:08:34.281831 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B552ABBD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B510A9750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000024B510A9CD0>]}
+[0m08:08:34.282831 [debug] [MainThread]: Flushing usage events
+[0m08:08:35.011831 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:08:42.815356 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026A3D5B2B90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026A3D5B0510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026A3D5B3B10>]}
+
+
+============================== 08:08:42.818353 | cf0a6d38-a62d-47f4-ae2a-2bfe3d122271 ==============================
+[0m08:08:42.818353 [info ] [MainThread]: Running with dbt=1.10.17
+[0m08:08:42.819358 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': '../dbt_profiles', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt debug --profiles-dir ../dbt_profiles', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\manubdata\\Desktop\\Workspace\\smb-dataplatformV2\\dbt_project\\logs'}
+[0m08:08:42.853353 [info ] [MainThread]: dbt version: 1.10.17
+[0m08:08:42.853353 [info ] [MainThread]: python version: 3.11.13
+[0m08:08:42.854356 [info ] [MainThread]: python path: C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\.venv\Scripts\python.exe
+[0m08:08:42.854356 [info ] [MainThread]: os info: Windows-10-10.0.26100-SP0
+[0m08:08:42.947352 [info ] [MainThread]: Using profiles dir at ../dbt_profiles
+[0m08:08:42.948352 [info ] [MainThread]: Using profiles.yml file at ../dbt_profiles\profiles.yml
+[0m08:08:42.948352 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\dbt_project.yml
+[0m08:08:42.951353 [info ] [MainThread]: adapter type: duckdb
+[0m08:08:42.951353 [info ] [MainThread]: adapter version: 1.10.0
+[0m08:08:43.042356 [info ] [MainThread]: Configuration:
+[0m08:08:43.043353 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m08:08:43.043353 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m08:08:43.043353 [info ] [MainThread]: Required dependencies:
+[0m08:08:43.044357 [debug] [MainThread]: Executing "git --help"
+[0m08:08:43.067354 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m08:08:43.067354 [debug] [MainThread]: STDERR: "b''"
+[0m08:08:43.068353 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m08:08:43.068353 [info ] [MainThread]: Connection:
+[0m08:08:43.068353 [info ] [MainThread]:   database: dbt_metrics
+[0m08:08:43.069357 [info ] [MainThread]:   schema: main
+[0m08:08:43.069357 [info ] [MainThread]:   path: C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/dbt_metrics.duckdb
+[0m08:08:43.070355 [info ] [MainThread]:   config_options: None
+[0m08:08:43.070355 [info ] [MainThread]:   extensions: None
+[0m08:08:43.070355 [info ] [MainThread]:   settings: {}
+[0m08:08:43.071357 [info ] [MainThread]:   external_root: .
+[0m08:08:43.071357 [info ] [MainThread]:   use_credential_provider: None
+[0m08:08:43.072356 [info ] [MainThread]:   attach: [{'path': 'C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/shopify.duckdb', 'type': None, 'alias': 'shopify_db', 'secret': None, 'read_only': False, 'options': None, 'is_ducklake': None}, {'path': 'C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/facebook_ads.duckdb', 'type': None, 'alias': 'facebook_db', 'secret': None, 'read_only': False, 'options': None, 'is_ducklake': None}, {'path': 'C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/tiktok_ads.duckdb', 'type': None, 'alias': 'tiktok_db', 'secret': None, 'read_only': False, 'options': None, 'is_ducklake': None}]
+[0m08:08:43.072356 [info ] [MainThread]:   filesystems: None
+[0m08:08:43.072356 [info ] [MainThread]:   remote: None
+[0m08:08:43.073357 [info ] [MainThread]:   plugins: None
+[0m08:08:43.073357 [info ] [MainThread]:   disable_transactions: False
+[0m08:08:43.074357 [info ] [MainThread]: Registered adapter: duckdb=1.10.0
+[0m08:08:43.320353 [debug] [MainThread]: Acquiring new duckdb connection 'debug'
+[0m08:08:44.905352 [debug] [MainThread]: Using duckdb connection "debug"
+[0m08:08:44.906353 [debug] [MainThread]: On debug: select 1 as id
+[0m08:08:44.906353 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m08:08:44.946353 [debug] [MainThread]: SQL status: OK in 0.040 seconds
+[0m08:08:44.947353 [debug] [MainThread]: On debug: Close
+[0m08:08:44.947353 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m08:08:44.948355 [info ] [MainThread]: [32mAll checks passed![0m
+[0m08:08:44.949357 [debug] [MainThread]: Command `dbt debug` succeeded at 08:08:44.949357 after 2.19 seconds
+[0m08:08:44.949357 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m08:08:44.949357 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026A3D653F10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026A3EDB5DD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026A3EDB4190>]}
+[0m08:08:44.950357 [debug] [MainThread]: Flushing usage events
+[0m08:08:45.608353 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m08:08:55.958131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221D1C110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221D1C210>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221D1F850>]}
+
+
+============================== 08:08:55.961131 | b12e0132-e975-416a-9258-5f48f82a01e7 ==============================
+[0m08:08:55.961131 [info ] [MainThread]: Running with dbt=1.10.17
+[0m08:08:55.961131 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': '../dbt_profiles', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt build --profiles-dir ../dbt_profiles', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\manubdata\\Desktop\\Workspace\\smb-dataplatformV2\\dbt_project\\logs'}
+[0m08:08:56.170130 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221705F50>]}
+[0m08:08:56.226135 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D21E6642D0>]}
+[0m08:08:56.228131 [info ] [MainThread]: Registered adapter: duckdb=1.10.0
+[0m08:08:56.457131 [debug] [MainThread]: checksum: a50d730a31f4c1af850aa8110f398f1e1657a0325ec5753dae2929b817189a3e, vars: {}, profile: , target: , version: 1.10.17
+[0m08:08:57.461131 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m08:08:57.462131 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m08:08:57.497131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D223281810>]}
+[0m08:08:57.605131 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\manifest.json
+[0m08:08:57.607133 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\semantic_manifest.json
+[0m08:08:57.640131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D223580410>]}
+[0m08:08:57.640131 [info ] [MainThread]: Found 6 models, 33 data tests, 3 sources, 587 macros
+[0m08:08:57.643132 [info ] [MainThread]: 
+[0m08:08:57.644133 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m08:08:57.644133 [info ] [MainThread]: 
+[0m08:08:57.645133 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m08:08:57.649135 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_dbt_metrics'
+[0m08:08:57.706131 [debug] [ThreadPool]: Using duckdb connection "list_dbt_metrics"
+[0m08:08:57.706131 [debug] [ThreadPool]: On list_dbt_metrics: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "connection_name": "list_dbt_metrics"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"dbt_metrics"'
+    
+  
+  
+[0m08:08:57.706131 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m08:08:57.731130 [debug] [ThreadPool]: SQL status: OK in 0.024 seconds
+[0m08:08:57.732133 [debug] [ThreadPool]: On list_dbt_metrics: Close
+[0m08:08:57.732133 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_dbt_metrics, now create_dbt_metrics_main)
+[0m08:08:57.733132 [debug] [ThreadPool]: Creating schema "database: "dbt_metrics"
+schema: "main"
+"
+[0m08:08:57.738130 [debug] [ThreadPool]: Using duckdb connection "create_dbt_metrics_main"
+[0m08:08:57.738130 [debug] [ThreadPool]: On create_dbt_metrics_main: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "connection_name": "create_dbt_metrics_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='dbt_metrics'
+        and type='sqlite'
+    
+  
+[0m08:08:57.738130 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m08:08:57.739133 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m08:08:57.740132 [debug] [ThreadPool]: Using duckdb connection "create_dbt_metrics_main"
+[0m08:08:57.740132 [debug] [ThreadPool]: On create_dbt_metrics_main: BEGIN
+[0m08:08:57.741131 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m08:08:57.741131 [debug] [ThreadPool]: Using duckdb connection "create_dbt_metrics_main"
+[0m08:08:57.742132 [debug] [ThreadPool]: On create_dbt_metrics_main: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "connection_name": "create_dbt_metrics_main"} */
+
+    
+    
+        create schema if not exists "dbt_metrics"."main"
+    
+[0m08:08:57.742132 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m08:08:57.743131 [debug] [ThreadPool]: On create_dbt_metrics_main: COMMIT
+[0m08:08:57.743131 [debug] [ThreadPool]: Using duckdb connection "create_dbt_metrics_main"
+[0m08:08:57.744133 [debug] [ThreadPool]: On create_dbt_metrics_main: COMMIT
+[0m08:08:57.744133 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m08:08:57.744133 [debug] [ThreadPool]: On create_dbt_metrics_main: Close
+[0m08:08:57.746131 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_dbt_metrics_main'
+[0m08:08:57.749131 [debug] [ThreadPool]: Using duckdb connection "list_dbt_metrics_main"
+[0m08:08:57.750131 [debug] [ThreadPool]: On list_dbt_metrics_main: BEGIN
+[0m08:08:57.750131 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m08:08:57.750131 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m08:08:57.751131 [debug] [ThreadPool]: Using duckdb connection "list_dbt_metrics_main"
+[0m08:08:57.751131 [debug] [ThreadPool]: On list_dbt_metrics_main: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "connection_name": "list_dbt_metrics_main"} */
+select
+      'dbt_metrics' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'dbt_metrics'
+  
+[0m08:08:57.763131 [debug] [ThreadPool]: SQL status: OK in 0.012 seconds
+[0m08:08:57.764131 [debug] [ThreadPool]: On list_dbt_metrics_main: ROLLBACK
+[0m08:08:57.774131 [debug] [ThreadPool]: Failed to rollback 'list_dbt_metrics_main'
+[0m08:08:57.775131 [debug] [ThreadPool]: On list_dbt_metrics_main: Close
+[0m08:08:57.776133 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D222F135D0>]}
+[0m08:08:57.776133 [debug] [MainThread]: Using duckdb connection "master"
+[0m08:08:57.777133 [debug] [MainThread]: On master: BEGIN
+[0m08:08:57.777133 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m08:08:57.778131 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m08:08:57.778131 [debug] [MainThread]: On master: COMMIT
+[0m08:08:57.778131 [debug] [MainThread]: Using duckdb connection "master"
+[0m08:08:57.779131 [debug] [MainThread]: On master: COMMIT
+[0m08:08:57.779131 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m08:08:57.779131 [debug] [MainThread]: On master: Close
+[0m08:08:57.783134 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.stg_meta_ads
+[0m08:08:57.783134 [info ] [Thread-1 (]: 1 of 39 START sql view model main.stg_meta_ads ................................. [RUN]
+[0m08:08:57.784131 [debug] [Thread-1 (]: Acquiring new duckdb connection 'model.smb_dataplatform.stg_meta_ads'
+[0m08:08:57.784131 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.stg_meta_ads
+[0m08:08:57.790131 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.791132 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.stg_meta_ads
+[0m08:08:57.811131 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.811131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.812131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: BEGIN
+[0m08:08:57.812131 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m08:08:57.813133 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.813133 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.814131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_meta_ads"} */
+
+  
+  create view "dbt_metrics"."main"."stg_meta_ads__dbt_tmp" as (
+    -- Silver Layer (staging) for Meta Ads
+-- This model cleans and prepares raw ad spend data from the bronze layer.
+
+with source as (
+    -- This should point to your raw meta ads data in the bronze layer
+    select * from "facebook_db"."main"."ads_insights"
+)
+
+select
+    cast(date_start as date) as date_day,
+    spend,
+    publisher_platform
+from source
+  );
+
+[0m08:08:57.814131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.819130 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.819130 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_meta_ads"} */
+alter view "dbt_metrics"."main"."stg_meta_ads" rename to "stg_meta_ads__dbt_backup"
+[0m08:08:57.820131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.822130 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.822130 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_meta_ads"} */
+alter view "dbt_metrics"."main"."stg_meta_ads__dbt_tmp" rename to "stg_meta_ads"
+[0m08:08:57.823131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.831131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: COMMIT
+[0m08:08:57.831131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.831131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: COMMIT
+[0m08:08:57.835131 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+[0m08:08:57.839131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_meta_ads"
+[0m08:08:57.839131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_meta_ads"} */
+
+      drop view if exists "dbt_metrics"."main"."stg_meta_ads__dbt_backup" cascade
+    
+[0m08:08:57.842131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:57.843133 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: Close
+[0m08:08:57.845131 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D22367F010>]}
+[0m08:08:57.846131 [info ] [Thread-1 (]: 1 of 39 OK created sql view model main.stg_meta_ads ............................ [[32mOK[0m in 0.06s]
+[0m08:08:57.846131 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.stg_meta_ads
+[0m08:08:57.847131 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.stg_orders
+[0m08:08:57.847131 [info ] [Thread-1 (]: 2 of 39 START sql view model main.stg_orders ................................... [RUN]
+[0m08:08:57.848132 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_meta_ads, now model.smb_dataplatform.stg_orders)
+[0m08:08:57.848132 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.stg_orders
+[0m08:08:57.851130 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.stg_orders"
+[0m08:08:57.851130 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.stg_orders
+[0m08:08:57.853131 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.stg_orders"
+[0m08:08:57.854131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_orders"
+[0m08:08:57.855131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: BEGIN
+[0m08:08:57.855131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:57.855131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.856131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_orders"
+[0m08:08:57.856131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_orders"} */
+
+  
+  create view "dbt_metrics"."main"."stg_orders__dbt_tmp" as (
+    -- Silver Layer (staging) for Orders
+-- This model cleans and prepares raw order data from the bronze layer.
+
+with source as (
+    -- This should point to your raw orders data in the bronze layer
+    select * from "shopify_db"."shopify_data"."orders"
+)
+
+select
+    id as order_id,
+    customer__id as customer_id,
+    cast(created_at as date) as order_date,
+    cast(total_price as numeric(38, 2)) as net_sales,
+    
+    -- Mock COGS as 50% of net sales. In a real scenario, this would come from
+    -- product cost data.
+    cast(total_price as numeric(38, 2)) * 0.50 as cogs,
+    
+    -- Extracting shipping cost from the nested field.
+    cast(total_shipping_price_set__shop_money__amount as numeric(38, 2)) as shipping_cost,
+    
+    -- Transaction Fee is a placeholder. This often comes from a separate
+    -- payment gateway source (e.g., Stripe, Shopify Payments).
+    0 as transaction_fee
+
+from source
+  );
+
+[0m08:08:57.858131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:57.860132 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_orders"
+[0m08:08:57.861131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_orders"} */
+alter view "dbt_metrics"."main"."stg_orders" rename to "stg_orders__dbt_backup"
+[0m08:08:57.861131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.863131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_orders"
+[0m08:08:57.864131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_orders"} */
+alter view "dbt_metrics"."main"."stg_orders__dbt_tmp" rename to "stg_orders"
+[0m08:08:57.864131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.865131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: COMMIT
+[0m08:08:57.866131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_orders"
+[0m08:08:57.866131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: COMMIT
+[0m08:08:57.869130 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+[0m08:08:57.871131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_orders"
+[0m08:08:57.871131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_orders"} */
+
+      drop view if exists "dbt_metrics"."main"."stg_orders__dbt_backup" cascade
+    
+[0m08:08:57.873131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.874131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_orders: Close
+[0m08:08:57.874131 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D22394B9D0>]}
+[0m08:08:57.875133 [info ] [Thread-1 (]: 2 of 39 OK created sql view model main.stg_orders .............................. [[32mOK[0m in 0.03s]
+[0m08:08:57.875133 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.stg_orders
+[0m08:08:57.876132 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.stg_tiktok_ads
+[0m08:08:57.876132 [info ] [Thread-1 (]: 3 of 39 START sql view model main.stg_tiktok_ads ............................... [RUN]
+[0m08:08:57.877132 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_orders, now model.smb_dataplatform.stg_tiktok_ads)
+[0m08:08:57.877132 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.stg_tiktok_ads
+[0m08:08:57.881132 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.881132 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.stg_tiktok_ads
+[0m08:08:57.883131 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.884130 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.885132 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: BEGIN
+[0m08:08:57.885132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:57.886131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.886131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.886131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_tiktok_ads"} */
+
+  
+  create view "dbt_metrics"."main"."stg_tiktok_ads__dbt_tmp" as (
+    -- Silver Layer (staging) for TikTok Ads
+-- This model cleans and prepares raw ad spend data from the bronze layer.
+
+with source as (
+    -- This should point to your raw tiktok ads data in the bronze layer
+    select
+        cast(stat_time_day as date) as date_day,
+        spend
+    from "tiktok_db"."main"."ad_reports"
+)
+
+select
+    date_day,
+    sum(spend) as spend -- Aggregate spend by date_day to ensure uniqueness
+from source
+group by 1
+  );
+
+[0m08:08:57.887131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.889131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.890130 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_tiktok_ads"} */
+alter view "dbt_metrics"."main"."stg_tiktok_ads" rename to "stg_tiktok_ads__dbt_backup"
+[0m08:08:57.890130 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.892131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.893135 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_tiktok_ads"} */
+alter view "dbt_metrics"."main"."stg_tiktok_ads__dbt_tmp" rename to "stg_tiktok_ads"
+[0m08:08:57.893135 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:57.894133 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: COMMIT
+[0m08:08:57.894133 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.895132 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: COMMIT
+[0m08:08:57.897133 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:57.899130 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.stg_tiktok_ads"
+[0m08:08:57.899130 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.stg_tiktok_ads"} */
+
+      drop view if exists "dbt_metrics"."main"."stg_tiktok_ads__dbt_backup" cascade
+    
+[0m08:08:57.901131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.902131 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_tiktok_ads: Close
+[0m08:08:57.902131 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D224AB03D0>]}
+[0m08:08:57.903131 [info ] [Thread-1 (]: 3 of 39 OK created sql view model main.stg_tiktok_ads .......................... [[32mOK[0m in 0.02s]
+[0m08:08:57.903131 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.stg_tiktok_ads
+[0m08:08:57.904131 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m08:08:57.904131 [info ] [Thread-1 (]: 4 of 39 START test accepted_values_stg_meta_ads_publisher_platform__facebook__instagram  [RUN]
+[0m08:08:57.905134 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_tiktok_ads, now test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320)
+[0m08:08:57.905134 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m08:08:57.913131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m08:08:57.913131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m08:08:57.925131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m08:08:57.926132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m08:08:57.926132 [debug] [Thread-1 (]: On test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320: BEGIN
+[0m08:08:57.927131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:57.927131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.928131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m08:08:57.928131 [debug] [Thread-1 (]: On test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        publisher_platform as value_field,
+        count(*) as n_records
+
+    from "dbt_metrics"."main"."stg_meta_ads"
+    group by publisher_platform
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'facebook','instagram'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:57.931132 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:57.933130 [debug] [Thread-1 (]: On test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320: ROLLBACK
+[0m08:08:57.934132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320'
+[0m08:08:57.934132 [debug] [Thread-1 (]: On test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320: Close
+[0m08:08:57.934132 [info ] [Thread-1 (]: 4 of 39 PASS accepted_values_stg_meta_ads_publisher_platform__facebook__instagram  [[32mPASS[0m in 0.03s]
+[0m08:08:57.935131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m08:08:57.936131 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m08:08:57.936131 [info ] [Thread-1 (]: 5 of 39 START test not_negative_stg_meta_ads_spend ............................. [RUN]
+[0m08:08:57.936131 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320, now test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204)
+[0m08:08:57.937136 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m08:08:57.940131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m08:08:57.941131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m08:08:57.942131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m08:08:57.943131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m08:08:57.943131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204: BEGIN
+[0m08:08:57.944131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:57.944131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.945131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m08:08:57.945131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."stg_meta_ads"
+where spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:57.946131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.947131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204: ROLLBACK
+[0m08:08:57.947131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204'
+[0m08:08:57.948131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204: Close
+[0m08:08:57.948131 [info ] [Thread-1 (]: 5 of 39 PASS not_negative_stg_meta_ads_spend ................................... [[32mPASS[0m in 0.01s]
+[0m08:08:57.949131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m08:08:57.949131 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m08:08:57.950135 [info ] [Thread-1 (]: 6 of 39 START test not_null_stg_meta_ads_date_day .............................. [RUN]
+[0m08:08:57.950135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204, now test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2)
+[0m08:08:57.951135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m08:08:57.956131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m08:08:57.957132 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m08:08:57.958134 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m08:08:57.959131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m08:08:57.960132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2: BEGIN
+[0m08:08:57.960132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:57.960132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.961132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m08:08:57.961132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from "dbt_metrics"."main"."stg_meta_ads"
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:57.963131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.964132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2: ROLLBACK
+[0m08:08:57.964132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2'
+[0m08:08:57.965131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2: Close
+[0m08:08:57.965131 [info ] [Thread-1 (]: 6 of 39 PASS not_null_stg_meta_ads_date_day .................................... [[32mPASS[0m in 0.01s]
+[0m08:08:57.966131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m08:08:57.967135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m08:08:57.967135 [info ] [Thread-1 (]: 7 of 39 START test not_null_stg_meta_ads_publisher_platform .................... [RUN]
+[0m08:08:57.968133 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2, now test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4)
+[0m08:08:57.968133 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m08:08:57.971131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m08:08:57.971131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m08:08:57.973131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m08:08:57.974131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m08:08:57.974131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4: BEGIN
+[0m08:08:57.975131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:57.975131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.976132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m08:08:57.976132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select publisher_platform
+from "dbt_metrics"."main"."stg_meta_ads"
+where publisher_platform is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:57.977134 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.978131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4: ROLLBACK
+[0m08:08:57.978131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4'
+[0m08:08:57.979131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4: Close
+[0m08:08:57.979131 [info ] [Thread-1 (]: 7 of 39 PASS not_null_stg_meta_ads_publisher_platform .......................... [[32mPASS[0m in 0.01s]
+[0m08:08:57.980133 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m08:08:57.980133 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m08:08:57.981135 [info ] [Thread-1 (]: 8 of 39 START test not_negative_stg_orders_cogs ................................ [RUN]
+[0m08:08:57.981135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4, now test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad)
+[0m08:08:57.982135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m08:08:57.984132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad"
+[0m08:08:57.985131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m08:08:57.986131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad"
+[0m08:08:57.987131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad"
+[0m08:08:57.988131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad: BEGIN
+[0m08:08:57.988131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:57.988131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:57.989131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad"
+[0m08:08:57.989131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."stg_orders"
+where cogs < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:57.994131 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+[0m08:08:57.995131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad: ROLLBACK
+[0m08:08:57.995131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad'
+[0m08:08:57.996135 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad: Close
+[0m08:08:57.996135 [info ] [Thread-1 (]: 8 of 39 PASS not_negative_stg_orders_cogs ...................................... [[32mPASS[0m in 0.02s]
+[0m08:08:57.997133 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m08:08:57.997133 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m08:08:57.998131 [info ] [Thread-1 (]: 9 of 39 START test not_negative_stg_orders_net_sales ........................... [RUN]
+[0m08:08:57.998131 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad, now test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951)
+[0m08:08:57.999135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m08:08:58.001132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951"
+[0m08:08:58.002131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m08:08:58.003130 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951"
+[0m08:08:58.004131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951"
+[0m08:08:58.004131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951: BEGIN
+[0m08:08:58.005131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.005131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.006132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951"
+[0m08:08:58.006132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."stg_orders"
+where net_sales < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.009131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.010134 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951: ROLLBACK
+[0m08:08:58.010134 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951'
+[0m08:08:58.011132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951: Close
+[0m08:08:58.011132 [info ] [Thread-1 (]: 9 of 39 PASS not_negative_stg_orders_net_sales ................................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.012136 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m08:08:58.012136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m08:08:58.013134 [info ] [Thread-1 (]: 10 of 39 START test not_null_stg_orders_customer_id ............................ [RUN]
+[0m08:08:58.013134 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951, now test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5)
+[0m08:08:58.013134 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m08:08:58.016135 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m08:08:58.017135 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m08:08:58.019133 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m08:08:58.020130 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m08:08:58.021131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5: BEGIN
+[0m08:08:58.021131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.021131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.022131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5"
+[0m08:08:58.022131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select customer_id
+from "dbt_metrics"."main"."stg_orders"
+where customer_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.025131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.026132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5: ROLLBACK
+[0m08:08:58.026132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5'
+[0m08:08:58.027131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5: Close
+[0m08:08:58.027131 [info ] [Thread-1 (]: 10 of 39 PASS not_null_stg_orders_customer_id .................................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.028136 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m08:08:58.028136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m08:08:58.029135 [info ] [Thread-1 (]: 11 of 39 START test not_null_stg_orders_order_date ............................. [RUN]
+[0m08:08:58.029135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5, now test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb)
+[0m08:08:58.030131 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m08:08:58.032136 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb"
+[0m08:08:58.033133 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m08:08:58.035132 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb"
+[0m08:08:58.035132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb"
+[0m08:08:58.036134 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb: BEGIN
+[0m08:08:58.036134 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.037132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.037132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb"
+[0m08:08:58.037132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_date
+from "dbt_metrics"."main"."stg_orders"
+where order_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.040130 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.041131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb: ROLLBACK
+[0m08:08:58.042131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb'
+[0m08:08:58.042131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb: Close
+[0m08:08:58.042131 [info ] [Thread-1 (]: 11 of 39 PASS not_null_stg_orders_order_date ................................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.043134 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m08:08:58.043134 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m08:08:58.044135 [info ] [Thread-1 (]: 12 of 39 START test not_null_stg_orders_order_id ............................... [RUN]
+[0m08:08:58.044135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb, now test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64)
+[0m08:08:58.045135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m08:08:58.047132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64"
+[0m08:08:58.048132 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m08:08:58.050131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64"
+[0m08:08:58.050131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64"
+[0m08:08:58.051132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64: BEGIN
+[0m08:08:58.051132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.052131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.052131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64"
+[0m08:08:58.052131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_id
+from "dbt_metrics"."main"."stg_orders"
+where order_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.054133 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.056130 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64: ROLLBACK
+[0m08:08:58.056130 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64'
+[0m08:08:58.056130 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64: Close
+[0m08:08:58.057131 [info ] [Thread-1 (]: 12 of 39 PASS not_null_stg_orders_order_id ..................................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.058135 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m08:08:58.058135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m08:08:58.058135 [info ] [Thread-1 (]: 13 of 39 START test unique_stg_orders_order_id ................................. [RUN]
+[0m08:08:58.059133 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64, now test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a)
+[0m08:08:58.059133 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m08:08:58.063131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a"
+[0m08:08:58.064131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m08:08:58.065131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a"
+[0m08:08:58.066131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a"
+[0m08:08:58.067131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a: BEGIN
+[0m08:08:58.067131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.067131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.068131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a"
+[0m08:08:58.068131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_id as unique_field,
+    count(*) as n_records
+
+from "dbt_metrics"."main"."stg_orders"
+where order_id is not null
+group by order_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.073132 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+[0m08:08:58.074132 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a: ROLLBACK
+[0m08:08:58.074132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a'
+[0m08:08:58.075130 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a: Close
+[0m08:08:58.075130 [info ] [Thread-1 (]: 13 of 39 PASS unique_stg_orders_order_id ....................................... [[32mPASS[0m in 0.02s]
+[0m08:08:58.076134 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m08:08:58.076134 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m08:08:58.077133 [info ] [Thread-1 (]: 14 of 39 START test not_negative_stg_tiktok_ads_spend .......................... [RUN]
+[0m08:08:58.077133 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a, now test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69)
+[0m08:08:58.078135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m08:08:58.081131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m08:08:58.081131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m08:08:58.083131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m08:08:58.084131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m08:08:58.084131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69: BEGIN
+[0m08:08:58.084131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.085131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.085131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m08:08:58.086133 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."stg_tiktok_ads"
+where spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.089133 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+[0m08:08:58.090131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69: ROLLBACK
+[0m08:08:58.090131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69'
+[0m08:08:58.091130 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69: Close
+[0m08:08:58.091130 [info ] [Thread-1 (]: 14 of 39 PASS not_negative_stg_tiktok_ads_spend ................................ [[32mPASS[0m in 0.01s]
+[0m08:08:58.092131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m08:08:58.093136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m08:08:58.093136 [info ] [Thread-1 (]: 15 of 39 START test not_null_stg_tiktok_ads_date_day ........................... [RUN]
+[0m08:08:58.093136 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69, now test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136)
+[0m08:08:58.094135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m08:08:58.098131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m08:08:58.098131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m08:08:58.100131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m08:08:58.100131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m08:08:58.101131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136: BEGIN
+[0m08:08:58.101131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.102131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.102131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m08:08:58.102131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from "dbt_metrics"."main"."stg_tiktok_ads"
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.103131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.104131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136: ROLLBACK
+[0m08:08:58.105131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136'
+[0m08:08:58.105131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136: Close
+[0m08:08:58.106131 [info ] [Thread-1 (]: 15 of 39 PASS not_null_stg_tiktok_ads_date_day ................................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.106131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m08:08:58.107134 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.int_daily_orders
+[0m08:08:58.107134 [info ] [Thread-1 (]: 16 of 39 START sql table model main.int_daily_orders ........................... [RUN]
+[0m08:08:58.108135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136, now model.smb_dataplatform.int_daily_orders)
+[0m08:08:58.108135 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.int_daily_orders
+[0m08:08:58.110134 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.111135 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.int_daily_orders
+[0m08:08:58.124131 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.124131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.125135 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: BEGIN
+[0m08:08:58.125135 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.126135 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.126135 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.126135 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_orders"} */
+
+  
+    
+    
+
+    create  table
+      "dbt_metrics"."main"."int_daily_orders__dbt_tmp"
+  
+    as (
+      
+
+with orders as (
+    select * from "dbt_metrics"."main"."stg_orders"
+),
+customer_order_rank as (
+    select
+        order_id,
+        customer_id,
+        order_date,
+        rank() over (partition by customer_id order by order_date, order_id) as customer_order_rank
+    from orders
+),
+orders_with_rank as (
+    select
+        o.*,
+        cor.customer_order_rank
+    from orders o
+    join customer_order_rank cor on o.order_id = cor.order_id
+)
+select
+    order_date as date_day,
+    sum(net_sales) as total_net_sales,
+    sum(cogs) as total_cogs,
+    sum(shipping_cost) as total_shipping_cost,
+    sum(transaction_fee) as total_transaction_fee,
+    count(order_id) as total_orders,
+    count(case when customer_order_rank = 1 then order_id end) as first_time_orders,
+    count(distinct customer_id) as total_customers
+from orders_with_rank
+group by 1
+    );
+  
+  
+[0m08:08:58.142131 [debug] [Thread-1 (]: SQL status: OK in 0.015 seconds
+[0m08:08:58.146131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.146131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_orders"} */
+
+    SELECT index_name
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'int_daily_orders'
+  
+[0m08:08:58.147131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.148131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.148131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_orders"} */
+
+    SELECT COUNT(*) as remaining_indexes
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'int_daily_orders'
+  
+[0m08:08:58.149131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.152131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.152131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_orders"} */
+alter table "dbt_metrics"."main"."int_daily_orders" rename to "int_daily_orders__dbt_backup"
+[0m08:08:58.153133 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.154131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.155130 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_orders"} */
+alter table "dbt_metrics"."main"."int_daily_orders__dbt_tmp" rename to "int_daily_orders"
+[0m08:08:58.155130 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.159130 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: COMMIT
+[0m08:08:58.159130 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.159130 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: COMMIT
+[0m08:08:58.163132 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+[0m08:08:58.165131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_orders"
+[0m08:08:58.166131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_orders"} */
+
+      drop table if exists "dbt_metrics"."main"."int_daily_orders__dbt_backup" cascade
+    
+[0m08:08:58.168131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.169131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_orders: Close
+[0m08:08:58.170131 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D224AEDDD0>]}
+[0m08:08:58.170131 [info ] [Thread-1 (]: 16 of 39 OK created sql table model main.int_daily_orders ...................... [[32mOK[0m in 0.06s]
+[0m08:08:58.171131 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.int_daily_orders
+[0m08:08:58.172131 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.int_daily_ad_spend
+[0m08:08:58.172131 [info ] [Thread-1 (]: 17 of 39 START sql table model main.int_daily_ad_spend ......................... [RUN]
+[0m08:08:58.173133 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.int_daily_orders, now model.smb_dataplatform.int_daily_ad_spend)
+[0m08:08:58.173133 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.int_daily_ad_spend
+[0m08:08:58.176131 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.177134 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.int_daily_ad_spend
+[0m08:08:58.180134 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.181135 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.183132 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: BEGIN
+[0m08:08:58.183132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.184132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.184132 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.185131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+
+  
+    
+    
+
+    create  table
+      "dbt_metrics"."main"."int_daily_ad_spend__dbt_tmp"
+  
+    as (
+      
+
+with meta_insights as (
+    select
+        date_day,
+        spend,
+        publisher_platform
+    from "dbt_metrics"."main"."stg_meta_ads"
+),
+tiktok_spend as (
+    select
+        date_day,
+        spend
+    from "dbt_metrics"."main"."stg_tiktok_ads"
+),
+daily_meta_platform_spend as (
+    select
+        date_day,
+        sum(case when lower(publisher_platform) = 'facebook' then spend else 0 end) as facebook_spend,
+        sum(case when lower(publisher_platform) = 'instagram' then spend else 0 end) as instagram_spend,
+        sum(spend) as meta_total_spend
+    from meta_insights
+    group by 1
+)
+select
+    coalesce(dmp.date_day, ts.date_day) as date_day,
+    coalesce(dmp.meta_total_spend, 0) + coalesce(ts.spend, 0) as total_ad_spend,
+    coalesce(dmp.facebook_spend, 0) as facebook_spend,
+    coalesce(dmp.instagram_spend, 0) as instagram_spend,
+    coalesce(ts.spend, 0) as tiktok_spend
+from daily_meta_platform_spend dmp
+full outer join tiktok_spend ts on dmp.date_day = ts.date_day
+    );
+  
+  
+[0m08:08:58.191135 [debug] [Thread-1 (]: SQL status: OK in 0.005 seconds
+[0m08:08:58.193131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.193131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+
+    SELECT index_name
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'int_daily_ad_spend'
+  
+[0m08:08:58.194131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.195131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.195131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+
+    SELECT COUNT(*) as remaining_indexes
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'int_daily_ad_spend'
+  
+[0m08:08:58.196134 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.199131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.199131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+alter table "dbt_metrics"."main"."int_daily_ad_spend" rename to "int_daily_ad_spend__dbt_backup"
+[0m08:08:58.200134 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.202131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.202131 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+alter table "dbt_metrics"."main"."int_daily_ad_spend__dbt_tmp" rename to "int_daily_ad_spend"
+[0m08:08:58.203134 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.204134 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: COMMIT
+[0m08:08:58.204134 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.204134 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: COMMIT
+[0m08:08:58.207131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.209132 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.int_daily_ad_spend"
+[0m08:08:58.209132 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+
+      drop table if exists "dbt_metrics"."main"."int_daily_ad_spend__dbt_backup" cascade
+    
+[0m08:08:58.211131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.212130 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: Close
+[0m08:08:58.213132 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D2238C6610>]}
+[0m08:08:58.213132 [info ] [Thread-1 (]: 17 of 39 OK created sql table model main.int_daily_ad_spend .................... [[32mOK[0m in 0.04s]
+[0m08:08:58.214133 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.int_daily_ad_spend
+[0m08:08:58.214133 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m08:08:58.215132 [info ] [Thread-1 (]: 18 of 39 START test not_null_int_daily_orders_date_day ......................... [RUN]
+[0m08:08:58.215132 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.int_daily_ad_spend, now test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e)
+[0m08:08:58.216137 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m08:08:58.219130 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e"
+[0m08:08:58.219130 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m08:08:58.221132 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e"
+[0m08:08:58.222132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e"
+[0m08:08:58.222132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e: BEGIN
+[0m08:08:58.223131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.223131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.224133 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e"
+[0m08:08:58.224133 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from "dbt_metrics"."main"."int_daily_orders"
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.225132 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.226135 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e: ROLLBACK
+[0m08:08:58.226135 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e'
+[0m08:08:58.227134 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e: Close
+[0m08:08:58.227134 [info ] [Thread-1 (]: 18 of 39 PASS not_null_int_daily_orders_date_day ............................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.228131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m08:08:58.228131 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m08:08:58.229135 [info ] [Thread-1 (]: 19 of 39 START test unique_int_daily_orders_date_day ........................... [RUN]
+[0m08:08:58.229135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e, now test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e)
+[0m08:08:58.230131 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m08:08:58.233130 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e"
+[0m08:08:58.233130 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m08:08:58.235131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e"
+[0m08:08:58.236131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e"
+[0m08:08:58.236131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e: BEGIN
+[0m08:08:58.236131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.237131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.237131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e"
+[0m08:08:58.238131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    date_day as unique_field,
+    count(*) as n_records
+
+from "dbt_metrics"."main"."int_daily_orders"
+where date_day is not null
+group by date_day
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.239135 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.240136 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e: ROLLBACK
+[0m08:08:58.240136 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e'
+[0m08:08:58.241131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e: Close
+[0m08:08:58.241131 [info ] [Thread-1 (]: 19 of 39 PASS unique_int_daily_orders_date_day ................................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.242135 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m08:08:58.242135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m08:08:58.243137 [info ] [Thread-1 (]: 20 of 39 START test not_negative_int_daily_ad_spend_facebook_spend ............. [RUN]
+[0m08:08:58.243137 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e, now test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27)
+[0m08:08:58.244133 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m08:08:58.246134 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m08:08:58.247131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m08:08:58.248132 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m08:08:58.249131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m08:08:58.249131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27: BEGIN
+[0m08:08:58.250132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.250132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.251132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m08:08:58.251132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."int_daily_ad_spend"
+where facebook_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.252131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.253132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27: ROLLBACK
+[0m08:08:58.253132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27'
+[0m08:08:58.254131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27: Close
+[0m08:08:58.254131 [info ] [Thread-1 (]: 20 of 39 PASS not_negative_int_daily_ad_spend_facebook_spend ................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.255131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m08:08:58.256132 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m08:08:58.256132 [info ] [Thread-1 (]: 21 of 39 START test not_negative_int_daily_ad_spend_instagram_spend ............ [RUN]
+[0m08:08:58.256132 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27, now test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de)
+[0m08:08:58.257135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m08:08:58.261132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m08:08:58.262131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m08:08:58.263132 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m08:08:58.264130 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m08:08:58.264130 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de: BEGIN
+[0m08:08:58.265131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.265131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.266130 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m08:08:58.266130 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."int_daily_ad_spend"
+where instagram_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.267131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.268131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de: ROLLBACK
+[0m08:08:58.268131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de'
+[0m08:08:58.269131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de: Close
+[0m08:08:58.269131 [info ] [Thread-1 (]: 21 of 39 PASS not_negative_int_daily_ad_spend_instagram_spend .................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.270131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m08:08:58.271136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m08:08:58.271136 [info ] [Thread-1 (]: 22 of 39 START test not_negative_int_daily_ad_spend_tiktok_spend ............... [RUN]
+[0m08:08:58.272131 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de, now test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5)
+[0m08:08:58.272131 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m08:08:58.274131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m08:08:58.275131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m08:08:58.277133 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m08:08:58.277133 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m08:08:58.278133 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5: BEGIN
+[0m08:08:58.278133 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.279133 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.279133 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m08:08:58.279133 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."int_daily_ad_spend"
+where tiktok_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.280133 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.281132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5: ROLLBACK
+[0m08:08:58.282133 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5'
+[0m08:08:58.282133 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5: Close
+[0m08:08:58.283131 [info ] [Thread-1 (]: 22 of 39 PASS not_negative_int_daily_ad_spend_tiktok_spend ..................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.283131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m08:08:58.284136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m08:08:58.284136 [info ] [Thread-1 (]: 23 of 39 START test not_negative_int_daily_ad_spend_total_ad_spend ............. [RUN]
+[0m08:08:58.285135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5, now test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584)
+[0m08:08:58.285135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m08:08:58.288132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m08:08:58.289131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m08:08:58.290132 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m08:08:58.291132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m08:08:58.291132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584: BEGIN
+[0m08:08:58.292132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.292132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.293132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m08:08:58.293132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."int_daily_ad_spend"
+where total_ad_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.294131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.295132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584: ROLLBACK
+[0m08:08:58.295132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584'
+[0m08:08:58.296131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584: Close
+[0m08:08:58.296131 [info ] [Thread-1 (]: 23 of 39 PASS not_negative_int_daily_ad_spend_total_ad_spend ................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.297134 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m08:08:58.297134 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m08:08:58.298136 [info ] [Thread-1 (]: 24 of 39 START test not_null_int_daily_ad_spend_date_day ....................... [RUN]
+[0m08:08:58.298136 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584, now test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3)
+[0m08:08:58.298136 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m08:08:58.301132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m08:08:58.302131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m08:08:58.304133 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m08:08:58.304133 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m08:08:58.305131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3: BEGIN
+[0m08:08:58.305131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.306132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.306132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m08:08:58.306132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from "dbt_metrics"."main"."int_daily_ad_spend"
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.307131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.308132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3: ROLLBACK
+[0m08:08:58.309132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3'
+[0m08:08:58.309132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3: Close
+[0m08:08:58.310135 [info ] [Thread-1 (]: 24 of 39 PASS not_null_int_daily_ad_spend_date_day ............................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.310135 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m08:08:58.311135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m08:08:58.311135 [info ] [Thread-1 (]: 25 of 39 START test unique_int_daily_ad_spend_date_day ......................... [RUN]
+[0m08:08:58.311135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3, now test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8)
+[0m08:08:58.312135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m08:08:58.314132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m08:08:58.315131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m08:08:58.318131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m08:08:58.319131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m08:08:58.319131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8: BEGIN
+[0m08:08:58.320131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.320131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.320131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m08:08:58.321132 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    date_day as unique_field,
+    count(*) as n_records
+
+from "dbt_metrics"."main"."int_daily_ad_spend"
+where date_day is not null
+group by date_day
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.322130 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.323132 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8: ROLLBACK
+[0m08:08:58.323132 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8'
+[0m08:08:58.324131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8: Close
+[0m08:08:58.324131 [info ] [Thread-1 (]: 25 of 39 PASS unique_int_daily_ad_spend_date_day ............................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.325136 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m08:08:58.325136 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.rpt_kpis
+[0m08:08:58.326132 [info ] [Thread-1 (]: 26 of 39 START sql table model main.rpt_kpis ................................... [RUN]
+[0m08:08:58.326132 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8, now model.smb_dataplatform.rpt_kpis)
+[0m08:08:58.327135 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.rpt_kpis
+[0m08:08:58.331130 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.331130 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.rpt_kpis
+[0m08:08:58.334130 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.334130 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.335130 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: BEGIN
+[0m08:08:58.335130 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.335130 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.336131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.336131 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.rpt_kpis"} */
+
+  
+    
+    
+
+    create  table
+      "dbt_metrics"."main"."rpt_kpis__dbt_tmp"
+  
+    as (
+      
+
+with daily_orders as (
+    select * from "dbt_metrics"."main"."int_daily_orders"
+),
+daily_ad_spend as (
+    select * from "dbt_metrics"."main"."int_daily_ad_spend"
+),
+final_data as (
+    select
+        coalesce(d.date_day, ads.date_day) as date_day,
+        coalesce(d.total_net_sales, 0) as total_net_sales,
+        coalesce(d.total_cogs, 0) as total_cogs,
+        coalesce(d.total_shipping_cost, 0) as total_shipping_cost,
+        coalesce(d.total_transaction_fee, 0) as total_transaction_fee,
+        coalesce(ads.total_ad_spend, 0) as total_ad_spend,
+        coalesce(ads.facebook_spend, 0) as facebook_spend,
+        coalesce(ads.instagram_spend, 0) as instagram_spend,
+        coalesce(ads.tiktok_spend, 0) as tiktok_spend,
+        coalesce(d.total_orders, 0) as total_orders,
+        coalesce(d.first_time_orders, 0) as first_time_orders,
+        coalesce(d.total_customers, 0) as total_customers
+    from daily_orders d
+    full outer join daily_ad_spend ads on d.date_day = ads.date_day
+)
+select
+    date_day,
+    total_net_sales,
+    total_ad_spend,
+    facebook_spend,
+    instagram_spend,
+    tiktok_spend,
+    
+    -- Contribution Margin: Net Sales - COGS - Shipping - Transaction Fees - Total Ad Spend
+    (total_net_sales - total_cogs - total_shipping_cost - total_transaction_fee - total_ad_spend) as contribution_margin,
+    
+    -- Marketing Efficiency Ratio (MER)
+    
+    coalesce(total_net_sales / nullif((facebook_spend + instagram_spend + tiktok_spend), 0), 0)
+ as mer_total_paid_ads,
+    
+    -- MER for Facebook only
+    
+    coalesce(total_net_sales / nullif(facebook_spend, 0), 0)
+ as mer_facebook,
+    
+    -- MER for Instagram only
+    
+    coalesce(total_net_sales / nullif(instagram_spend, 0), 0)
+ as mer_instagram,
+    
+    -- New Customer Cost Per Acquisition (ncCPA): Total Ad Spend / Count(First Time Orders)
+    
+    coalesce(total_ad_spend / nullif(first_time_orders, 0), 0)
+ as nc_cpa,
+    
+    -- Net Profit on Ad Spend (NPOAS): Contribution Margin / Total Ad Spend
+    
+    coalesce((total_net_sales - total_cogs - total_shipping_cost - total_transaction_fee - total_ad_spend) / nullif(total_ad_spend, 0), 0)
+ as npoas,
+    
+    -- LTV:CAC Ratio: ((Avg Order Value * Purchase Freq) / ncCPA)
+    -- LTV is a simplified version: Avg Order Value * Purchase Freq
+    -- CAC is ncCPA from above
+    
+    coalesce((
+    coalesce(total_net_sales / nullif(total_orders, 0), 0)
+ * 
+    coalesce(total_orders / nullif(total_customers, 0), 0)
+) / nullif(
+    coalesce(total_ad_spend / nullif(first_time_orders, 0), 0)
+, 0), 0)
+ as ltv_cac_ratio
+    
+from final_data
+order by date_day desc
+    );
+  
+  
+[0m08:08:58.342131 [debug] [Thread-1 (]: SQL status: OK in 0.005 seconds
+[0m08:08:58.343133 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.343133 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.rpt_kpis"} */
+
+    SELECT index_name
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'rpt_kpis'
+  
+[0m08:08:58.344131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.344131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.345131 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.rpt_kpis"} */
+
+    SELECT COUNT(*) as remaining_indexes
+    FROM duckdb_indexes()
+    WHERE schema_name = 'main'
+      AND table_name = 'rpt_kpis'
+  
+[0m08:08:58.346132 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.348130 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.348130 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.rpt_kpis"} */
+alter table "dbt_metrics"."main"."rpt_kpis" rename to "rpt_kpis__dbt_backup"
+[0m08:08:58.349131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.351132 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.352131 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.rpt_kpis"} */
+alter table "dbt_metrics"."main"."rpt_kpis__dbt_tmp" rename to "rpt_kpis"
+[0m08:08:58.352131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.353132 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: COMMIT
+[0m08:08:58.353132 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.354130 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: COMMIT
+[0m08:08:58.356131 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.358131 [debug] [Thread-1 (]: Using duckdb connection "model.smb_dataplatform.rpt_kpis"
+[0m08:08:58.358131 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "model.smb_dataplatform.rpt_kpis"} */
+
+      drop table if exists "dbt_metrics"."main"."rpt_kpis__dbt_backup" cascade
+    
+[0m08:08:58.360133 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m08:08:58.361131 [debug] [Thread-1 (]: On model.smb_dataplatform.rpt_kpis: Close
+[0m08:08:58.361131 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b12e0132-e975-416a-9258-5f48f82a01e7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D224B4DDD0>]}
+[0m08:08:58.362133 [info ] [Thread-1 (]: 26 of 39 OK created sql table model main.rpt_kpis .............................. [[32mOK[0m in 0.03s]
+[0m08:08:58.363131 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.rpt_kpis
+[0m08:08:58.363131 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.assert_contribution_margin_logic
+[0m08:08:58.364131 [info ] [Thread-1 (]: 27 of 39 START test assert_contribution_margin_logic ........................... [RUN]
+[0m08:08:58.364131 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.rpt_kpis, now test.smb_dataplatform.assert_contribution_margin_logic)
+[0m08:08:58.365131 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.assert_contribution_margin_logic
+[0m08:08:58.367132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.assert_contribution_margin_logic"
+[0m08:08:58.368133 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.assert_contribution_margin_logic
+[0m08:08:58.369133 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.assert_contribution_margin_logic"
+[0m08:08:58.370131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.assert_contribution_margin_logic"
+[0m08:08:58.371134 [debug] [Thread-1 (]: On test.smb_dataplatform.assert_contribution_margin_logic: BEGIN
+[0m08:08:58.371134 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.372131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.372131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.assert_contribution_margin_logic"
+[0m08:08:58.372131 [debug] [Thread-1 (]: On test.smb_dataplatform.assert_contribution_margin_logic: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.assert_contribution_margin_logic"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- A singular test to check the logic of contribution margin.
+-- Contribution margin should not be positive on days with zero or negative net sales,
+-- unless there are returns that make other costs negative (not modeled here).
+
+select
+    date_day,
+    contribution_margin,
+    total_net_sales
+from "dbt_metrics"."main"."rpt_kpis"
+where total_net_sales <= 0 and contribution_margin > 0
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.373132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.375131 [debug] [Thread-1 (]: On test.smb_dataplatform.assert_contribution_margin_logic: ROLLBACK
+[0m08:08:58.375131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.assert_contribution_margin_logic'
+[0m08:08:58.375131 [debug] [Thread-1 (]: On test.smb_dataplatform.assert_contribution_margin_logic: Close
+[0m08:08:58.376135 [info ] [Thread-1 (]: 27 of 39 PASS assert_contribution_margin_logic ................................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.377132 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.assert_contribution_margin_logic
+[0m08:08:58.377132 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m08:08:58.377132 [info ] [Thread-1 (]: 28 of 39 START test not_negative_rpt_kpis_facebook_spend ....................... [RUN]
+[0m08:08:58.378131 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.assert_contribution_margin_logic, now test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36)
+[0m08:08:58.378131 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m08:08:58.381131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36"
+[0m08:08:58.382131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m08:08:58.385130 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36"
+[0m08:08:58.385130 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36"
+[0m08:08:58.386131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36: BEGIN
+[0m08:08:58.386131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.387131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.387131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36"
+[0m08:08:58.387131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where facebook_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.388131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.389131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36: ROLLBACK
+[0m08:08:58.390131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36'
+[0m08:08:58.390131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36: Close
+[0m08:08:58.391131 [info ] [Thread-1 (]: 28 of 39 PASS not_negative_rpt_kpis_facebook_spend ............................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.391131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m08:08:58.392136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m08:08:58.392136 [info ] [Thread-1 (]: 29 of 39 START test not_negative_rpt_kpis_instagram_spend ...................... [RUN]
+[0m08:08:58.393134 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36, now test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2)
+[0m08:08:58.393134 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m08:08:58.396131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2"
+[0m08:08:58.396131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m08:08:58.398131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2"
+[0m08:08:58.399132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2"
+[0m08:08:58.399132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2: BEGIN
+[0m08:08:58.399132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.400131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.400131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2"
+[0m08:08:58.401131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where instagram_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.402131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.402131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2: ROLLBACK
+[0m08:08:58.403131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2'
+[0m08:08:58.403131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2: Close
+[0m08:08:58.404131 [info ] [Thread-1 (]: 29 of 39 PASS not_negative_rpt_kpis_instagram_spend ............................ [[32mPASS[0m in 0.01s]
+[0m08:08:58.404131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m08:08:58.405136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m08:08:58.405136 [info ] [Thread-1 (]: 30 of 39 START test not_negative_rpt_kpis_ltv_cac_ratio ........................ [RUN]
+[0m08:08:58.406135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2, now test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be)
+[0m08:08:58.406135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m08:08:58.408132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be"
+[0m08:08:58.409131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m08:08:58.411133 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be"
+[0m08:08:58.411133 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be"
+[0m08:08:58.412131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be: BEGIN
+[0m08:08:58.412131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.413131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.413131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be"
+[0m08:08:58.413131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where ltv_cac_ratio < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.414131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.415132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be: ROLLBACK
+[0m08:08:58.416131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be'
+[0m08:08:58.416131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be: Close
+[0m08:08:58.416131 [info ] [Thread-1 (]: 30 of 39 PASS not_negative_rpt_kpis_ltv_cac_ratio .............................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.417131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m08:08:58.418136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m08:08:58.418136 [info ] [Thread-1 (]: 31 of 39 START test not_negative_rpt_kpis_mer_facebook ......................... [RUN]
+[0m08:08:58.418136 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be, now test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d)
+[0m08:08:58.419135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m08:08:58.421132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d"
+[0m08:08:58.422130 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m08:08:58.424131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d"
+[0m08:08:58.424131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d"
+[0m08:08:58.425131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d: BEGIN
+[0m08:08:58.425131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.426131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.426131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d"
+[0m08:08:58.426131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where mer_facebook < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.427131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.428132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d: ROLLBACK
+[0m08:08:58.429131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d'
+[0m08:08:58.429131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d: Close
+[0m08:08:58.429131 [info ] [Thread-1 (]: 31 of 39 PASS not_negative_rpt_kpis_mer_facebook ............................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.430131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m08:08:58.430131 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m08:08:58.431131 [info ] [Thread-1 (]: 32 of 39 START test not_negative_rpt_kpis_mer_instagram ........................ [RUN]
+[0m08:08:58.431131 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d, now test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9)
+[0m08:08:58.432132 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m08:08:58.434130 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9"
+[0m08:08:58.435131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m08:08:58.437131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9"
+[0m08:08:58.437131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9"
+[0m08:08:58.438131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9: BEGIN
+[0m08:08:58.438131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.439131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.439131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9"
+[0m08:08:58.439131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where mer_instagram < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.440131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.441132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9: ROLLBACK
+[0m08:08:58.442131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9'
+[0m08:08:58.442131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9: Close
+[0m08:08:58.443133 [info ] [Thread-1 (]: 32 of 39 PASS not_negative_rpt_kpis_mer_instagram .............................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.443133 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m08:08:58.444135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m08:08:58.444135 [info ] [Thread-1 (]: 33 of 39 START test not_negative_rpt_kpis_mer_total_paid_ads ................... [RUN]
+[0m08:08:58.444135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9, now test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d)
+[0m08:08:58.445133 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m08:08:58.447132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d"
+[0m08:08:58.448133 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m08:08:58.451130 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d"
+[0m08:08:58.452134 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d"
+[0m08:08:58.452134 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d: BEGIN
+[0m08:08:58.452134 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.453131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.453131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d"
+[0m08:08:58.454131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where mer_total_paid_ads < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.455131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.456131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d: ROLLBACK
+[0m08:08:58.456131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d'
+[0m08:08:58.456131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d: Close
+[0m08:08:58.457131 [info ] [Thread-1 (]: 33 of 39 PASS not_negative_rpt_kpis_mer_total_paid_ads ......................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.458135 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m08:08:58.458135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m08:08:58.458135 [info ] [Thread-1 (]: 34 of 39 START test not_negative_rpt_kpis_nc_cpa ............................... [RUN]
+[0m08:08:58.459133 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d, now test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98)
+[0m08:08:58.459133 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m08:08:58.462131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98"
+[0m08:08:58.462131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m08:08:58.464131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98"
+[0m08:08:58.465130 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98"
+[0m08:08:58.465130 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98: BEGIN
+[0m08:08:58.466135 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.466135 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.466135 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98"
+[0m08:08:58.467135 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where nc_cpa < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.468133 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.469131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98: ROLLBACK
+[0m08:08:58.469131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98'
+[0m08:08:58.470131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98: Close
+[0m08:08:58.470131 [info ] [Thread-1 (]: 34 of 39 PASS not_negative_rpt_kpis_nc_cpa ..................................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.471131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m08:08:58.472135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m08:08:58.472135 [info ] [Thread-1 (]: 35 of 39 START test not_negative_rpt_kpis_tiktok_spend ......................... [RUN]
+[0m08:08:58.472135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98, now test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d)
+[0m08:08:58.473131 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m08:08:58.475131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d"
+[0m08:08:58.476132 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m08:08:58.478131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d"
+[0m08:08:58.478131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d"
+[0m08:08:58.479132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d: BEGIN
+[0m08:08:58.479132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.480132 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.480132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d"
+[0m08:08:58.480132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where tiktok_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.481131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.482132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d: ROLLBACK
+[0m08:08:58.483131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d'
+[0m08:08:58.483131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d: Close
+[0m08:08:58.484130 [info ] [Thread-1 (]: 35 of 39 PASS not_negative_rpt_kpis_tiktok_spend ............................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.484130 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m08:08:58.485136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m08:08:58.485136 [info ] [Thread-1 (]: 36 of 39 START test not_negative_rpt_kpis_total_ad_spend ....................... [RUN]
+[0m08:08:58.486135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d, now test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4)
+[0m08:08:58.486135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m08:08:58.488132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4"
+[0m08:08:58.489131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m08:08:58.491131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4"
+[0m08:08:58.491131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4"
+[0m08:08:58.492130 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4: BEGIN
+[0m08:08:58.492130 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.493134 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.493134 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4"
+[0m08:08:58.493134 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where total_ad_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.494133 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.495131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4: ROLLBACK
+[0m08:08:58.496131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4'
+[0m08:08:58.496131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4: Close
+[0m08:08:58.497131 [info ] [Thread-1 (]: 36 of 39 PASS not_negative_rpt_kpis_total_ad_spend ............................. [[32mPASS[0m in 0.01s]
+[0m08:08:58.497131 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m08:08:58.498135 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m08:08:58.498135 [info ] [Thread-1 (]: 37 of 39 START test not_negative_rpt_kpis_total_net_sales ...................... [RUN]
+[0m08:08:58.499135 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4, now test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b)
+[0m08:08:58.499135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m08:08:58.501132 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b"
+[0m08:08:58.502131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m08:08:58.504131 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b"
+[0m08:08:58.504131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b"
+[0m08:08:58.505131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b: BEGIN
+[0m08:08:58.505131 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.506131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.506131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b"
+[0m08:08:58.506131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from "dbt_metrics"."main"."rpt_kpis"
+where total_net_sales < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.507131 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.508131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b: ROLLBACK
+[0m08:08:58.509131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b'
+[0m08:08:58.509131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b: Close
+[0m08:08:58.509131 [info ] [Thread-1 (]: 37 of 39 PASS not_negative_rpt_kpis_total_net_sales ............................ [[32mPASS[0m in 0.01s]
+[0m08:08:58.510136 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m08:08:58.510136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m08:08:58.511133 [info ] [Thread-1 (]: 38 of 39 START test not_null_rpt_kpis_date_day ................................. [RUN]
+[0m08:08:58.511133 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b, now test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327)
+[0m08:08:58.512135 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m08:08:58.516131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327"
+[0m08:08:58.516131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m08:08:58.518134 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327"
+[0m08:08:58.519132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327"
+[0m08:08:58.519132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327: BEGIN
+[0m08:08:58.519132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.520133 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.520133 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327"
+[0m08:08:58.521132 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from "dbt_metrics"."main"."rpt_kpis"
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.522130 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m08:08:58.523131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327: ROLLBACK
+[0m08:08:58.523131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327'
+[0m08:08:58.524131 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327: Close
+[0m08:08:58.524131 [info ] [Thread-1 (]: 38 of 39 PASS not_null_rpt_kpis_date_day ....................................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.525133 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m08:08:58.525133 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m08:08:58.526136 [info ] [Thread-1 (]: 39 of 39 START test unique_rpt_kpis_date_day ................................... [RUN]
+[0m08:08:58.526136 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327, now test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5)
+[0m08:08:58.527133 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m08:08:58.529131 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5"
+[0m08:08:58.530131 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m08:08:58.532130 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5"
+[0m08:08:58.533132 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5"
+[0m08:08:58.533132 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5: BEGIN
+[0m08:08:58.533132 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:08:58.534131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.534131 [debug] [Thread-1 (]: Using duckdb connection "test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5"
+[0m08:08:58.535131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "dev", "node_id": "test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    date_day as unique_field,
+    count(*) as n_records
+
+from "dbt_metrics"."main"."rpt_kpis"
+where date_day is not null
+group by date_day
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:08:58.535131 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m08:08:58.537131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5: ROLLBACK
+[0m08:08:58.537131 [debug] [Thread-1 (]: Failed to rollback 'test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5'
+[0m08:08:58.537131 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5: Close
+[0m08:08:58.538131 [info ] [Thread-1 (]: 39 of 39 PASS unique_rpt_kpis_date_day ......................................... [[32mPASS[0m in 0.01s]
+[0m08:08:58.539135 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m08:08:58.540131 [debug] [MainThread]: Using duckdb connection "master"
+[0m08:08:58.540131 [debug] [MainThread]: On master: BEGIN
+[0m08:08:58.540131 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m08:08:58.541131 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m08:08:58.541131 [debug] [MainThread]: On master: COMMIT
+[0m08:08:58.541131 [debug] [MainThread]: Using duckdb connection "master"
+[0m08:08:58.542131 [debug] [MainThread]: On master: COMMIT
+[0m08:08:58.542131 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m08:08:58.543134 [debug] [MainThread]: On master: Close
+[0m08:08:58.543134 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m08:08:58.543134 [debug] [MainThread]: Connection 'create_dbt_metrics_main' was properly closed.
+[0m08:08:58.544131 [debug] [MainThread]: Connection 'list_dbt_metrics_main' was properly closed.
+[0m08:08:58.544131 [debug] [MainThread]: Connection 'test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5' was properly closed.
+[0m08:08:58.544131 [info ] [MainThread]: 
+[0m08:08:58.545132 [info ] [MainThread]: Finished running 3 table models, 33 data tests, 3 view models in 0 hours 0 minutes and 0.90 seconds (0.90s).
+[0m08:08:58.549131 [debug] [MainThread]: Command end result
+[0m08:08:58.572131 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\manifest.json
+[0m08:08:58.574131 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\semantic_manifest.json
+[0m08:08:58.579131 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\run_results.json
+[0m08:08:58.580132 [info ] [MainThread]: 
+[0m08:08:58.580132 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m08:08:58.581132 [info ] [MainThread]: 
+[0m08:08:58.581132 [info ] [MainThread]: Done. PASS=39 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=39
+[0m08:08:58.582133 [debug] [MainThread]: Command `dbt build` succeeded at 08:08:58.582133 after 2.69 seconds
+[0m08:08:58.583131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221DB5F90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221D175D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221D17550>]}
+[0m08:08:58.583131 [debug] [MainThread]: Flushing usage events
+[0m08:08:59.363132 [debug] [MainThread]: An error was encountered while trying to flush usage events

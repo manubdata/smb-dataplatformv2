@@ -48,14 +48,22 @@ def test_pipeline_run(mocker):
         "dlt_pipelines.shopify.shopify_pipeline.shopify_source",
         return_value=mock_shopify_source,
     )
+    
+    # Mock dlt.destinations.duckdb
+    mock_duckdb_dest = mocker.MagicMock()
+    mock_duckdb_func = mocker.patch(
+        "dlt.destinations.duckdb",
+        return_value=mock_duckdb_dest
+    )
 
-    run_pipeline()
+    run_pipeline("duckdb")
 
     # Assert that the pipeline was called correctly
+    mock_duckdb_func.assert_called_once_with(credentials="./duckdb_files/shopify.duckdb")
+
     dlt.pipeline.assert_called_once_with(
-        pipeline_name="shopify",
-        destination="duckdb",
+        pipeline_name="shopify_dev",
+        destination=mock_duckdb_dest,
         dataset_name="shopify_data",
-        credentials={"database": "./duckdb_files/shopify.duckdb"}
     )
     mock_pipeline.run.assert_called_once_with(mock_shopify_source)
