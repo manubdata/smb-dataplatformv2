@@ -12,3 +12,6 @@ COPY . .
 
 # Install ingestion (ETL) dependencies
 RUN uv pip install --system --no-cache .[etl]
+
+# Command to run the pipeline
+CMD ["python", "-m", "pipelines.run_pipeline"]

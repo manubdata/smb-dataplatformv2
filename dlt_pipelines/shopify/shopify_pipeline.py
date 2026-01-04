@@ -124,12 +124,12 @@ def run_pipeline(destination: str):
             dataset_name="shopify_data_raw",
         )
     else:
+        from dlt.destinations import duckdb
         print("Running pipeline to DuckDB")
         pipeline = dlt.pipeline(
             pipeline_name="shopify_dev",
-            destination="duckdb",
+            destination=duckdb(credentials="./duckdb_files/shopify.duckdb"),
             dataset_name="shopify_data",
-            credentials={"database": "./duckdb_files/shopify.duckdb"},
         )
 
     load_info = pipeline.run(shopify_source())
