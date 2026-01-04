@@ -14,4 +14,4 @@ COPY . .
 RUN uv pip install --system --no-cache .[etl]
 
 # Set the command to run the ingestion pipeline for GCP
-CMD ["uv", "run", "poe", "run-pipeline-gcp"]
+CMD ["python", "dlt_pipelines/shopify/shopify_pipeline.py", "--destination", "bigquery"]

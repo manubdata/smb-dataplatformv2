@@ -5,10 +5,10 @@ main:
         assign:
           - project: ${sys.get_env("GOOGLE_CLOUD_PROJECT_ID")}
           - location: "us-central1"
-          - ingestion_job_name: "smb-dataplatform-ingestion-runner"
-          - transformation_job_name: "smb-dataplatform-transformation-runner"
+          - ingestion_job_name: ${args.ingestion_job_name}
+          - transformation_job_name: ${args.transformation_job_name}
           - poll_interval_seconds: 10
-          - max_polls: 180 # 30 minutes (180 * 10 seconds)
+          - max_polls: 6 # 1 minute (6 * 10 seconds)
 
     - run_ingestion:
         call: googleapis.run.v2.projects.locations.jobs.run

@@ -89,8 +89,13 @@ run-bot = { cmd = "python ai_bot/src/main.py", help = "Run the Telegram bot loca
 # --- 5. Infrastructure (Terraform) ---
 tf-init = { cmd = "terraform init", cwd = "terraform", help = "Initialize Terraform" }
 tf-plan = { cmd = "terraform plan", cwd = "terraform", help = "Preview infra changes" }
-tf-apply = { cmd = "terraform apply", cwd = "terraform", help = "Apply infra changes" }
+tf-apply = { cmd = "terraform apply -auto-approve", cwd = "terraform", help = "Apply infra changes" }
+tf-refresh = { cmd = "terraform refresh", cwd = "terraform", help = "Refresh Terraform state" }
+tf-taint = { cmd = "terraform taint -allow-missing {{ARGV[0]}}", cwd = "terraform", help = "Taint a resource to force recreation" }
 
 # --- 6. Deployment (GCP) ---
 # These assume you have gcloud CLI installed and authenticated
 deploy-bot = { shell = "gcloud run deploy telegram-bot --source ai_bot/ --region us-central1 --allow-unauthenticated" }
+
+build-push-ingestion = { shell = "docker build -f ingestion.Dockerfile -t ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/ingestion:latest . && docker push ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/ingestion:latest" }
+build-push-transformation = { shell = "docker build -f transformation.Dockerfile -t ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/transformation:latest . && docker push ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/transformation:latest" }

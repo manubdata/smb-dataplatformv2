@@ -1,12 +1,13 @@
 import dlt
 from dlt.sources.helpers import requests
+import os
 
 
 @dlt.source(name="shopify", section="shopify")
 def shopify_source(
-    shop_url: str = dlt.secrets.value,
-    client_id: str = dlt.secrets.value,
-    client_secret: str = dlt.secrets.value,
+    shop_url: str = os.environ.get("SHOP_URL"),
+    client_id: str = os.environ.get("CLIENT_ID"),
+    client_secret: str = os.environ.get("CLIENT_SECRET"),
 ):
     # First, get a fresh access token using client credentials
     token_url = f"https://{shop_url}/admin/oauth/access_token"
