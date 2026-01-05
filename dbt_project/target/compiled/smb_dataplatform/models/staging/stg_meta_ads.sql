@@ -3,7 +3,7 @@
 
 with source as (
     -- This should point to your raw meta ads data in the bronze layer
-    select * from "facebook_db"."main"."ads_insights"
+    select * from `smb-dataplatform`.`facebook_ads_data`.`ads_insights`
 )
 
 select

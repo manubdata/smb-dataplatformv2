@@ -6,7 +6,7 @@ with source as (
     select
         cast(stat_time_day as date) as date_day,
         spend
-    from "tiktok_db"."main"."ad_reports"
+    from `smb-dataplatform`.`tiktok_ads_data`.`ad_reports`
 )
 
 select

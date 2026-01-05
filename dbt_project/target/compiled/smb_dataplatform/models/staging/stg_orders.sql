@@ -3,7 +3,7 @@
 
 with source as (
     -- This should point to your raw orders data in the bronze layer
-    select * from "shopify_db"."shopify_data"."orders"
+    select * from `smb-dataplatform`.`shopify_data`.`orders`
 )
 
 select

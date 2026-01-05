@@ -13,7 +13,7 @@
 
 
 select date_day
-from "dbt_metrics"."main"."stg_meta_ads"
+from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
 where date_day is null
 
 

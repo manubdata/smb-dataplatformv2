@@ -2,25 +2,22 @@ version: 2
 
 sources:
   - name: shopify_raw
-    database: shopify_db
-    schema: shopify_data
-    description: "Raw data from Shopify, stored in the 'shopify_data' schema in DuckDB."
+    schema: "{{ 'shopify_data_raw' if target.name == 'prod' else 'shopify_data' }}"
+    description: "Raw data from Shopify, stored in the 'shopify_data' dataset in BigQuery."
     tables:
       - name: orders
         description: "Raw orders data from Shopify."
 
   - name: meta_raw
-    database: facebook_db
-    schema: main
-    description: "Raw ad spend data from Meta (Facebook), stored in the 'main' schema in DuckDB."
+    schema: "{{ 'facebook_ads_data' if target.name == 'prod' else 'main' }}"
+    description: "Raw ad spend data from Meta (Facebook), stored in the 'facebook_ads_data' dataset in BigQuery."
     tables:
       - name: ads_insights
         description: "Raw daily ad spend from Meta."
 
   - name: tiktok_raw
-    database: tiktok_db
-    schema: main
-    description: "Raw ad spend data from TikTok, stored in the 'main' schema in DuckDB."
+    schema: "{{ 'tiktok_ads_data' if target.name == 'prod' else 'main' }}"
+    description: "Raw ad spend data from TikTok, stored in the 'tiktok_ads_data' dataset in BigQuery."
     tables:
       - name: ad_reports
         description: "Raw daily ad spend from TikTok."

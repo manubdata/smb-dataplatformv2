@@ -13606,3 +13606,1513 @@ having count(*) > 1
 [0m08:08:58.583131 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221DB5F90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221D175D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D221D17550>]}
 [0m08:08:58.583131 [debug] [MainThread]: Flushing usage events
 [0m08:08:59.363132 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:19:37.179565 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE5B84650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE92CFB10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE924C990>]}
+
+
+============================== 16:19:37.182564 | 73cb3809-e0e6-4014-839a-201c10bfec69 ==============================
+[0m16:19:37.182564 [info ] [MainThread]: Running with dbt=1.10.17
+[0m16:19:37.183566 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': '../dbt_profiles', 'use_colors': 'True', 'invocation_command': 'dbt build --target prod --profiles-dir ../dbt_profiles', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\manubdata\\Desktop\\Workspace\\smb-dataplatformV2\\dbt_project\\logs'}
+[0m16:20:04.587607 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9B9AB790>]}
+[0m16:20:04.641607 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE5BA4F10>]}
+[0m16:20:04.642606 [info ] [MainThread]: Registered adapter: bigquery=1.10.3
+[0m16:20:05.245608 [debug] [MainThread]: checksum: d32efbad2cb3c34e6617f8f40f8bce934752d05248fac5edfac176b29f7518f1, vars: {}, profile: , target: prod, version: 1.10.17
+[0m16:20:05.333607 [info ] [MainThread]: Unable to do partial parsing because config vars, config profile, or config target have changed
+[0m16:20:05.334608 [debug] [MainThread]: previous checksum: d32efbad2cb3c34e6617f8f40f8bce934752d05248fac5edfac176b29f7518f1, current checksum: a50d730a31f4c1af850aa8110f398f1e1657a0325ec5753dae2929b817189a3e
+[0m16:20:05.334608 [info ] [MainThread]: Unable to do partial parsing because profile has changed
+[0m16:20:05.334608 [info ] [MainThread]: Unable to do partial parsing because a project dependency has been added
+[0m16:20:05.335608 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE89D09D0>]}
+[0m16:20:07.756155 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9C3068D0>]}
+[0m16:20:07.824155 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\manifest.json
+[0m16:20:07.826155 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\semantic_manifest.json
+[0m16:20:07.864156 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9C718090>]}
+[0m16:20:07.864156 [info ] [MainThread]: Found 6 models, 33 data tests, 3 sources, 639 macros
+[0m16:20:07.868160 [info ] [MainThread]: 
+[0m16:20:07.868160 [info ] [MainThread]: Concurrency: 4 threads (target='prod')
+[0m16:20:07.868160 [info ] [MainThread]: 
+[0m16:20:07.869159 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m16:20:07.873155 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_smb-dataplatform'
+[0m16:20:07.873155 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:20:09.948155 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_smb-dataplatform, now create_smb-dataplatform_smb_dataplatform)
+[0m16:20:09.948155 [debug] [ThreadPool]: Creating schema "database: "smb-dataplatform"
+schema: "smb_dataplatform"
+"
+[0m16:20:09.955155 [debug] [ThreadPool]: On create_smb-dataplatform_smb_dataplatform: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "connection_name": "create_smb-dataplatform_smb_dataplatform"} */
+create schema if not exists `smb-dataplatform`.`smb_dataplatform`
+  
+[0m16:20:09.955155 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:20:10.865156 [debug] [ThreadPool]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:584d85d5-2c1c-4cba-af16-8e33b5aeb1a8&page=queryresults
+[0m16:20:13.348157 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_smb-dataplatform_smb_dataplatform'
+[0m16:20:13.349155 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:20:14.009155 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9C1FF810>]}
+[0m16:20:14.009155 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:20:14.014156 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.stg_meta_ads
+[0m16:20:14.014156 [debug] [Thread-2 (]: Began running node model.smb_dataplatform.stg_orders
+[0m16:20:14.015155 [debug] [Thread-3 (]: Began running node model.smb_dataplatform.stg_tiktok_ads
+[0m16:20:14.015155 [info ] [Thread-1 (]: 1 of 39 START sql view model smb_dataplatform.stg_meta_ads ..................... [RUN]
+[0m16:20:14.016158 [info ] [Thread-2 (]: 2 of 39 START sql view model smb_dataplatform.stg_orders ....................... [RUN]
+[0m16:20:14.016158 [info ] [Thread-3 (]: 3 of 39 START sql view model smb_dataplatform.stg_tiktok_ads ................... [RUN]
+[0m16:20:14.017156 [debug] [Thread-1 (]: Acquiring new bigquery connection 'model.smb_dataplatform.stg_meta_ads'
+[0m16:20:14.017156 [debug] [Thread-2 (]: Acquiring new bigquery connection 'model.smb_dataplatform.stg_orders'
+[0m16:20:14.018156 [debug] [Thread-3 (]: Acquiring new bigquery connection 'model.smb_dataplatform.stg_tiktok_ads'
+[0m16:20:14.018156 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.stg_meta_ads
+[0m16:20:14.018156 [debug] [Thread-2 (]: Began compiling node model.smb_dataplatform.stg_orders
+[0m16:20:14.019156 [debug] [Thread-3 (]: Began compiling node model.smb_dataplatform.stg_tiktok_ads
+[0m16:20:14.024155 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.stg_meta_ads"
+[0m16:20:14.026155 [debug] [Thread-2 (]: Writing injected SQL for node "model.smb_dataplatform.stg_orders"
+[0m16:20:14.028155 [debug] [Thread-3 (]: Writing injected SQL for node "model.smb_dataplatform.stg_tiktok_ads"
+[0m16:20:14.029156 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.stg_meta_ads
+[0m16:20:14.035156 [debug] [Thread-2 (]: Began executing node model.smb_dataplatform.stg_orders
+[0m16:20:14.045155 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.stg_meta_ads"
+[0m16:20:14.048155 [debug] [Thread-2 (]: Writing runtime sql for node "model.smb_dataplatform.stg_orders"
+[0m16:20:14.048155 [debug] [Thread-3 (]: Began executing node model.smb_dataplatform.stg_tiktok_ads
+[0m16:20:14.051155 [debug] [Thread-3 (]: Writing runtime sql for node "model.smb_dataplatform.stg_tiktok_ads"
+[0m16:20:14.051155 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.stg_meta_ads"} */
+
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+  OPTIONS()
+  as -- Silver Layer (staging) for Meta Ads
+-- This model cleans and prepares raw ad spend data from the bronze layer.
+
+with source as (
+    -- This should point to your raw meta ads data in the bronze layer
+    select * from `smb-dataplatform`.`facebook_ads_data`.`ads_insights`
+)
+
+select
+    cast(date_start as date) as date_day,
+    spend,
+    publisher_platform
+from source;
+
+
+[0m16:20:14.052156 [debug] [Thread-2 (]: On model.smb_dataplatform.stg_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.stg_orders"} */
+
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_orders`
+  OPTIONS()
+  as -- Silver Layer (staging) for Orders
+-- This model cleans and prepares raw order data from the bronze layer.
+
+with source as (
+    -- This should point to your raw orders data in the bronze layer
+    select * from `smb-dataplatform`.`shopify_data`.`orders`
+)
+
+select
+    id as order_id,
+    customer__id as customer_id,
+    cast(created_at as date) as order_date,
+    cast(total_price as numeric(38, 2)) as net_sales,
+    
+    -- Mock COGS as 50% of net sales. In a real scenario, this would come from
+    -- product cost data.
+    cast(total_price as numeric(38, 2)) * 0.50 as cogs,
+    
+    -- Extracting shipping cost from the nested field.
+    cast(total_shipping_price_set__shop_money__amount as numeric(38, 2)) as shipping_cost,
+    
+    -- Transaction Fee is a placeholder. This often comes from a separate
+    -- payment gateway source (e.g., Stripe, Shopify Payments).
+    0 as transaction_fee
+
+from source;
+
+
+[0m16:20:14.052156 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:20:14.052156 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:20:14.053156 [debug] [Thread-3 (]: On model.smb_dataplatform.stg_tiktok_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.stg_tiktok_ads"} */
+
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+  OPTIONS()
+  as -- Silver Layer (staging) for TikTok Ads
+-- This model cleans and prepares raw ad spend data from the bronze layer.
+
+with source as (
+    -- This should point to your raw tiktok ads data in the bronze layer
+    select
+        cast(stat_time_day as date) as date_day,
+        spend
+    from `smb-dataplatform`.`tiktok_ads_data`.`ad_reports`
+)
+
+select
+    date_day,
+    sum(spend) as spend -- Aggregate spend by date_day to ensure uniqueness
+from source
+group by 1;
+
+
+[0m16:20:14.055156 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m16:20:14.822155 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:f41b37f9-23e2-45ae-9eab-f62a3fe0e4a9&page=queryresults
+[0m16:20:14.823156 [error] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:f41b37f9-23e2-45ae-9eab-f62a3fe0e4a9&page=queryresults
+[0m16:20:14.894156 [debug] [Thread-2 (]: Database Error in model stg_orders (models\staging\stg_orders.sql)
+  Not found: Dataset smb-dataplatform:shopify_data was not found in location US
+  compiled code at target\run\smb_dataplatform\models\staging\stg_orders.sql
+[0m16:20:14.896155 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9DB50550>]}
+[0m16:20:14.896155 [error] [Thread-2 (]: 2 of 39 ERROR creating sql view model smb_dataplatform.stg_orders .............. [[31mERROR[0m in 0.88s]
+[0m16:20:14.897156 [debug] [Thread-2 (]: Finished running node model.smb_dataplatform.stg_orders
+[0m16:20:14.898156 [debug] [Thread-7 (]: Marking all children of 'model.smb_dataplatform.stg_orders' to be skipped because of status 'error'.  Reason: Database Error in model stg_orders (models\staging\stg_orders.sql)
+  Not found: Dataset smb-dataplatform:shopify_data was not found in location US
+  compiled code at target\run\smb_dataplatform\models\staging\stg_orders.sql.
+[0m16:20:14.898156 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m16:20:14.899155 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m16:20:14.899155 [info ] [Thread-4 (]: 4 of 39 SKIP test not_negative_stg_orders_cogs ................................. [[33mSKIP[0m]
+[0m16:20:14.900157 [info ] [Thread-2 (]: 5 of 39 SKIP test not_negative_stg_orders_net_sales ............................ [[33mSKIP[0m]
+[0m16:20:14.900157 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m16:20:14.900157 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m16:20:14.901155 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:20:14.901155 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad' to be skipped because of status 'skipped'. 
+[0m16:20:14.901155 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:20:14.902156 [info ] [Thread-4 (]: 6 of 39 SKIP test not_null_stg_orders_customer_id .............................. [[33mSKIP[0m]
+[0m16:20:14.902156 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951' to be skipped because of status 'skipped'. 
+[0m16:20:14.903156 [info ] [Thread-2 (]: 7 of 39 SKIP test not_null_stg_orders_order_date ............................... [[33mSKIP[0m]
+[0m16:20:14.903156 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:20:14.904156 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:20:14.904156 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:20:14.904156 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5' to be skipped because of status 'skipped'. 
+[0m16:20:14.905156 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m16:20:14.905156 [info ] [Thread-4 (]: 8 of 39 SKIP test not_null_stg_orders_order_id ................................. [[33mSKIP[0m]
+[0m16:20:14.905156 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb' to be skipped because of status 'skipped'. 
+[0m16:20:14.906157 [info ] [Thread-2 (]: 9 of 39 SKIP test unique_stg_orders_order_id ................................... [[33mSKIP[0m]
+[0m16:20:14.906157 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:20:14.907155 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m16:20:14.907155 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64' to be skipped because of status 'skipped'. 
+[0m16:20:14.908155 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a' to be skipped because of status 'skipped'. 
+[0m16:20:14.908155 [debug] [Thread-4 (]: Began running node model.smb_dataplatform.int_daily_orders
+[0m16:20:14.908155 [info ] [Thread-4 (]: 10 of 39 SKIP relation smb_dataplatform.int_daily_orders ....................... [[33mSKIP[0m]
+[0m16:20:14.909155 [debug] [Thread-4 (]: Finished running node model.smb_dataplatform.int_daily_orders
+[0m16:20:14.909155 [debug] [Thread-7 (]: Marking all children of 'model.smb_dataplatform.int_daily_orders' to be skipped because of status 'skipped'. 
+[0m16:20:14.910160 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m16:20:14.910160 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m16:20:14.911156 [info ] [Thread-2 (]: 11 of 39 SKIP test not_null_int_daily_orders_date_day .......................... [[33mSKIP[0m]
+[0m16:20:14.911156 [info ] [Thread-4 (]: 12 of 39 SKIP test unique_int_daily_orders_date_day ............................ [[33mSKIP[0m]
+[0m16:20:14.912156 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m16:20:14.912156 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m16:20:14.912156 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e' to be skipped because of status 'skipped'. 
+[0m16:20:14.913156 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e' to be skipped because of status 'skipped'. 
+[0m16:20:15.063156 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:5c41deca-9ced-44c1-85d0-bd731cfea7d7&page=queryresults
+[0m16:20:15.064155 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:e48c69c7-dcd2-4a17-a265-266e51cec30f&page=queryresults
+[0m16:20:15.594155 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9DAA7150>]}
+[0m16:20:15.594155 [info ] [Thread-1 (]: 1 of 39 OK created sql view model smb_dataplatform.stg_meta_ads ................ [[32mCREATE VIEW (0 processed)[0m in 1.58s]
+[0m16:20:15.595155 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.stg_meta_ads
+[0m16:20:15.596157 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:20:15.596157 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:20:15.596157 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:20:15.597156 [info ] [Thread-2 (]: 13 of 39 START test accepted_values_stg_meta_ads_publisher_platform__facebook__instagram  [RUN]
+[0m16:20:15.597156 [info ] [Thread-4 (]: 14 of 39 START test not_negative_stg_meta_ads_spend ............................ [RUN]
+[0m16:20:15.598156 [info ] [Thread-1 (]: 15 of 39 START test not_null_stg_meta_ads_date_day ............................. [RUN]
+[0m16:20:15.598156 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_orders, now test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320)
+[0m16:20:15.599155 [debug] [Thread-4 (]: Acquiring new bigquery connection 'test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204'
+[0m16:20:15.599155 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_meta_ads, now test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2)
+[0m16:20:15.599155 [debug] [Thread-2 (]: Began compiling node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:20:15.600155 [debug] [Thread-4 (]: Began compiling node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:20:15.600155 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:20:15.603156 [debug] [Thread-2 (]: Writing injected SQL for node "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m16:20:15.606156 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9DA77C10>]}
+[0m16:20:15.608155 [debug] [Thread-4 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m16:20:15.614158 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m16:20:15.615156 [info ] [Thread-3 (]: 3 of 39 OK created sql view model smb_dataplatform.stg_tiktok_ads .............. [[32mCREATE VIEW (0 processed)[0m in 1.59s]
+[0m16:20:15.616156 [debug] [Thread-3 (]: Finished running node model.smb_dataplatform.stg_tiktok_ads
+[0m16:20:15.616156 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:20:15.617157 [debug] [Thread-2 (]: Began executing node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:20:15.617157 [debug] [Thread-4 (]: Began executing node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:20:15.617157 [info ] [Thread-3 (]: 16 of 39 START test not_null_stg_meta_ads_publisher_platform ................... [RUN]
+[0m16:20:15.618157 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:20:15.628155 [debug] [Thread-2 (]: Writing runtime sql for node "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m16:20:15.630156 [debug] [Thread-4 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m16:20:15.631155 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_tiktok_ads, now test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4)
+[0m16:20:15.633155 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m16:20:15.634155 [debug] [Thread-3 (]: Began compiling node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:20:15.634155 [debug] [Thread-2 (]: On test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        publisher_platform as value_field,
+        count(*) as n_records
+
+    from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+    group by publisher_platform
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'facebook','instagram'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:15.635157 [debug] [Thread-4 (]: On test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+where spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:15.637156 [debug] [Thread-3 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m16:20:15.638155 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:20:15.638155 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:15.639157 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:20:15.640156 [debug] [Thread-3 (]: Began executing node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:20:15.640156 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:20:15.643155 [debug] [Thread-3 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m16:20:15.644156 [debug] [Thread-3 (]: On test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select publisher_platform
+from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+where publisher_platform is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:15.645155 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:20:16.863157 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:4df8684e-5bf6-4221-bd29-117ab1f21e86&page=queryresults
+[0m16:20:16.864157 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:9c939654-3023-445e-9812-e92d0481b0e1&page=queryresults
+[0m16:20:16.983156 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:906f1df0-718e-4941-bfac-2448871112c9&page=queryresults
+[0m16:20:17.186155 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:4cf1e870-a67f-4ccd-9e73-df40eb389a9b&page=queryresults
+[0m16:20:17.645156 [info ] [Thread-3 (]: 16 of 39 PASS not_null_stg_meta_ads_publisher_platform ......................... [[32mPASS[0m in 2.01s]
+[0m16:20:17.645156 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:20:17.646157 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:20:17.646157 [info ] [Thread-3 (]: 17 of 39 START test not_negative_stg_tiktok_ads_spend .......................... [RUN]
+[0m16:20:17.647156 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4, now test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69)
+[0m16:20:17.647156 [debug] [Thread-3 (]: Began compiling node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:20:17.650156 [debug] [Thread-3 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m16:20:17.652158 [debug] [Thread-3 (]: Began executing node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:20:17.652158 [info ] [Thread-1 (]: 15 of 39 PASS not_null_stg_meta_ads_date_day ................................... [[32mPASS[0m in 2.05s]
+[0m16:20:17.654156 [debug] [Thread-3 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m16:20:17.655155 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:20:17.655155 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:20:17.656157 [info ] [Thread-1 (]: 18 of 39 START test not_null_stg_tiktok_ads_date_day ........................... [RUN]
+[0m16:20:17.656157 [debug] [Thread-3 (]: On test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+where spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:17.657158 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2, now test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136)
+[0m16:20:17.657158 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:20:17.657158 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:20:17.661155 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m16:20:17.663156 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:20:17.664155 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m16:20:17.665156 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:17.665156 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:20:17.705157 [info ] [Thread-4 (]: 14 of 39 PASS not_negative_stg_meta_ads_spend .................................. [[32mPASS[0m in 2.11s]
+[0m16:20:17.706155 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:20:17.984155 [info ] [Thread-2 (]: 13 of 39 PASS accepted_values_stg_meta_ads_publisher_platform__facebook__instagram  [[32mPASS[0m in 2.39s]
+[0m16:20:17.985156 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:20:18.904158 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:b5273408-5b6f-4979-9409-c63edc04cd5e&page=queryresults
+[0m16:20:18.904158 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:5503a010-8c5a-413a-83ea-dd11668b1919&page=queryresults
+[0m16:20:19.673155 [info ] [Thread-3 (]: 17 of 39 PASS not_negative_stg_tiktok_ads_spend ................................ [[32mPASS[0m in 2.03s]
+[0m16:20:19.674157 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:20:19.704155 [info ] [Thread-1 (]: 18 of 39 PASS not_null_stg_tiktok_ads_date_day ................................. [[32mPASS[0m in 2.05s]
+[0m16:20:19.705157 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:20:19.705157 [debug] [Thread-4 (]: Began running node model.smb_dataplatform.int_daily_ad_spend
+[0m16:20:19.706156 [info ] [Thread-4 (]: 19 of 39 START sql table model smb_dataplatform.int_daily_ad_spend ............. [RUN]
+[0m16:20:19.706156 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204, now model.smb_dataplatform.int_daily_ad_spend)
+[0m16:20:19.706156 [debug] [Thread-4 (]: Began compiling node model.smb_dataplatform.int_daily_ad_spend
+[0m16:20:19.709156 [debug] [Thread-4 (]: Writing injected SQL for node "model.smb_dataplatform.int_daily_ad_spend"
+[0m16:20:19.710155 [debug] [Thread-4 (]: Began executing node model.smb_dataplatform.int_daily_ad_spend
+[0m16:20:19.730158 [debug] [Thread-4 (]: Writing runtime sql for node "model.smb_dataplatform.int_daily_ad_spend"
+[0m16:20:19.731155 [debug] [Thread-4 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+
+  
+    
+
+    create or replace table `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
+
+with meta_insights as (
+    select
+        date_day,
+        spend,
+        publisher_platform
+    from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+),
+tiktok_spend as (
+    select
+        date_day,
+        spend
+    from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+),
+daily_meta_platform_spend as (
+    select
+        date_day,
+        sum(case when lower(publisher_platform) = 'facebook' then spend else 0 end) as facebook_spend,
+        sum(case when lower(publisher_platform) = 'instagram' then spend else 0 end) as instagram_spend,
+        sum(spend) as meta_total_spend
+    from meta_insights
+    group by 1
+)
+select
+    coalesce(dmp.date_day, ts.date_day) as date_day,
+    coalesce(dmp.meta_total_spend, 0) + coalesce(ts.spend, 0) as total_ad_spend,
+    coalesce(dmp.facebook_spend, 0) as facebook_spend,
+    coalesce(dmp.instagram_spend, 0) as instagram_spend,
+    coalesce(ts.spend, 0) as tiktok_spend
+from daily_meta_platform_spend dmp
+full outer join tiktok_spend ts on dmp.date_day = ts.date_day
+    );
+  
+[0m16:20:19.731155 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:20:21.107157 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:5b437de8-cd7e-4e0c-95a4-d12a47bba4d0&page=queryresults
+[0m16:20:23.425155 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73cb3809-e0e6-4014-839a-201c10bfec69', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016D9D9DAD10>]}
+[0m16:20:23.426155 [info ] [Thread-4 (]: 19 of 39 OK created sql table model smb_dataplatform.int_daily_ad_spend ........ [[32mCREATE TABLE (30.0 rows, 108.2 KiB processed)[0m in 3.72s]
+[0m16:20:23.426155 [debug] [Thread-4 (]: Finished running node model.smb_dataplatform.int_daily_ad_spend
+[0m16:20:23.427157 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:20:23.427157 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:20:23.428156 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:20:23.428156 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:20:23.428156 [info ] [Thread-3 (]: 20 of 39 START test not_negative_int_daily_ad_spend_facebook_spend ............. [RUN]
+[0m16:20:23.429156 [info ] [Thread-1 (]: 21 of 39 START test not_negative_int_daily_ad_spend_instagram_spend ............ [RUN]
+[0m16:20:23.429156 [info ] [Thread-2 (]: 22 of 39 START test not_negative_int_daily_ad_spend_tiktok_spend ............... [RUN]
+[0m16:20:23.430156 [info ] [Thread-4 (]: 23 of 39 START test not_negative_int_daily_ad_spend_total_ad_spend ............. [RUN]
+[0m16:20:23.430156 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69, now test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27)
+[0m16:20:23.431156 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136, now test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de)
+[0m16:20:23.431156 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320, now test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5)
+[0m16:20:23.431156 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.int_daily_ad_spend, now test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584)
+[0m16:20:23.432156 [debug] [Thread-3 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:20:23.432156 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:20:23.432156 [debug] [Thread-2 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:20:23.433155 [debug] [Thread-4 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:20:23.436157 [debug] [Thread-3 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m16:20:23.438155 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m16:20:23.441155 [debug] [Thread-2 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m16:20:23.444155 [debug] [Thread-4 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m16:20:23.445156 [debug] [Thread-3 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:20:23.447155 [debug] [Thread-3 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m16:20:23.447155 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:20:23.448156 [debug] [Thread-2 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:20:23.448156 [debug] [Thread-4 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:20:23.450157 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m16:20:23.451156 [debug] [Thread-2 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m16:20:23.452156 [debug] [Thread-3 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where facebook_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:23.454155 [debug] [Thread-4 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m16:20:23.455155 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where instagram_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:23.455155 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:20:23.456156 [debug] [Thread-2 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where tiktok_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:23.456156 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:20:23.457156 [debug] [Thread-4 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where total_ad_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:23.458157 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:20:23.459156 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:20:24.483156 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:1e7ab1f3-c63b-42b7-a5ca-33298accf15d&page=queryresults
+[0m16:20:24.543157 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:71f101ca-ac12-49b3-ae3b-78df5124ecf5&page=queryresults
+[0m16:20:24.586156 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:677bb1c3-02e4-415b-8774-f23f726b5473&page=queryresults
+[0m16:20:24.663156 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:c4e2faf7-6ff6-40db-b71d-4fc50f0a00c3&page=queryresults
+[0m16:20:25.304156 [info ] [Thread-1 (]: 21 of 39 PASS not_negative_int_daily_ad_spend_instagram_spend .................. [[32mPASS[0m in 1.87s]
+[0m16:20:25.305156 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:20:25.305156 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:20:25.306158 [info ] [Thread-1 (]: 24 of 39 START test not_null_int_daily_ad_spend_date_day ....................... [RUN]
+[0m16:20:25.306158 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de, now test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3)
+[0m16:20:25.307157 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:20:25.310156 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m16:20:25.311156 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:20:25.313156 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m16:20:25.314155 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:25.314155 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:20:25.385156 [info ] [Thread-4 (]: 23 of 39 PASS not_negative_int_daily_ad_spend_total_ad_spend ................... [[32mPASS[0m in 1.95s]
+[0m16:20:25.386156 [info ] [Thread-2 (]: 22 of 39 PASS not_negative_int_daily_ad_spend_tiktok_spend ..................... [[32mPASS[0m in 1.95s]
+[0m16:20:25.387158 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:20:25.387158 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:20:25.388156 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:20:25.388156 [info ] [Thread-4 (]: 25 of 39 START test unique_int_daily_ad_spend_date_day ......................... [RUN]
+[0m16:20:25.389157 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584, now test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8)
+[0m16:20:25.389157 [debug] [Thread-4 (]: Began compiling node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:20:25.394156 [debug] [Thread-4 (]: Writing injected SQL for node "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m16:20:25.394156 [debug] [Thread-4 (]: Began executing node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:20:25.396156 [debug] [Thread-4 (]: Writing runtime sql for node "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m16:20:25.397157 [debug] [Thread-4 (]: On test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with dbt_test__target as (
+
+  select date_day as unique_field
+  from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+  where date_day is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:20:25.397157 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:20:25.446157 [info ] [Thread-3 (]: 20 of 39 PASS not_negative_int_daily_ad_spend_facebook_spend ................... [[32mPASS[0m in 2.02s]
+[0m16:20:25.447158 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:20:26.273172 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:2bee3f71-cecd-4fb7-9aea-ac934f6d33cc&page=queryresults
+[0m16:20:26.354171 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:72dd8a37-838f-4c06-a3ed-908d21125f95&page=queryresults
+[0m16:20:27.068171 [info ] [Thread-1 (]: 24 of 39 PASS not_null_int_daily_ad_spend_date_day ............................. [[32mPASS[0m in 1.76s]
+[0m16:20:27.069172 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:20:27.115170 [info ] [Thread-4 (]: 25 of 39 PASS unique_int_daily_ad_spend_date_day ............................... [[32mPASS[0m in 1.73s]
+[0m16:20:27.115170 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:20:27.116172 [debug] [Thread-2 (]: Began running node model.smb_dataplatform.rpt_kpis
+[0m16:20:27.116172 [info ] [Thread-2 (]: 26 of 39 SKIP relation smb_dataplatform.rpt_kpis ............................... [[33mSKIP[0m]
+[0m16:20:27.117171 [debug] [Thread-2 (]: Finished running node model.smb_dataplatform.rpt_kpis
+[0m16:20:27.117171 [debug] [Thread-7 (]: Marking all children of 'model.smb_dataplatform.rpt_kpis' to be skipped because of status 'skipped'. 
+[0m16:20:27.118173 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.assert_contribution_margin_logic
+[0m16:20:27.118173 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m16:20:27.118173 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m16:20:27.119171 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m16:20:27.119171 [info ] [Thread-1 (]: 27 of 39 SKIP test assert_contribution_margin_logic ............................ [[33mSKIP[0m]
+[0m16:20:27.120171 [info ] [Thread-4 (]: 28 of 39 SKIP test not_negative_rpt_kpis_facebook_spend ........................ [[33mSKIP[0m]
+[0m16:20:27.120171 [info ] [Thread-3 (]: 29 of 39 SKIP test not_negative_rpt_kpis_instagram_spend ....................... [[33mSKIP[0m]
+[0m16:20:27.120171 [info ] [Thread-2 (]: 30 of 39 SKIP test not_negative_rpt_kpis_ltv_cac_ratio ......................... [[33mSKIP[0m]
+[0m16:20:27.121171 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.assert_contribution_margin_logic
+[0m16:20:27.121171 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m16:20:27.122171 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m16:20:27.122171 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m16:20:27.122171 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m16:20:27.123170 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.assert_contribution_margin_logic' to be skipped because of status 'skipped'. 
+[0m16:20:27.123170 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m16:20:27.123170 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m16:20:27.124171 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m16:20:27.124171 [info ] [Thread-1 (]: 31 of 39 SKIP test not_negative_rpt_kpis_mer_facebook .......................... [[33mSKIP[0m]
+[0m16:20:27.125173 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36' to be skipped because of status 'skipped'. 
+[0m16:20:27.125173 [info ] [Thread-4 (]: 32 of 39 SKIP test not_negative_rpt_kpis_mer_instagram ......................... [[33mSKIP[0m]
+[0m16:20:27.125173 [info ] [Thread-3 (]: 33 of 39 SKIP test not_negative_rpt_kpis_mer_total_paid_ads .................... [[33mSKIP[0m]
+[0m16:20:27.126172 [info ] [Thread-2 (]: 34 of 39 SKIP test not_negative_rpt_kpis_nc_cpa ................................ [[33mSKIP[0m]
+[0m16:20:27.126172 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m16:20:27.127173 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2' to be skipped because of status 'skipped'. 
+[0m16:20:27.127173 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m16:20:27.127173 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m16:20:27.128171 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m16:20:27.128171 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m16:20:27.129170 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be' to be skipped because of status 'skipped'. 
+[0m16:20:27.129170 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m16:20:27.129170 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m16:20:27.130170 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m16:20:27.130170 [info ] [Thread-1 (]: 35 of 39 SKIP test not_negative_rpt_kpis_tiktok_spend .......................... [[33mSKIP[0m]
+[0m16:20:27.130170 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d' to be skipped because of status 'skipped'. 
+[0m16:20:27.131172 [info ] [Thread-4 (]: 36 of 39 SKIP test not_negative_rpt_kpis_total_ad_spend ........................ [[33mSKIP[0m]
+[0m16:20:27.131172 [info ] [Thread-3 (]: 37 of 39 SKIP test not_negative_rpt_kpis_total_net_sales ....................... [[33mSKIP[0m]
+[0m16:20:27.132171 [info ] [Thread-2 (]: 38 of 39 SKIP test not_null_rpt_kpis_date_day .................................. [[33mSKIP[0m]
+[0m16:20:27.132171 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m16:20:27.132171 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9' to be skipped because of status 'skipped'. 
+[0m16:20:27.133171 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m16:20:27.133171 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m16:20:27.134170 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m16:20:27.134170 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m16:20:27.134170 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d' to be skipped because of status 'skipped'. 
+[0m16:20:27.135171 [info ] [Thread-1 (]: 39 of 39 SKIP test unique_rpt_kpis_date_day .................................... [[33mSKIP[0m]
+[0m16:20:27.136175 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98' to be skipped because of status 'skipped'. 
+[0m16:20:27.136175 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m16:20:27.136175 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d' to be skipped because of status 'skipped'. 
+[0m16:20:27.137171 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4' to be skipped because of status 'skipped'. 
+[0m16:20:27.137171 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b' to be skipped because of status 'skipped'. 
+[0m16:20:27.138171 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327' to be skipped because of status 'skipped'. 
+[0m16:20:27.138171 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5' to be skipped because of status 'skipped'. 
+[0m16:20:27.139173 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:20:27.139173 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:20:27.140172 [debug] [MainThread]: Connection 'create_smb-dataplatform_smb_dataplatform' was properly closed.
+[0m16:20:27.140172 [debug] [MainThread]: Connection 'list_smb-dataplatform_smb_dataplatform' was properly closed.
+[0m16:20:27.140172 [debug] [MainThread]: Connection 'test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3' was properly closed.
+[0m16:20:27.141170 [debug] [MainThread]: Connection 'test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5' was properly closed.
+[0m16:20:27.141170 [debug] [MainThread]: Connection 'test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27' was properly closed.
+[0m16:20:27.141170 [debug] [MainThread]: Connection 'test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8' was properly closed.
+[0m16:20:27.142171 [info ] [MainThread]: 
+[0m16:20:27.142171 [info ] [MainThread]: Finished running 3 table models, 33 data tests, 3 view models in 0 hours 0 minutes and 19.27 seconds (19.27s).
+[0m16:20:27.145170 [debug] [MainThread]: Command end result
+[0m16:20:27.169171 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\manifest.json
+[0m16:20:27.170171 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\semantic_manifest.json
+[0m16:20:27.175171 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\run_results.json
+[0m16:20:27.175171 [info ] [MainThread]: 
+[0m16:20:27.176170 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m16:20:27.176170 [info ] [MainThread]: 
+[0m16:20:27.177173 [error] [MainThread]: [31mFailure in model stg_orders (models\staging\stg_orders.sql)[0m
+[0m16:20:27.177173 [error] [MainThread]:   Database Error in model stg_orders (models\staging\stg_orders.sql)
+  Not found: Dataset smb-dataplatform:shopify_data was not found in location US
+  compiled code at target\run\smb_dataplatform\models\staging\stg_orders.sql
+[0m16:20:27.177173 [info ] [MainThread]: 
+[0m16:20:27.178175 [info ] [MainThread]:   compiled code at target\compiled\smb_dataplatform\models\staging\stg_orders.sql
+[0m16:20:27.178175 [info ] [MainThread]: 
+[0m16:20:27.179174 [info ] [MainThread]: Done. PASS=15 WARN=0 ERROR=1 SKIP=23 NO-OP=0 TOTAL=39
+[0m16:20:27.180175 [debug] [MainThread]: Command `dbt build` failed at 16:20:27.179174 after 50.08 seconds
+[0m16:20:27.180175 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE92472D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE9247190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000016DE9247390>]}
+[0m16:20:27.180175 [debug] [MainThread]: Flushing usage events
+[0m16:20:27.943170 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:29:10.859191 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676F0E0A10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676F0E3990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676F0E0E10>]}
+
+
+============================== 16:29:10.862188 | b880fcac-440b-4fb0-9dd7-c52ed0c72599 ==============================
+[0m16:29:10.862188 [info ] [MainThread]: Running with dbt=1.10.17
+[0m16:29:10.863188 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': '../dbt_profiles', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt build --target prod --profiles-dir ../dbt_profiles', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\manubdata\\Desktop\\Workspace\\smb-dataplatformV2\\dbt_project\\logs'}
+[0m16:29:20.817033 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676F12BED0>]}
+[0m16:29:20.872206 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676BA25350>]}
+[0m16:29:20.873206 [info ] [MainThread]: Registered adapter: bigquery=1.10.3
+[0m16:29:21.400372 [debug] [MainThread]: checksum: d32efbad2cb3c34e6617f8f40f8bce934752d05248fac5edfac176b29f7518f1, vars: {}, profile: , target: prod, version: 1.10.17
+[0m16:29:21.531810 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:29:21.533313 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:29:21.568444 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002671F4C8510>]}
+[0m16:29:21.639219 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\manifest.json
+[0m16:29:21.641219 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\semantic_manifest.json
+[0m16:29:21.669911 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002671F798850>]}
+[0m16:29:21.669911 [info ] [MainThread]: Found 6 models, 33 data tests, 3 sources, 639 macros
+[0m16:29:21.672911 [info ] [MainThread]: 
+[0m16:29:21.672911 [info ] [MainThread]: Concurrency: 4 threads (target='prod')
+[0m16:29:21.673911 [info ] [MainThread]: 
+[0m16:29:21.673911 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m16:29:21.677421 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_smb-dataplatform'
+[0m16:29:21.678420 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:29:23.846914 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_smb-dataplatform_smb_dataplatform'
+[0m16:29:23.847939 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:29:24.486937 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002671F445D10>]}
+[0m16:29:24.486937 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:29:24.490937 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.stg_meta_ads
+[0m16:29:24.490937 [debug] [Thread-2 (]: Began running node model.smb_dataplatform.stg_orders
+[0m16:29:24.491937 [debug] [Thread-3 (]: Began running node model.smb_dataplatform.stg_tiktok_ads
+[0m16:29:24.491937 [info ] [Thread-1 (]: 1 of 39 START sql view model smb_dataplatform.stg_meta_ads ..................... [RUN]
+[0m16:29:24.491937 [info ] [Thread-2 (]: 2 of 39 START sql view model smb_dataplatform.stg_orders ....................... [RUN]
+[0m16:29:24.492938 [info ] [Thread-3 (]: 3 of 39 START sql view model smb_dataplatform.stg_tiktok_ads ................... [RUN]
+[0m16:29:24.492938 [debug] [Thread-1 (]: Acquiring new bigquery connection 'model.smb_dataplatform.stg_meta_ads'
+[0m16:29:24.492938 [debug] [Thread-2 (]: Acquiring new bigquery connection 'model.smb_dataplatform.stg_orders'
+[0m16:29:24.494555 [debug] [Thread-3 (]: Acquiring new bigquery connection 'model.smb_dataplatform.stg_tiktok_ads'
+[0m16:29:24.494555 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.stg_meta_ads
+[0m16:29:24.494555 [debug] [Thread-2 (]: Began compiling node model.smb_dataplatform.stg_orders
+[0m16:29:24.495559 [debug] [Thread-3 (]: Began compiling node model.smb_dataplatform.stg_tiktok_ads
+[0m16:29:24.501558 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.stg_meta_ads"
+[0m16:29:24.504066 [debug] [Thread-2 (]: Writing injected SQL for node "model.smb_dataplatform.stg_orders"
+[0m16:29:24.506067 [debug] [Thread-3 (]: Writing injected SQL for node "model.smb_dataplatform.stg_tiktok_ads"
+[0m16:29:24.507069 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.stg_meta_ads
+[0m16:29:24.515391 [debug] [Thread-2 (]: Began executing node model.smb_dataplatform.stg_orders
+[0m16:29:24.526825 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.stg_meta_ads"
+[0m16:29:24.528829 [debug] [Thread-2 (]: Writing runtime sql for node "model.smb_dataplatform.stg_orders"
+[0m16:29:24.528829 [debug] [Thread-3 (]: Began executing node model.smb_dataplatform.stg_tiktok_ads
+[0m16:29:24.530831 [debug] [Thread-3 (]: Writing runtime sql for node "model.smb_dataplatform.stg_tiktok_ads"
+[0m16:29:24.531829 [debug] [Thread-1 (]: On model.smb_dataplatform.stg_meta_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.stg_meta_ads"} */
+
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+  OPTIONS()
+  as -- Silver Layer (staging) for Meta Ads
+-- This model cleans and prepares raw ad spend data from the bronze layer.
+
+with source as (
+    -- This should point to your raw meta ads data in the bronze layer
+    select * from `smb-dataplatform`.`facebook_ads_data`.`ads_insights`
+)
+
+select
+    cast(date_start as date) as date_day,
+    spend,
+    publisher_platform
+from source;
+
+
+[0m16:29:24.531829 [debug] [Thread-2 (]: On model.smb_dataplatform.stg_orders: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.stg_orders"} */
+
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_orders`
+  OPTIONS()
+  as -- Silver Layer (staging) for Orders
+-- This model cleans and prepares raw order data from the bronze layer.
+
+with source as (
+    -- This should point to your raw orders data in the bronze layer
+    select * from `smb-dataplatform`.`shopify_data`.`orders`
+)
+
+select
+    id as order_id,
+    customer__id as customer_id,
+    cast(created_at as date) as order_date,
+    cast(total_price as numeric(38, 2)) as net_sales,
+    
+    -- Mock COGS as 50% of net sales. In a real scenario, this would come from
+    -- product cost data.
+    cast(total_price as numeric(38, 2)) * 0.50 as cogs,
+    
+    -- Extracting shipping cost from the nested field.
+    cast(total_shipping_price_set__shop_money__amount as numeric(38, 2)) as shipping_cost,
+    
+    -- Transaction Fee is a placeholder. This often comes from a separate
+    -- payment gateway source (e.g., Stripe, Shopify Payments).
+    0 as transaction_fee
+
+from source;
+
+
+[0m16:29:24.532831 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m16:29:24.532831 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:29:24.532831 [debug] [Thread-3 (]: On model.smb_dataplatform.stg_tiktok_ads: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.stg_tiktok_ads"} */
+
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+  OPTIONS()
+  as -- Silver Layer (staging) for TikTok Ads
+-- This model cleans and prepares raw ad spend data from the bronze layer.
+
+with source as (
+    -- This should point to your raw tiktok ads data in the bronze layer
+    select
+        cast(stat_time_day as date) as date_day,
+        spend
+    from `smb-dataplatform`.`tiktok_ads_data`.`ad_reports`
+)
+
+select
+    date_day,
+    sum(spend) as spend -- Aggregate spend by date_day to ensure uniqueness
+from source
+group by 1;
+
+
+[0m16:29:24.535338 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m16:29:25.403832 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:24e1898d-3697-46bb-bbf8-6b37d80ac189&page=queryresults
+[0m16:29:25.403832 [error] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:24e1898d-3697-46bb-bbf8-6b37d80ac189&page=queryresults
+[0m16:29:25.410340 [debug] [Thread-2 (]: Database Error in model stg_orders (models\staging\stg_orders.sql)
+  Not found: Dataset smb-dataplatform:shopify_data was not found in location US
+  compiled code at target\run\smb_dataplatform\models\staging\stg_orders.sql
+[0m16:29:25.412339 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002671F859350>]}
+[0m16:29:25.412339 [error] [Thread-2 (]: 2 of 39 ERROR creating sql view model smb_dataplatform.stg_orders .............. [[31mERROR[0m in 0.92s]
+[0m16:29:25.413343 [debug] [Thread-2 (]: Finished running node model.smb_dataplatform.stg_orders
+[0m16:29:25.413343 [debug] [Thread-7 (]: Marking all children of 'model.smb_dataplatform.stg_orders' to be skipped because of status 'error'.  Reason: Database Error in model stg_orders (models\staging\stg_orders.sql)
+  Not found: Dataset smb-dataplatform:shopify_data was not found in location US
+  compiled code at target\run\smb_dataplatform\models\staging\stg_orders.sql.
+[0m16:29:25.414341 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m16:29:25.414341 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m16:29:25.414341 [info ] [Thread-4 (]: 4 of 39 SKIP test not_negative_stg_orders_cogs ................................. [[33mSKIP[0m]
+[0m16:29:25.415849 [info ] [Thread-2 (]: 5 of 39 SKIP test not_negative_stg_orders_net_sales ............................ [[33mSKIP[0m]
+[0m16:29:25.415849 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad
+[0m16:29:25.416856 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951
+[0m16:29:25.417396 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:29:25.417396 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_stg_orders_cogs.e3aa4f9cad' to be skipped because of status 'skipped'. 
+[0m16:29:25.417396 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:29:25.418402 [info ] [Thread-4 (]: 6 of 39 SKIP test not_null_stg_orders_customer_id .............................. [[33mSKIP[0m]
+[0m16:29:25.418402 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_stg_orders_net_sales.f401eb3951' to be skipped because of status 'skipped'. 
+[0m16:29:25.418402 [info ] [Thread-2 (]: 7 of 39 SKIP test not_null_stg_orders_order_date ............................... [[33mSKIP[0m]
+[0m16:29:25.419401 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5
+[0m16:29:25.419401 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb
+[0m16:29:25.420402 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:29:25.420402 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_stg_orders_customer_id.af79d5e4b5' to be skipped because of status 'skipped'. 
+[0m16:29:25.420402 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m16:29:25.421402 [info ] [Thread-4 (]: 8 of 39 SKIP test not_null_stg_orders_order_id ................................. [[33mSKIP[0m]
+[0m16:29:25.421402 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_stg_orders_order_date.2177a3e8bb' to be skipped because of status 'skipped'. 
+[0m16:29:25.422402 [info ] [Thread-2 (]: 9 of 39 SKIP test unique_stg_orders_order_id ................................... [[33mSKIP[0m]
+[0m16:29:25.422402 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64
+[0m16:29:25.423404 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a
+[0m16:29:25.423404 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_stg_orders_order_id.81cfe2fe64' to be skipped because of status 'skipped'. 
+[0m16:29:25.423404 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.unique_stg_orders_order_id.e3b841c71a' to be skipped because of status 'skipped'. 
+[0m16:29:25.424401 [debug] [Thread-4 (]: Began running node model.smb_dataplatform.int_daily_orders
+[0m16:29:25.424401 [info ] [Thread-4 (]: 10 of 39 SKIP relation smb_dataplatform.int_daily_orders ....................... [[33mSKIP[0m]
+[0m16:29:25.424401 [debug] [Thread-4 (]: Finished running node model.smb_dataplatform.int_daily_orders
+[0m16:29:25.425908 [debug] [Thread-7 (]: Marking all children of 'model.smb_dataplatform.int_daily_orders' to be skipped because of status 'skipped'. 
+[0m16:29:25.425908 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m16:29:25.425908 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m16:29:25.426914 [info ] [Thread-2 (]: 11 of 39 SKIP test not_null_int_daily_orders_date_day .......................... [[33mSKIP[0m]
+[0m16:29:25.426914 [info ] [Thread-4 (]: 12 of 39 SKIP test unique_int_daily_orders_date_day ............................ [[33mSKIP[0m]
+[0m16:29:25.427914 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e
+[0m16:29:25.427914 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e
+[0m16:29:25.427914 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_int_daily_orders_date_day.f1bdc1c94e' to be skipped because of status 'skipped'. 
+[0m16:29:25.428913 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.unique_int_daily_orders_date_day.222078300e' to be skipped because of status 'skipped'. 
+[0m16:29:25.511777 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:83ac50e6-8336-42ac-ae31-7397612aed00&page=queryresults
+[0m16:29:25.644249 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:43c5f094-f39e-48be-a9b0-7ea15d07ffa2&page=queryresults
+[0m16:29:26.045272 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002671F7C0810>]}
+[0m16:29:26.046271 [info ] [Thread-1 (]: 1 of 39 OK created sql view model smb_dataplatform.stg_meta_ads ................ [[32mCREATE VIEW (0 processed)[0m in 1.55s]
+[0m16:29:26.047272 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.stg_meta_ads
+[0m16:29:26.047272 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:29:26.048271 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:29:26.048271 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:29:26.048799 [info ] [Thread-2 (]: 13 of 39 START test accepted_values_stg_meta_ads_publisher_platform__facebook__instagram  [RUN]
+[0m16:29:26.048799 [info ] [Thread-4 (]: 14 of 39 START test not_negative_stg_meta_ads_spend ............................ [RUN]
+[0m16:29:26.049804 [info ] [Thread-1 (]: 15 of 39 START test not_null_stg_meta_ads_date_day ............................. [RUN]
+[0m16:29:26.049804 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_orders, now test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320)
+[0m16:29:26.049804 [debug] [Thread-4 (]: Acquiring new bigquery connection 'test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204'
+[0m16:29:26.051173 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_meta_ads, now test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2)
+[0m16:29:26.051173 [debug] [Thread-2 (]: Began compiling node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:29:26.051173 [debug] [Thread-4 (]: Began compiling node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:29:26.052177 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:29:26.059683 [debug] [Thread-2 (]: Writing injected SQL for node "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m16:29:26.062707 [debug] [Thread-4 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m16:29:26.068240 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m16:29:26.069244 [debug] [Thread-2 (]: Began executing node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:29:26.080285 [debug] [Thread-2 (]: Writing runtime sql for node "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"
+[0m16:29:26.080285 [debug] [Thread-4 (]: Began executing node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:29:26.081799 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:29:26.083803 [debug] [Thread-4 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"
+[0m16:29:26.084804 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"
+[0m16:29:26.085802 [debug] [Thread-2 (]: On test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        publisher_platform as value_field,
+        count(*) as n_records
+
+    from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+    group by publisher_platform
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'facebook','instagram'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:26.086806 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:29:26.086806 [debug] [Thread-4 (]: On test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+where spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:26.087806 [debug] [Thread-1 (]: On test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:26.087806 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:29:26.088804 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:29:26.125918 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026720BB4C90>]}
+[0m16:29:26.127450 [info ] [Thread-3 (]: 3 of 39 OK created sql view model smb_dataplatform.stg_tiktok_ads .............. [[32mCREATE VIEW (0 processed)[0m in 1.63s]
+[0m16:29:26.127450 [debug] [Thread-3 (]: Finished running node model.smb_dataplatform.stg_tiktok_ads
+[0m16:29:26.128457 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:29:26.128457 [info ] [Thread-3 (]: 16 of 39 START test not_null_stg_meta_ads_publisher_platform ................... [RUN]
+[0m16:29:26.129456 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.stg_tiktok_ads, now test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4)
+[0m16:29:26.129456 [debug] [Thread-3 (]: Began compiling node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:29:26.132962 [debug] [Thread-3 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m16:29:26.132962 [debug] [Thread-3 (]: Began executing node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:29:26.134969 [debug] [Thread-3 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"
+[0m16:29:26.135967 [debug] [Thread-3 (]: On test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select publisher_platform
+from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+where publisher_platform is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:26.135967 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:29:27.233731 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:bab01701-2a1f-4eb5-9689-479f5a890cf0&page=queryresults
+[0m16:29:27.283980 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:10350627-ba62-4ecf-bc0c-7c51bf7a792f&page=queryresults
+[0m16:29:27.404074 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:07ec4e65-f37f-4342-9516-908dd8a5c135&page=queryresults
+[0m16:29:27.512045 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:59685817-4b78-4b5f-91f8-3baae54cb7d9&page=queryresults
+[0m16:29:28.077150 [info ] [Thread-3 (]: 16 of 39 PASS not_null_stg_meta_ads_publisher_platform ......................... [[32mPASS[0m in 1.95s]
+[0m16:29:28.078151 [info ] [Thread-2 (]: 13 of 39 PASS accepted_values_stg_meta_ads_publisher_platform__facebook__instagram  [[32mPASS[0m in 2.03s]
+[0m16:29:28.079151 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4
+[0m16:29:28.080151 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320
+[0m16:29:28.080151 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:29:28.080151 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:29:28.081151 [info ] [Thread-3 (]: 17 of 39 START test not_negative_stg_tiktok_ads_spend .......................... [RUN]
+[0m16:29:28.081151 [info ] [Thread-2 (]: 18 of 39 START test not_null_stg_tiktok_ads_date_day ........................... [RUN]
+[0m16:29:28.082153 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_meta_ads_publisher_platform.7378de4ef4, now test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69)
+[0m16:29:28.082153 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.accepted_values_stg_meta_ads_publisher_platform__facebook__instagram.0fbad0e320, now test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136)
+[0m16:29:28.083151 [debug] [Thread-3 (]: Began compiling node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:29:28.083151 [debug] [Thread-2 (]: Began compiling node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:29:28.085151 [debug] [Thread-3 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m16:29:28.089182 [debug] [Thread-2 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m16:29:28.089182 [debug] [Thread-3 (]: Began executing node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:29:28.091189 [debug] [Thread-3 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"
+[0m16:29:28.091189 [debug] [Thread-2 (]: Began executing node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:29:28.093189 [debug] [Thread-2 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"
+[0m16:29:28.094187 [debug] [Thread-3 (]: On test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+where spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:28.094187 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:29:28.095188 [debug] [Thread-2 (]: On test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:28.095188 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:29:28.166904 [info ] [Thread-1 (]: 15 of 39 PASS not_null_stg_meta_ads_date_day ................................... [[32mPASS[0m in 2.12s]
+[0m16:29:28.166904 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2
+[0m16:29:28.445514 [info ] [Thread-4 (]: 14 of 39 PASS not_negative_stg_meta_ads_spend .................................. [[32mPASS[0m in 2.39s]
+[0m16:29:28.446018 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204
+[0m16:29:29.123866 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:a8350554-3606-42fe-bfb6-21f38f7e566a&page=queryresults
+[0m16:29:29.383966 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:29533351-1631-4657-ae50-515819d81444&page=queryresults
+[0m16:29:29.943670 [info ] [Thread-2 (]: 18 of 39 PASS not_null_stg_tiktok_ads_date_day ................................. [[32mPASS[0m in 1.86s]
+[0m16:29:29.944671 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136
+[0m16:29:30.144045 [info ] [Thread-3 (]: 17 of 39 PASS not_negative_stg_tiktok_ads_spend ................................ [[32mPASS[0m in 2.06s]
+[0m16:29:30.144045 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69
+[0m16:29:30.145550 [debug] [Thread-1 (]: Began running node model.smb_dataplatform.int_daily_ad_spend
+[0m16:29:30.145550 [info ] [Thread-1 (]: 19 of 39 START sql table model smb_dataplatform.int_daily_ad_spend ............. [RUN]
+[0m16:29:30.146556 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_meta_ads_date_day.01ee7fdae2, now model.smb_dataplatform.int_daily_ad_spend)
+[0m16:29:30.146556 [debug] [Thread-1 (]: Began compiling node model.smb_dataplatform.int_daily_ad_spend
+[0m16:29:30.149555 [debug] [Thread-1 (]: Writing injected SQL for node "model.smb_dataplatform.int_daily_ad_spend"
+[0m16:29:30.150554 [debug] [Thread-1 (]: Began executing node model.smb_dataplatform.int_daily_ad_spend
+[0m16:29:30.158594 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:29:30.745958 [debug] [Thread-1 (]: Writing runtime sql for node "model.smb_dataplatform.int_daily_ad_spend"
+[0m16:29:30.746958 [debug] [Thread-1 (]: On model.smb_dataplatform.int_daily_ad_spend: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "model.smb_dataplatform.int_daily_ad_spend"} */
+
+  
+    
+
+    create or replace table `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      
+
+with meta_insights as (
+    select
+        date_day,
+        spend,
+        publisher_platform
+    from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+),
+tiktok_spend as (
+    select
+        date_day,
+        spend
+    from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+),
+daily_meta_platform_spend as (
+    select
+        date_day,
+        sum(case when lower(publisher_platform) = 'facebook' then spend else 0 end) as facebook_spend,
+        sum(case when lower(publisher_platform) = 'instagram' then spend else 0 end) as instagram_spend,
+        sum(spend) as meta_total_spend
+    from meta_insights
+    group by 1
+)
+select
+    coalesce(dmp.date_day, ts.date_day) as date_day,
+    coalesce(dmp.meta_total_spend, 0) + coalesce(ts.spend, 0) as total_ad_spend,
+    coalesce(dmp.facebook_spend, 0) as facebook_spend,
+    coalesce(dmp.instagram_spend, 0) as instagram_spend,
+    coalesce(ts.spend, 0) as tiktok_spend
+from daily_meta_platform_spend dmp
+full outer join tiktok_spend ts on dmp.date_day = ts.date_day
+    );
+  
+[0m16:29:31.364116 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:8917a981-15ea-46e1-aa62-e8d8e153cb3c&page=queryresults
+[0m16:29:33.626628 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'b880fcac-440b-4fb0-9dd7-c52ed0c72599', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002677018B9D0>]}
+[0m16:29:33.627628 [info ] [Thread-1 (]: 19 of 39 OK created sql table model smb_dataplatform.int_daily_ad_spend ........ [[32mCREATE TABLE (30.0 rows, 108.2 KiB processed)[0m in 3.48s]
+[0m16:29:33.628631 [debug] [Thread-1 (]: Finished running node model.smb_dataplatform.int_daily_ad_spend
+[0m16:29:33.628631 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:29:33.628631 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:29:33.628631 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:29:33.630136 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:29:33.630136 [info ] [Thread-2 (]: 20 of 39 START test not_negative_int_daily_ad_spend_facebook_spend ............. [RUN]
+[0m16:29:33.631141 [info ] [Thread-3 (]: 21 of 39 START test not_negative_int_daily_ad_spend_instagram_spend ............ [RUN]
+[0m16:29:33.631141 [info ] [Thread-4 (]: 22 of 39 START test not_negative_int_daily_ad_spend_tiktok_spend ............... [RUN]
+[0m16:29:33.631141 [info ] [Thread-1 (]: 23 of 39 START test not_negative_int_daily_ad_spend_total_ad_spend ............. [RUN]
+[0m16:29:33.632141 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_null_stg_tiktok_ads_date_day.29eb2a8136, now test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27)
+[0m16:29:33.632141 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_tiktok_ads_spend.b1a3351b69, now test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de)
+[0m16:29:33.633140 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_stg_meta_ads_spend.b18b464204, now test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5)
+[0m16:29:33.633140 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.smb_dataplatform.int_daily_ad_spend, now test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584)
+[0m16:29:33.633140 [debug] [Thread-2 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:29:33.634141 [debug] [Thread-3 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:29:33.634141 [debug] [Thread-4 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:29:33.634141 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:29:33.637693 [debug] [Thread-2 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m16:29:33.640196 [debug] [Thread-3 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m16:29:33.643201 [debug] [Thread-4 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m16:29:33.645201 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m16:29:33.646201 [debug] [Thread-2 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:29:33.647203 [debug] [Thread-3 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:29:33.647203 [debug] [Thread-4 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:29:33.648200 [debug] [Thread-2 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"
+[0m16:29:33.650712 [debug] [Thread-3 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"
+[0m16:29:33.650712 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:29:33.652287 [debug] [Thread-4 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"
+[0m16:29:33.653296 [debug] [Thread-2 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where facebook_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:33.655291 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"
+[0m16:29:33.656295 [debug] [Thread-3 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where instagram_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:33.656295 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:29:33.657295 [debug] [Thread-4 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where tiktok_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:33.657295 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:29:33.658293 [debug] [Thread-1 (]: On test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+
+select *
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where total_ad_spend < 0
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:33.659293 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:29:33.659293 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:29:34.683566 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:5e67fe86-fa6b-4ef6-af88-d4c36aa368e5&page=queryresults
+[0m16:29:34.711118 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:e0e55f02-4984-42c6-8dd1-63dc5394a457&page=queryresults
+[0m16:29:34.803922 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:315df4c5-fb26-4ee2-8991-3b11bb0c1deb&page=queryresults
+[0m16:29:34.834524 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:9d979a17-2119-4b8d-a5f0-4492bd700f64&page=queryresults
+[0m16:29:35.475162 [info ] [Thread-2 (]: 20 of 39 PASS not_negative_int_daily_ad_spend_facebook_spend ................... [[32mPASS[0m in 1.84s]
+[0m16:29:35.476162 [info ] [Thread-1 (]: 23 of 39 PASS not_negative_int_daily_ad_spend_total_ad_spend ................... [[32mPASS[0m in 1.84s]
+[0m16:29:35.477162 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27
+[0m16:29:35.477162 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584
+[0m16:29:35.477162 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:29:35.478162 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:29:35.478162 [info ] [Thread-2 (]: 24 of 39 START test not_null_int_daily_ad_spend_date_day ....................... [RUN]
+[0m16:29:35.479163 [info ] [Thread-1 (]: 25 of 39 START test unique_int_daily_ad_spend_date_day ......................... [RUN]
+[0m16:29:35.479163 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_facebook_spend.9cd770ed27, now test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3)
+[0m16:29:35.479163 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.smb_dataplatform.not_negative_int_daily_ad_spend_total_ad_spend.4a200fc584, now test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8)
+[0m16:29:35.480667 [debug] [Thread-2 (]: Began compiling node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:29:35.480667 [debug] [Thread-1 (]: Began compiling node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:29:35.483671 [debug] [Thread-2 (]: Writing injected SQL for node "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m16:29:35.488209 [debug] [Thread-1 (]: Writing injected SQL for node "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m16:29:35.488209 [debug] [Thread-2 (]: Began executing node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:29:35.490723 [debug] [Thread-2 (]: Writing runtime sql for node "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"
+[0m16:29:35.490723 [debug] [Thread-1 (]: Began executing node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:29:35.492729 [debug] [Thread-1 (]: Writing runtime sql for node "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"
+[0m16:29:35.492729 [debug] [Thread-2 (]: On test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select date_day
+from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+where date_day is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:35.493731 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:29:35.493731 [debug] [Thread-1 (]: On test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8: /* {"app": "dbt", "dbt_version": "1.10.17", "profile_name": "smb_dataplatform_profile", "target_name": "prod", "node_id": "test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with dbt_test__target as (
+
+  select date_day as unique_field
+  from `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
+  where date_day is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:29:35.494728 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:29:35.605158 [info ] [Thread-3 (]: 21 of 39 PASS not_negative_int_daily_ad_spend_instagram_spend .................. [[32mPASS[0m in 1.97s]
+[0m16:29:35.605158 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de
+[0m16:29:35.613705 [info ] [Thread-4 (]: 22 of 39 PASS not_negative_int_daily_ad_spend_tiktok_spend ..................... [[32mPASS[0m in 1.98s]
+[0m16:29:35.614219 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5
+[0m16:29:36.405396 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:51c9bce5-cf9e-4a9d-a3a0-fa7cd63d79d1&page=queryresults
+[0m16:29:36.443531 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=smb-dataplatform&j=bq:US:9fc6f047-c32a-4add-9e4c-b8e308990d34&page=queryresults
+[0m16:29:37.205331 [info ] [Thread-2 (]: 24 of 39 PASS not_null_int_daily_ad_spend_date_day ............................. [[32mPASS[0m in 1.73s]
+[0m16:29:37.206333 [info ] [Thread-1 (]: 25 of 39 PASS unique_int_daily_ad_spend_date_day ............................... [[32mPASS[0m in 1.73s]
+[0m16:29:37.207332 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3
+[0m16:29:37.208332 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8
+[0m16:29:37.208332 [debug] [Thread-3 (]: Began running node model.smb_dataplatform.rpt_kpis
+[0m16:29:37.209332 [info ] [Thread-3 (]: 26 of 39 SKIP relation smb_dataplatform.rpt_kpis ............................... [[33mSKIP[0m]
+[0m16:29:37.209332 [debug] [Thread-3 (]: Finished running node model.smb_dataplatform.rpt_kpis
+[0m16:29:37.210333 [debug] [Thread-7 (]: Marking all children of 'model.smb_dataplatform.rpt_kpis' to be skipped because of status 'skipped'. 
+[0m16:29:37.210333 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.assert_contribution_margin_logic
+[0m16:29:37.210333 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m16:29:37.210333 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m16:29:37.211837 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m16:29:37.211837 [info ] [Thread-2 (]: 27 of 39 SKIP test assert_contribution_margin_logic ............................ [[33mSKIP[0m]
+[0m16:29:37.212843 [info ] [Thread-1 (]: 28 of 39 SKIP test not_negative_rpt_kpis_facebook_spend ........................ [[33mSKIP[0m]
+[0m16:29:37.212843 [info ] [Thread-4 (]: 29 of 39 SKIP test not_negative_rpt_kpis_instagram_spend ....................... [[33mSKIP[0m]
+[0m16:29:37.213842 [info ] [Thread-3 (]: 30 of 39 SKIP test not_negative_rpt_kpis_ltv_cac_ratio ......................... [[33mSKIP[0m]
+[0m16:29:37.213842 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.assert_contribution_margin_logic
+[0m16:29:37.213842 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36
+[0m16:29:37.214842 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2
+[0m16:29:37.214842 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be
+[0m16:29:37.215842 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m16:29:37.215842 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.assert_contribution_margin_logic' to be skipped because of status 'skipped'. 
+[0m16:29:37.215842 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m16:29:37.216843 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m16:29:37.216843 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m16:29:37.216843 [info ] [Thread-2 (]: 31 of 39 SKIP test not_negative_rpt_kpis_mer_facebook .......................... [[33mSKIP[0m]
+[0m16:29:37.217842 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_facebook_spend.f8e7f46d36' to be skipped because of status 'skipped'. 
+[0m16:29:37.217842 [info ] [Thread-1 (]: 32 of 39 SKIP test not_negative_rpt_kpis_mer_instagram ......................... [[33mSKIP[0m]
+[0m16:29:37.218842 [info ] [Thread-4 (]: 33 of 39 SKIP test not_negative_rpt_kpis_mer_total_paid_ads .................... [[33mSKIP[0m]
+[0m16:29:37.218842 [info ] [Thread-3 (]: 34 of 39 SKIP test not_negative_rpt_kpis_nc_cpa ................................ [[33mSKIP[0m]
+[0m16:29:37.219842 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d
+[0m16:29:37.219842 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_instagram_spend.b73e009fe2' to be skipped because of status 'skipped'. 
+[0m16:29:37.219842 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9
+[0m16:29:37.220842 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d
+[0m16:29:37.220842 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98
+[0m16:29:37.220842 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m16:29:37.220842 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_ltv_cac_ratio.839d5d90be' to be skipped because of status 'skipped'. 
+[0m16:29:37.222347 [debug] [Thread-1 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m16:29:37.222347 [debug] [Thread-4 (]: Began running node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m16:29:37.222347 [debug] [Thread-3 (]: Began running node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m16:29:37.223352 [info ] [Thread-2 (]: 35 of 39 SKIP test not_negative_rpt_kpis_tiktok_spend .......................... [[33mSKIP[0m]
+[0m16:29:37.223352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_mer_facebook.f93db7d34d' to be skipped because of status 'skipped'. 
+[0m16:29:37.224353 [info ] [Thread-1 (]: 36 of 39 SKIP test not_negative_rpt_kpis_total_ad_spend ........................ [[33mSKIP[0m]
+[0m16:29:37.224353 [info ] [Thread-4 (]: 37 of 39 SKIP test not_negative_rpt_kpis_total_net_sales ....................... [[33mSKIP[0m]
+[0m16:29:37.225352 [info ] [Thread-3 (]: 38 of 39 SKIP test not_null_rpt_kpis_date_day .................................. [[33mSKIP[0m]
+[0m16:29:37.225352 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d
+[0m16:29:37.225352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_mer_instagram.ce02f0c3d9' to be skipped because of status 'skipped'. 
+[0m16:29:37.226352 [debug] [Thread-1 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4
+[0m16:29:37.226352 [debug] [Thread-4 (]: Finished running node test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b
+[0m16:29:37.226352 [debug] [Thread-3 (]: Finished running node test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327
+[0m16:29:37.227352 [debug] [Thread-2 (]: Began running node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m16:29:37.227352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_mer_total_paid_ads.178170939d' to be skipped because of status 'skipped'. 
+[0m16:29:37.228353 [info ] [Thread-2 (]: 39 of 39 SKIP test unique_rpt_kpis_date_day .................................... [[33mSKIP[0m]
+[0m16:29:37.228353 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_nc_cpa.751be58b98' to be skipped because of status 'skipped'. 
+[0m16:29:37.229352 [debug] [Thread-2 (]: Finished running node test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5
+[0m16:29:37.229352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_tiktok_spend.419042ce8d' to be skipped because of status 'skipped'. 
+[0m16:29:37.230352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_total_ad_spend.cbacc4f4c4' to be skipped because of status 'skipped'. 
+[0m16:29:37.230352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_negative_rpt_kpis_total_net_sales.35e4d4c32b' to be skipped because of status 'skipped'. 
+[0m16:29:37.230352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.not_null_rpt_kpis_date_day.5424f28327' to be skipped because of status 'skipped'. 
+[0m16:29:37.231352 [debug] [Thread-7 (]: Marking all children of 'test.smb_dataplatform.unique_rpt_kpis_date_day.1803914ed5' to be skipped because of status 'skipped'. 
+[0m16:29:37.231352 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:29:37.232856 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:29:37.232856 [debug] [MainThread]: Connection 'list_smb-dataplatform' was properly closed.
+[0m16:29:37.233861 [debug] [MainThread]: Connection 'list_smb-dataplatform_smb_dataplatform' was properly closed.
+[0m16:29:37.233861 [debug] [MainThread]: Connection 'test.smb_dataplatform.unique_int_daily_ad_spend_date_day.bc0bf662a8' was properly closed.
+[0m16:29:37.233861 [debug] [MainThread]: Connection 'test.smb_dataplatform.not_null_int_daily_ad_spend_date_day.c80e34a9c3' was properly closed.
+[0m16:29:37.233861 [debug] [MainThread]: Connection 'test.smb_dataplatform.not_negative_int_daily_ad_spend_instagram_spend.8e72e556de' was properly closed.
+[0m16:29:37.234862 [debug] [MainThread]: Connection 'test.smb_dataplatform.not_negative_int_daily_ad_spend_tiktok_spend.3ed2cb54e5' was properly closed.
+[0m16:29:37.234862 [info ] [MainThread]: 
+[0m16:29:37.235862 [info ] [MainThread]: Finished running 3 table models, 33 data tests, 3 view models in 0 hours 0 minutes and 15.56 seconds (15.56s).
+[0m16:29:37.237862 [debug] [MainThread]: Command end result
+[0m16:29:37.262423 [debug] [MainThread]: Wrote artifact WritableManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\manifest.json
+[0m16:29:37.263926 [debug] [MainThread]: Wrote artifact SemanticManifest to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\semantic_manifest.json
+[0m16:29:37.268973 [debug] [MainThread]: Wrote artifact RunExecutionResult to C:\Users\manubdata\Desktop\Workspace\smb-dataplatformV2\dbt_project\target\run_results.json
+[0m16:29:37.269972 [info ] [MainThread]: 
+[0m16:29:37.269972 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m16:29:37.269972 [info ] [MainThread]: 
+[0m16:29:37.270973 [error] [MainThread]: [31mFailure in model stg_orders (models\staging\stg_orders.sql)[0m
+[0m16:29:37.270973 [error] [MainThread]:   Database Error in model stg_orders (models\staging\stg_orders.sql)
+  Not found: Dataset smb-dataplatform:shopify_data was not found in location US
+  compiled code at target\run\smb_dataplatform\models\staging\stg_orders.sql
+[0m16:29:37.271973 [info ] [MainThread]: 
+[0m16:29:37.271973 [info ] [MainThread]:   compiled code at target\compiled\smb_dataplatform\models\staging\stg_orders.sql
+[0m16:29:37.272972 [info ] [MainThread]: 
+[0m16:29:37.272972 [info ] [MainThread]: Done. PASS=15 WARN=0 ERROR=1 SKIP=23 NO-OP=0 TOTAL=39
+[0m16:29:37.273995 [debug] [MainThread]: Command `dbt build` failed at 16:29:37.273995 after 26.48 seconds
+[0m16:29:37.273995 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676EE7D690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676F0D7A10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002676F0D7650>]}
+[0m16:29:37.274999 [debug] [MainThread]: Flushing usage events
+[0m16:29:38.112060 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -1,12 +1,13 @@
 
-  
-  create view "dbt_metrics"."main"."stg_orders__dbt_tmp" as (
-    -- Silver Layer (staging) for Orders
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_orders`
+  OPTIONS()
+  as -- Silver Layer (staging) for Orders
 -- This model cleans and prepares raw order data from the bronze layer.
 
 with source as (
     -- This should point to your raw orders data in the bronze layer
-    select * from "shopify_db"."shopify_data"."orders"
+    select * from `smb-dataplatform`.`shopify_data`.`orders`
 )
 
 select
@@ -26,5 +27,5 @@ select
     -- payment gateway source (e.g., Stripe, Shopify Payments).
     0 as transaction_fee
 
-from source
-  );
+from source;
+

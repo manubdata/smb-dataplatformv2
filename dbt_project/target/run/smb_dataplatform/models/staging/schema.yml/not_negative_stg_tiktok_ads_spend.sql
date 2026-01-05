@@ -9,7 +9,7 @@
   
 
 select *
-from "dbt_metrics"."main"."stg_tiktok_ads"
+from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
 where spend < 0
 
 

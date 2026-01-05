@@ -96,6 +96,12 @@ resource "google_project_iam_member" "workflow_invoker" {
   member  = "serviceAccount:${google_service_account.job_runner.email}"
 }
 
+resource "google_project_iam_member" "bq_job_user" {
+  project = var.gcp_project_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:${google_service_account.job_runner.email}"
+}
+
 # --- 5. Secret Management (Shopify API Credentials) ---
 
 # Look up the secrets that were created manually

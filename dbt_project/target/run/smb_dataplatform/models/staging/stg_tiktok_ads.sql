@@ -1,7 +1,8 @@
 
-  
-  create view "dbt_metrics"."main"."stg_tiktok_ads__dbt_tmp" as (
-    -- Silver Layer (staging) for TikTok Ads
+
+  create or replace view `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+  OPTIONS()
+  as -- Silver Layer (staging) for TikTok Ads
 -- This model cleans and prepares raw ad spend data from the bronze layer.
 
 with source as (
@@ -9,12 +10,12 @@ with source as (
     select
         cast(stat_time_day as date) as date_day,
         spend
-    from "tiktok_db"."main"."ad_reports"
+    from `smb-dataplatform`.`tiktok_ads_data`.`ad_reports`
 )
 
 select
     date_day,
     sum(spend) as spend -- Aggregate spend by date_day to ensure uniqueness
 from source
-group by 1
-  );
+group by 1;
+

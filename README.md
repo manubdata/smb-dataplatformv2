@@ -1,6 +1,6 @@
 # SMB Data Platform V2
 
-Data Platform as a Service for SMB E-commerce, using dlt and a modern data stack.
+Data Platform as a Service for SMB E-commerce, using `dlt` and a modern data stack.
 
 ## 🚀 Getting Started
 
@@ -16,86 +16,80 @@ uv pip install -e .[etl,dbt,dev]
 
 Credentials for data sources are stored in `.dlt/secrets.toml`. Make sure this file is not committed to version control. The project's `.gitignore` is already configured to ignore the `.dlt/` directory.
 
-For dbt, the project uses DuckDB. The dbt profiles are configured in `dbt_profiles/profiles.yml`, and the dbt project settings are in `dbt_project/dbt_project.yml`. These configurations define how dbt connects to the DuckDB files for both source data and materialized models.
+For dbt, the project uses a flexible profile system (`dbt_profiles/profiles.yml`) that allows switching between local DuckDB for development and BigQuery for production. The dbt project settings are in `dbt_project/dbt_project.yml`.
+
+---
+
+## 📂 Project Structure
+
+The project follows a modular structure to support scalable data pipelines and easy client deployments:
+
+*   `pipelines/`: Contains all `dlt` ingestion pipelines. Each data source (e.g., `shopify`, `facebook_ads`, `tiktok_ads`) is a sub-directory with its own `_pipeline.py` script.
+    *   `pipelines/mock_data/`: Houses faker scripts for generating local DuckDB data for rapid testing and demos.
+*   `dbt_project/`: Contains the `dbt` models for data transformation, organized into staging and marts layers.
+*   `terraform/`: Stores Terraform configurations for deploying the entire data platform infrastructure to Google Cloud Platform (GCP).
+*   `duckdb_files/`: Local DuckDB databases generated during local development and testing.
+*   `tests/`: Unit and integration tests for pipelines and other components.
+*   `scripts/`: Utility scripts (e.g., for populating mock data).
+*   `workflows/`: Google Cloud Workflow definitions for orchestrating jobs.
 
 ---
 
 ## 📦 Data Ingestion (dlt)
 
-This section covers how raw data is brought into the platform, either from external sources via `dlt` pipelines or generated as mock data for development.
+This section covers how raw data is brought into the platform. All `dlt` ingestion pipelines are standardized and can load data to either local DuckDB for development or BigQuery for production.
 
-### Shopify Pipeline
+### Unified Pipeline Runner
 
-This pipeline extracts Products, Orders, and Customers data from the Shopify API.
+A single script, `pipelines/run_pipeline.py`, acts as a centralized entry point to execute any ingestion pipeline.
 
-#### Configuration
-
-To run the Shopify pipeline, you need to configure your Shopify App credentials in `.dlt/secrets.toml`. The pipeline uses OAuth 2.0 with a client ID and secret to fetch a fresh access token on each run.
-
-```toml
-# .dlt/secrets.toml
-[shopify]
-shop_url = "your-shop-name.myshopify.com"
-client_id = "your_app_client_id"
-client_secret = "your_app_client_secret"
-```
-
-#### Incremental Loading
-
-The pipeline is configured for incremental loading based on the `updated_at` field for all resources. On the first run, it will load all historical data (from `2023-01-01`). Subsequent runs will only fetch records that have been created or updated since the last run, making it efficient.
-
-#### Running the Pipeline
-
-You can run the pipeline using the following `poe` command:
+**Usage:**
 
 ```bash
-uv run poe run-pipeline
+uv run python pipelines/run_pipeline.py run_pipeline <pipeline_name> --destination <destination_type>
 ```
 
-The data will be loaded into a local DuckDB database at `./duckdb_files/shopify.duckdb`.
+*   `<pipeline_name>`: `shopify`, `facebook_ads`, `tiktok_ads`
+*   `<destination_type>`: `duckdb` (for local development/testing) or `bigquery` (for GCP deployment)
 
-### Mock Data Generation
+**Examples:**
 
-For development and testing purposes, you can generate and populate mock data for various sources.
+*   **Run Shopify pipeline to local DuckDB:**
+    ```bash
+    uv run python pipelines/run_pipeline.py run_pipeline shopify --destination duckdb
+    ```
+*   **Run Facebook Ads pipeline to GCP BigQuery:**
+    ```bash
+    uv run python pipelines/run_pipeline.py run_pipeline facebook_ads --destination bigquery
+    ```
 
-#### Meta (Facebook) Ads
+### Mock Data Generation (for local testing/demos)
 
-To generate mock Meta Ads data, run the following script:
+For rapid local testing and building client demos with DuckDB, you can leverage the faker scripts located in `pipelines/mock_data/`. The standardized `dlt` pipelines (e.g., `facebook_ads`, `tiktok_ads`) will use these when `--destination duckdb` is specified.
 
-```bash
-uv run python dlt_pipelines/mock_data/meta_faker.py --count 10 --days 30
-```
-
-This will create a `facebook_ads.duckdb` file in the `./duckdb_files` directory, containing `campaigns`, `adsets`, `ads`, and `ads_insights` tables.
-
-#### TikTok Ads
-
-To generate mock TikTok Ads data, run the following script:
-
-```bash
-uv run python dlt_pipelines/mock_data/tiktok_faker.py --count 10 --days 30
-```
-
-This will create a `tiktok_ads.duckdb` file in the `./duckdb_files` directory, containing `campaigns`, `adgroups`, `ads`, and `ad_reports` tables.
-
-#### Populate Mock Shopify Sales
-
-To add more sales data to the `shopify.duckdb` for testing various date ranges:
-
-```bash
-uv run python scripts/populate_shopify_sales.py
-```
-This script populates sales data from 2025-12-20 to 2025-12-31.
+*   **Populate additional mock Shopify sales data (if using local DuckDB):**
+    ```bash
+    uv run python scripts/populate_shopify_sales.py
+    ```
 
 ---
 
 ## 📊 Data Transformation (dbt)
 
-The project uses `dbt` to transform raw data into structured, analyzable formats, organized into silver (staging) and gold (marts) layers. The target data warehouse for dbt models is `duckdb_files/dbt_metrics.duckdb`.
+The project uses `dbt` to transform raw data into structured, analyzable formats, organized into silver (staging) and gold (marts) layers.
+
+### Environment-Aware Data Sources
+
+The `dbt` project is configured to dynamically switch between local DuckDB and cloud BigQuery data sources based on the active `dbt` profile (`target`).
+
+*   When running with the `dev` target (DuckDB), `dbt` will look for data in the local `duckdb_files/`.
+*   When running with the `prod` target (BigQuery), `dbt` will connect to the `smb-dataplatform` GCP project and relevant BigQuery datasets (e.g., `shopify_data_raw`, `facebook_ads_data`, `tiktok_ads_data`).
+
+This ensures seamless transition between local development and cloud deployment without manual configuration changes within `dbt` models or source definitions.
 
 ### Data Layers
 
-*   **Silver Layer (`models/staging/`)**: Contains cleaned and standardized views of the raw data. These models serve as direct interfaces to the bronze layer (raw DuckDB files).
+*   **Silver Layer (`models/staging/`)**: Contains cleaned and standardized views of the raw data. These models serve as direct interfaces to the bronze layer (raw DLT output).
 *   **Gold Layer (`models/marts/`)**: Houses aggregated and business-ready tables for reporting and analytics. This layer includes intermediate aggregates (`models/marts/intermediate/`) and final Key Performance Indicator (KPI) reports.
 
 ### Calculated Metrics
@@ -155,9 +149,9 @@ The dbt project includes comprehensive data quality tests:
 
 ---
 
-## 🚀 Deploying a New Client
+## 🚀 Deploying to GCP
 
-This guide walks through the end-to-end process for deploying the entire data pipeline for a new client, leveraging the templatized Terraform configuration.
+This section outlines the process for deploying the entire data platform for a new client using Terraform and orchestrating it with Cloud Workflows.
 
 ### 1. Manual Pre-Deployment Steps
 
@@ -243,12 +237,11 @@ Now, run the following `poe` commands from the **root of the project**:
 
 ```bash
 # Build, tag, and push the ingestion image
-uv run poe build-push-ingestion -- project_id=your-gcp-project-id client_name=your-unique-client-prefix region=your-gcp-region
+uv run poe build-push-ingestion
 
 # Build, tag, and push the transformation image
-uv run poe build-push-transformation -- project_id=your-gcp-project-id client_name=your-unique-client-prefix region=your-gcp-region
+uv run poe build-push-transformation
 ```
-*Note: The `--` separates `poe` arguments from arguments passed to the underlying `shell` command. The `project_id`, `client_name`, and `region` are passed as environment variables to the shell command executed by `poe`.*
 
 #### c) Deploy Infrastructure with Terraform
 
@@ -306,19 +299,54 @@ From the **root of the project**:
 ```bash
 uv run poe tf-destroy # This task should be added to pyproject.toml
 ```
-*Note: A `tf-destroy` poe task simplifies this. Ensure to add `deletion_protection = false` to any newly added resources if you plan to destroy them via Terraform.*
 
-### Extending `pyproject.toml` for Deployment
+---
 
-To enable the `poe` commands mentioned above, add the following tasks to your `pyproject.toml` under the `[tool.poe.tasks]` section:
+## ⚙️ Development & Testing
 
-```toml
-# --- Deployment (GCP) ---
-build-push-ingestion = { shell = "docker build -f ingestion.Dockerfile -t ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/ingestion:latest . && docker push ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/ingestion:latest", help = "Builds and pushes the dlt ingestion Docker image to Artifact Registry." }
-build-push-transformation = { shell = "docker build -f transformation.Dockerfile -t ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/transformation:latest . && docker push ${region}-docker.pkg.dev/${project_id}/${client_name}-artifact-repo/transformation:latest", help = "Builds and pushes the dbt transformation Docker image to Artifact Registry." }
-tf-destroy = { cmd = "terraform destroy -auto-approve", cwd = "terraform", help = "Destroys all Terraform-managed infrastructure." }
+### Local Development with DuckDB
 
-# Example usage for build-push tasks:
-# uv run poe build-push-ingestion -- project_id=... client_name=... region=...
+For local development and rapid iteration, you can run ingestion pipelines and dbt transformations against local DuckDB files.
 
+1.  **Run Ingestion to DuckDB:**
+    Use the unified pipeline runner with `--destination duckdb`:
+    ```bash
+    uv run python pipelines/run_pipeline.py run_pipeline shopify --destination duckdb
+    uv run python pipelines/run_pipeline.py run_pipeline facebook_ads --destination duckdb
+    uv run python pipelines/run_pipeline.py run_pipeline tiktok_ads --destination duckdb
+    ```
+    This will create or update `.duckdb` files in the `duckdb_files/` directory.
 
+2.  **Run dbt against DuckDB:**
+    Use the default `dev` dbt target, which is configured for DuckDB:
+    ```bash
+    uv run poe dbt-build
+    ```
+    This will materialize your dbt models into `duckdb_files/dbt_metrics.duckdb`.
+
+### Testing
+
+*   **Unit & Integration Tests**:
+    ```bash
+    uv run poe test
+    ```
+*   **Linting & Formatting**:
+    ```bash
+    uv run poe lint
+    uv run poe format
+    ```
+*   **All Checks**:
+    ```bash
+    uv run poe check
+    ```
+
+---
+
+## ✅ Progress & Future Work
+
+*   **Transformation Layer**: Successfully standardized and deployed the dbt transformation layer to GCP Cloud Run, including fixing various errors related to permissions, memory, and dbt BigQuery type compatibility.
+*   **Ingestion Layer Refactoring**: Standardized `dlt` ingestion pipelines for Shopify, Facebook Ads, and TikTok Ads, enabling flexible deployment to both local DuckDB and BigQuery. A unified pipeline runner has been implemented.
+*   **Dbt Configuration**: Updated `dbt` source configurations to dynamically switch between DuckDB and BigQuery based on the active `dbt` target.
+*   **Terraform**: Initial Terraform configuration is set up for deploying GCP resources, with client-specific parameterization handled via `terraform.tfvars`. Further enhancements can be made for more complex multi-client scenarios (e.g., using Terraform workspaces).
+
+---
