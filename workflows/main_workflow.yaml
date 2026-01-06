@@ -5,30 +5,46 @@ main:
         assign:
           - project: ${sys.get_env("GOOGLE_CLOUD_PROJECT_ID")}
           - location: "us-central1"
-          - ingestion_job_name: ${args.ingestion_job_name}
+          - shopify_ingestion_job_name: ${args.shopify_ingestion_job_name}
+          - facebook_ads_ingestion_job_name: ${args.facebook_ads_ingestion_job_name}
+          - tiktok_ads_ingestion_job_name: ${args.tiktok_ads_ingestion_job_name}
           - transformation_job_name: ${args.transformation_job_name}
           - poll_interval_seconds: 10
           - max_polls: 6 # 1 minute (6 * 10 seconds)
 
-    - run_ingestion:
-        call: googleapis.run.v2.projects.locations.jobs.run
-        args:
-          name: ${"projects/" + project + "/locations/" + location + "/jobs/" + ingestion_job_name}
-        result: ingestion_operation
-
-    - poll_ingestion:
-        call: poll_operation
-        args:
-          operation_name: ${ingestion_operation.name}
-          poll_interval_seconds: ${poll_interval_seconds}
-          max_polls: ${max_polls}
-        result: final_ingestion_lro_status
-
-    - check_ingestion_result:
-        switch:
-          - condition: ${final_ingestion_lro_status.body.error}
-            next: fail_ingestion
-        next: run_transformation
+    - run_all_ingestion_jobs_parallel:
+        parallel:
+          branches:
+            - shopify_ingestion:
+                steps:
+                  - call_shopify_ingestion:
+                      call: execute_single_ingestion_job
+                      args:
+                        job_name: ${shopify_ingestion_job_name}
+                        project: ${project}
+                        location: ${location}
+                        poll_interval_seconds: ${poll_interval_seconds}
+                        max_polls: ${max_polls}
+            - facebook_ads_ingestion:
+                steps:
+                  - call_facebook_ads_ingestion:
+                      call: execute_single_ingestion_job
+                      args:
+                        job_name: ${facebook_ads_ingestion_job_name}
+                        project: ${project}
+                        location: ${location}
+                        poll_interval_seconds: ${poll_interval_seconds}
+                        max_polls: ${max_polls}
+            - tiktok_ads_ingestion:
+                steps:
+                  - call_tiktok_ads_ingestion:
+                      call: execute_single_ingestion_job
+                      args:
+                        job_name: ${tiktok_ads_ingestion_job_name}
+                        project: ${project}
+                        location: ${location}
+                        poll_interval_seconds: ${poll_interval_seconds}
+                        max_polls: ${max_polls}
 
     - run_transformation:
         call: googleapis.run.v2.projects.locations.jobs.run
@@ -50,12 +66,34 @@ main:
             next: fail_transformation
         next: success
 
-    - fail_ingestion:
-        raise: "Ingestion job failed"
     - fail_transformation:
         raise: "Transformation job failed"
     - success:
         return: "All jobs completed successfully."
+
+execute_single_ingestion_job:
+  params: [job_name, project, location, poll_interval_seconds, max_polls]
+  steps:
+    - run_job:
+        call: googleapis.run.v2.projects.locations.jobs.run
+        args:
+          name: ${"projects/" + project + "/locations/" + location + "/jobs/" + job_name}
+        result: job_operation
+    - poll_job:
+        call: poll_operation
+        args:
+          operation_name: ${job_operation.name}
+          poll_interval_seconds: ${poll_interval_seconds}
+          max_polls: ${max_polls}
+        result: final_lro_status
+    - check_job_result:
+        switch:
+          - condition: ${final_lro_status.body.error}
+            raise: ${"An ingestion job failed. Check Cloud Run job logs for " + job_name + " for details."}
+        next: end_job
+
+    - end_job:
+        return: "Ingestion job completed successfully."
 
 poll_operation:
   params: [operation_name, poll_interval_seconds, max_polls]

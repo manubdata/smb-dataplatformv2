@@ -1,4 +1,4 @@
-import fire
+import argparse
 import importlib
 
 def run_pipeline(pipeline_name: str, destination: str = "duckdb"):
@@ -22,4 +22,9 @@ def run_pipeline(pipeline_name: str, destination: str = "duckdb"):
         print(f"An error occurred while running pipeline '{pipeline_name}': {e}")
 
 if __name__ == "__main__":
-    fire.Fire(run_pipeline)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("pipeline_name", help="The name of the pipeline to run (e.g., 'shopify', 'facebook_ads', 'tiktok_ads')")
+    parser.add_argument("--destination", default="duckdb", help="The destination to load data to (e.g., 'duckdb', 'bigquery')")
+    args = parser.parse_args()
+    
+    run_pipeline(args.pipeline_name, args.destination)

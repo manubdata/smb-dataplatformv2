@@ -1,7 +1,7 @@
 import dlt
 from dlt.sources.helpers import requests
 import os
-import fire # Import fire
+import argparse # Import argparse
 
 @dlt.source(name="shopify", section="shopify")
 def shopify_source(
@@ -187,4 +187,8 @@ def run_pipeline(destination: str = "duckdb"): # Modified function signature
 
 
 if __name__ == "__main__":
-    fire.Fire(run_pipeline) # Use fire.Fire
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--destination", default="duckdb", help="The destination to load data to (e.g., 'duckdb', 'bigquery')")
+    args = parser.parse_args()
+    
+    run_pipeline(args.destination)

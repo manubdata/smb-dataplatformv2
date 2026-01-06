@@ -1,5 +1,3 @@
-# --- 0. Provider and Variables ---
-
 variable "gcp_project_id" {
   description = "The Google Cloud project ID to deploy the resources to."
   type        = string
@@ -51,7 +49,7 @@ resource "google_project_service" "apis" {
     "workflowexecutions.googleapis.com",
     "secretmanager.googleapis.com"
   ])
-  service = each.key
+  service            = each.key
   disable_on_destroy = false
 }
 
@@ -142,16 +140,15 @@ resource "google_secret_manager_secret_iam_member" "shopify_client_secret_access
   member    = "serviceAccount:${google_service_account.job_runner.email}"
 }
 
-
 output "sa_email" {
   value = google_service_account.job_runner.email
 }
 
 # 6. Define the Cloud Run Jobs
-resource "google_cloud_run_v2_job" "ingestion_runner" {
-  project  = var.gcp_project_id
-  name     = "${var.client_name}-ingestion-runner"
-  location = var.gcp_region
+resource "google_cloud_run_v2_job" "shopify_ingestion_runner" {
+  project             = var.gcp_project_id
+  name                = "${var.client_name}-shopify-ingestion-runner"
+  location            = var.gcp_region
   deletion_protection = false
 
   template {
@@ -161,7 +158,7 @@ resource "google_cloud_run_v2_job" "ingestion_runner" {
       timeout         = "300s" # 5 minutes
       containers {
         image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/ingestion:latest"
-        command = ["python", "dlt_pipelines/shopify/shopify_pipeline.py", "--destination", "bigquery"]
+        command = ["python", "pipelines/run_pipeline.py", "run_pipeline", "shopify", "--destination", "bigquery"]
 
         env {
           name = "SOURCES__SHOPIFY__SHOP_URL"
@@ -200,6 +197,44 @@ resource "google_cloud_run_v2_job" "ingestion_runner" {
   ]
 }
 
+resource "google_cloud_run_v2_job" "facebook_ads_ingestion_runner" {
+  project             = var.gcp_project_id
+  name                = "${var.client_name}-facebook-ads-ingestion-runner"
+  location            = var.gcp_region
+  deletion_protection = false
+
+  template {
+    template {
+      service_account = google_service_account.job_runner.email
+      max_retries     = 1
+      timeout         = "300s" # 5 minutes
+      containers {
+        image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/ingestion:latest"
+        command = ["python", "pipelines/run_pipeline.py", "run_pipeline", "facebook_ads", "--destination", "bigquery"]
+      }
+    }
+  }
+}
+
+resource "google_cloud_run_v2_job" "tiktok_ads_ingestion_runner" {
+  project             = var.gcp_project_id
+  name                = "${var.client_name}-tiktok-ads-ingestion-runner"
+  location            = var.gcp_region
+  deletion_protection = false
+
+  template {
+    template {
+      service_account = google_service_account.job_runner.email
+      max_retries     = 1
+      timeout         = "300s" # 5 minutes
+      containers {
+        image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/ingestion:latest"
+        command = ["python", "pipelines/run_pipeline.py", "run_pipeline", "tiktok_ads", "--destination", "bigquery"]
+      }
+    }
+  }
+}
+
 resource "google_cloud_run_v2_job" "transformation_runner" {
   project  = var.gcp_project_id
   name     = "${var.client_name}-transformation-runner"
@@ -227,8 +262,10 @@ resource "google_workflows_workflow" "main_workflow" {
   deletion_protection = false
   depends_on = [
     google_project_service.apis,
-    google_cloud_run_v2_job.ingestion_runner,
-    google_cloud_run_v2_job.transformation_runner
+    google_cloud_run_v2_job.shopify_ingestion_runner,
+    google_cloud_run_v2_job.facebook_ads_ingestion_runner,
+    google_cloud_run_v2_job.tiktok_ads_ingestion_runner,
+    google_cloud_run_v2_job.transformation_runner,
   ]
 }
 
@@ -246,8 +283,10 @@ resource "google_cloud_scheduler_job" "workflow_scheduler" {
     http_method = "POST"
     body        = base64encode(jsonencode({
       "argument" = {
-        "ingestion_job_name"      = google_cloud_run_v2_job.ingestion_runner.name
-        "transformation_job_name" = google_cloud_run_v2_job.transformation_runner.name
+        "shopify_ingestion_job_name"      = google_cloud_run_v2_job.shopify_ingestion_runner.name
+        "facebook_ads_ingestion_job_name" = google_cloud_run_v2_job.facebook_ads_ingestion_runner.name
+        "tiktok_ads_ingestion_job_name"   = google_cloud_run_v2_job.tiktok_ads_ingestion_runner.name
+        "transformation_job_name"         = google_cloud_run_v2_job.transformation_runner.name
       }
     }))
     oauth_token {

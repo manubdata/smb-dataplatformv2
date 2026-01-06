@@ -1,7 +1,7 @@
 import dlt
 import pandas as pd
 from pipelines.mock_data.meta_faker import AdsDataGenerator
-import fire
+import argparse
 
 @dlt.source(name="facebook_ads")
 def facebook_ads_source(campaign_count: int = 10, days: int = 30):
@@ -59,4 +59,10 @@ def run_pipeline(destination: str = "duckdb", campaign_count: int = 10, days: in
     print(f"✅ Facebook Ads data loaded to {destination} successfully.")
 
 if __name__ == "__main__":
-    fire.Fire(run_pipeline)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--destination", default="duckdb", help="The destination to load data to (e.g., 'duckdb', 'bigquery')")
+    parser.add_argument("--campaign_count", type=int, default=10, help="Number of campaigns to generate.")
+    parser.add_argument("--days", type=int, default=30, help="Number of days for insights data.")
+    args = parser.parse_args()
+    
+    run_pipeline(args.destination, args.campaign_count, args.days)
