@@ -4,6 +4,9 @@ FROM python:3.11-slim
 # Set the working directory
 WORKDIR /app
 
+# Add /app to PYTHONPATH to ensure Python can find the 'pipelines' package
+ENV PYTHONPATH=/app
+
 # Install uv, the project's package manager
 RUN pip install uv
 

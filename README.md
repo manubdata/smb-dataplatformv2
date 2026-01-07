@@ -46,7 +46,7 @@ A single script, `pipelines/run_pipeline.py`, acts as a centralized entry point 
 **Usage:**
 
 ```bash
-uv run python pipelines/run_pipeline.py run_pipeline <pipeline_name> --destination <destination_type>
+uv run python -m pipelines.run_pipeline <pipeline_name> --destination <destination_type>
 ```
 
 *   `<pipeline_name>`: `shopify`, `facebook_ads`, `tiktok_ads`
@@ -56,16 +56,16 @@ uv run python pipelines/run_pipeline.py run_pipeline <pipeline_name> --destinati
 
 *   **Run Shopify pipeline to local DuckDB:**
     ```bash
-    uv run python pipelines/run_pipeline.py run_pipeline shopify --destination duckdb
+    uv run python -m pipelines.run_pipeline shopify --destination duckdb
     ```
 *   **Run Facebook Ads pipeline to GCP BigQuery:**
     ```bash
-    uv run python pipelines/run_pipeline.py run_pipeline facebook_ads --destination bigquery
+    uv run python -m pipelines.run_pipeline facebook_ads --destination bigquery
     ```
 
 ### Mock Data Generation (for local testing/demos)
 
-For rapid local testing and building client demos with DuckDB, you can leverage the faker scripts located in `pipelines/mock_data/`. The standardized `dlt` pipelines (e.g., `facebook_ads`, `tiktok_ads`) will use these when `--destination duckdb` is specified.
+For rapid local testing and building client demos with DuckDB, you can leverage the faker scripts located in `pipelines/mock_data/`. The standardized `dlt` pipelines (e.g., `facebook_ads`, `tiktok_ads`) will use these when `--destination duckdb` is specified. The `faker` library is now included in the `etl` dependencies to ensure mock data generation works in all environments.
 
 *   **Populate additional mock Shopify sales data (if using local DuckDB):**
     ```bash
@@ -149,13 +149,13 @@ The dbt project includes comprehensive data quality tests:
 
 ---
 
-## 🚀 Deploying to GCP
+## 🚀 Deploying to GCP for a New Client
 
-This section outlines the process for deploying the entire data platform for a new client using Terraform and orchestrating it with Cloud Workflows.
+This section outlines the refined process for deploying the entire data platform for a new client using Terraform and orchestrating it with Cloud Workflows.
 
 ### 1. Manual Pre-Deployment Steps
 
-Before running any local commands, you must perform the following setup steps manually in the Google Cloud Console and your client's Shopify store.
+Before running any local commands, you must perform the following setup steps manually in the Google Cloud Console and the client's respective data source platforms (e.g., Shopify, Facebook Ads, TikTok Ads).
 
 #### a) Google Cloud Project Setup
 
@@ -169,31 +169,45 @@ Before running any local commands, you must perform the following setup steps ma
     ```
     *Replace `your-gcp-project-id` with the actual project ID you created/selected.*
 
-#### b) Shopify Custom App Setup
+#### b) Data Source API Setup (Shopify, Facebook Ads, TikTok Ads)
 
-1.  Log in to your client's Shopify store admin interface.
-2.  Navigate to **Apps** -> **Develop apps for your store**.
-3.  Create a new **Custom App** (e.g., `Data Platform Integration`).
-4.  In the app's settings, configure the **API scopes**. You will need at least `read_products`, `read_orders`, and `read_customers` for the ingestion pipeline.
-5.  Go to the **API credentials** tab and note down the **API key** and **API secret key**. You will need these for the next step.
+For each data source, you will need to set up API access and obtain credentials.
+
+*   **Shopify Custom App Setup:**
+    1.  Log in to your client's Shopify store admin interface.
+    2.  Navigate to **Apps** -> **Develop apps for your store**.
+    3.  Create a new **Custom App** (e.g., `Data Platform Integration`).
+    4.  In the app's settings, configure the **API scopes**. You will need at least `read_products`, `read_orders`, and `read_customers` for the ingestion pipeline.
+    5.  Go to the **API credentials** tab and note down the **API key** and **API secret key**.
+*   **Facebook Ads API Setup:**
+    1.  Create a Facebook App and configure access to the Ads API.
+    2.  Obtain an Access Token (usually a Long-Lived User Access Token or System User Access Token).
+    3.  Note down the Ad Account ID(s).
+*   **TikTok Ads API Setup:**
+    1.  Create a TikTok for Developers App and configure access to the Ads API.
+    2.  Obtain an Access Token and the Advertiser ID(s).
 
 #### c) Google Secret Manager Setup
 
-You must create three secrets in Google Secret Manager to securely store the Shopify credentials. The names of these secrets (`shop_url`, `client_id`, `client_secret`) are the default values expected by the Terraform configuration.
+You must create secrets in Google Secret Manager to securely store the API credentials for each data source. The names of these secrets (e.g., `shop_url`, `client_id`, `client_secret` for Shopify; `facebook_access_token`, `facebook_ad_account_id` for Facebook Ads; `tiktok_access_token`, `tiktok_advertiser_id` for TikTok Ads) are the default values expected by the Terraform configuration and DLT.
 
-**Crucially, the secret values must be the raw text, without any surrounding quotes.** If you include quotes, the pipeline will fail with a `NameResolutionError` (DNS resolution error).
+**Crucially, the secret values must be the raw text, without any surrounding quotes.** If you include quotes, the pipeline will fail with potential parsing errors.
 
 Run the following `gcloud` commands to create the secrets, replacing the placeholder values with your client's actual information:
 
 ```bash
-# Create the shop_url secret (value should NOT have quotes)
+# Shopify Credentials
 echo "your-client-shop-name.myshopify.com" | gcloud secrets create shop_url --data-file=- --project=your-gcp-project-id
-
-# Create the client_id secret (value should NOT have quotes)
 echo "your-shopify-app-api-key" | gcloud secrets create client_id --data-file=- --project=your-gcp-project-id
-
-# Create the client_secret secret (value should NOT have quotes)
 echo "your-shopify-app-api-secret-key" | gcloud secrets create client_secret --data-file=- --project=your-gcp-project-id
+
+# Facebook Ads Credentials (example, adjust secret names as per dlt configuration)
+echo "your-facebook-long-lived-access-token" | gcloud secrets create facebook_access_token --data-file=- --project=your-gcp-project-id
+echo "your-facebook-ad-account-id" | gcloud secrets create facebook_ad_account_id --data-file=- --project=your-gcp-project-id
+
+# TikTok Ads Credentials (example, adjust secret names as per dlt configuration)
+echo "your-tiktok-access-token" | gcloud secrets create tiktok_access_token --data-file=- --project=your-gcp-project-id
+echo "your-tiktok-advertiser-id" | gcloud secrets create tiktok_advertiser_id --data-file=- --project=your-gcp-project-id
 ```
 *Remember to replace `your-gcp-project-id` with your project ID in these commands.*
 
@@ -222,10 +236,16 @@ Once the manual prerequisites are met, you can deploy the entire infrastructure 
     # shopify_client_secret_secret_name = "custom-client-secret-secret"
     ```
     *Ensure `gcp_project_id` matches the project ID set in `gcloud config`.*
+    *Ensure `gcp_region` is consistent across all deployments.*
 
 #### b) Build and Push Docker Images
 
-These commands build the Docker images for the ingestion and transformation services, tag them with the correct Artifact Registry path (which will include your `client_name` prefix), and push them to Google Artifact Registry.
+The Docker images for the ingestion and transformation services encapsulate all necessary code and dependencies.
+
+**Important Considerations for Python Packages & Docker:**
+*   The `pipelines/` directory is treated as the top-level Python package for all ingestion logic.
+*   The `faker` library, used by mock data generators, is included in the `etl` dependencies to ensure it's available in the Docker image.
+*   The Docker builds ensure that the Python environment within the container (specifically the `PYTHONPATH`) is correctly configured to discover all `pipelines` modules.
 
 **You must be authenticated with `gcloud` and configured Docker to use Artifact Registry for this step.**
 ```bash
@@ -247,6 +267,29 @@ uv run poe build-push-transformation
 
 This step will create all the GCP resources (Artifact Registry, Service Account, Cloud Run jobs, Workflow, Scheduler, IAM bindings for secrets, etc.) as defined in your Terraform files.
 
+**Important: Cloud Run Job Memory for dbt Transformations:**
+If you encounter `Out-of-memory` errors (exit code 137) during the transformation job, it indicates that dbt requires more memory for its compilation and execution tasks. You will need to adjust the memory limit in `terraform/main.tf` for the `transformation_runner` job. Locate the `resources` block within the `containers` definition and increase the `memory` value. A good starting point is `2Gi` or `4Gi`.
+
+Example snippet for `transformation_runner` in `terraform/main.tf` (ensure correct nesting):
+```terraform
+resource "google_cloud_run_v2_job" "transformation_runner" {
+  # ...
+  template {
+    template {
+      # ...
+      containers {
+        # ...
+        resources {
+          limits = {
+            memory = "2Gi" # Increase this value if OOM errors occur
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 From the **root of the project**:
 ```bash
 # Initialize Terraform (only needed once per project setup)
@@ -264,7 +307,7 @@ Terraform will read the variables from your `terraform.tfvars` file and configur
 If a Cloud Run job fails or a Workflow execution errors out, the most important step is to check the logs.
 
 1.  **For Cloud Run Jobs:** Navigate to the Google Cloud Console -> **Cloud Run** -> **Jobs**. Select the job (e.g., `your-unique-client-prefix-ingestion-runner`), go to the **Executions** tab, and click on a failed execution to view its logs.
-2.  **For Cloud Workflows:** Navigate to the Google Cloud Console -> **Workflows**. Select the workflow (e.g., `your-unique-client-prefix-main-workflow`), go to the **Executions** tab, and click on a failed execution to view its logs and identify the failing step.
+2.  **For Cloud Workflows:** Navigate to the Google Cloud Console -> **Workflows**. Select the workflow (e.g., `your-unique-client-prefix-main-workflow`), go to the **Executions** tab, and click on a failed execution to view its logs and identify the failing step. The workflow is configured with robust `try/except` error handling to provide clearer insights into job failures.
 
 #### b) Triggering the Workflow Manually
 
@@ -333,7 +376,6 @@ For local development and rapid iteration, you can run ingestion pipelines and d
 *   **Linting & Formatting**:
     ```bash
     uv run poe lint
-    uv run poe format
     ```
 *   **All Checks**:
     ```bash
@@ -344,9 +386,11 @@ For local development and rapid iteration, you can run ingestion pipelines and d
 
 ## ✅ Progress & Future Work
 
-*   **Transformation Layer**: Successfully standardized and deployed the dbt transformation layer to GCP Cloud Run, including fixing various errors related to permissions, memory, and dbt BigQuery type compatibility.
-*   **Ingestion Layer Refactoring**: Standardized `dlt` ingestion pipelines for Shopify, Facebook Ads, and TikTok Ads, enabling flexible deployment to both local DuckDB and BigQuery. A unified pipeline runner has been implemented.
+*   **Transformation Layer**: Standardized and deployed the dbt transformation layer to GCP Cloud Run. Fixed various errors related to permissions, memory, and dbt BigQuery type compatibility.
+*   **Ingestion Layer**: Standardized `dlt` ingestion pipelines for Shopify, Facebook Ads, and TikTok Ads, enabling flexible deployment to both local DuckDB and BigQuery. A unified pipeline runner has been implemented.
 *   **Dbt Configuration**: Updated `dbt` source configurations to dynamically switch between DuckDB and BigQuery based on the active `dbt` target.
-*   **Terraform**: Initial Terraform configuration is set up for deploying GCP resources, with client-specific parameterization handled via `terraform.tfvars`. Further enhancements can be made for more complex multi-client scenarios (e.g., using Terraform workspaces).
+*   **Terraform**: Initial Terraform configuration is set up for deploying GCP resources, with client-specific parameterization handled via `terraform.tfvars`.
+*   **Cloud Workflows Orchestration**: Implemented robust error handling for Cloud Run job failures within the main workflow, ensuring better visibility and stability.
+*   **Docker Builds**: Ensured correct Python package discovery (`PYTHONPATH`) and dependency management (`faker` included in `etl` dependencies) within the Docker images for seamless GCP deployment.
 
 ---

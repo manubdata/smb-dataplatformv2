@@ -1,5 +1,6 @@
 import argparse
 import importlib
+import traceback # Import the traceback module
 
 def run_pipeline(pipeline_name: str, destination: str = "duckdb"):
     """
@@ -18,8 +19,14 @@ def run_pipeline(pipeline_name: str, destination: str = "duckdb"):
         
     except ModuleNotFoundError:
         print(f"Error: Pipeline '{pipeline_name}' not found. Available pipelines: shopify, facebook_ads, tiktok_ads")
+        print("--- Full ModuleNotFoundError Traceback ---")
+        traceback.print_exc() # Print the full traceback
+        print("------------------------------------------")
     except Exception as e:
         print(f"An error occurred while running pipeline '{pipeline_name}': {e}")
+        print("--- Full Exception Traceback ---")
+        traceback.print_exc() # Print the full traceback for other exceptions
+        print("----------------------------------")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

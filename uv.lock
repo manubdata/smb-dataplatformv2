@@ -2960,6 +2960,7 @@ dev = [
 ]
 etl = [
     { name = "dlt", extra = ["bigquery", "duckdb"] },
+    { name = "faker" },
     { name = "google-cloud-bigquery" },
     { name = "google-cloud-bigquery-storage" },
     { name = "pandas" },
@@ -2978,6 +2979,7 @@ requires-dist = [
     { name = "dbt-duckdb", marker = "extra == 'dbt'", specifier = ">=1.7.0" },
     { name = "dlt", extras = ["bigquery", "duckdb"], marker = "extra == 'etl'", specifier = ">=0.4.0" },
     { name = "faker", marker = "extra == 'dev'", specifier = ">=18.0.0" },
+    { name = "faker", marker = "extra == 'etl'", specifier = ">=18.0.0" },
     { name = "google-cloud-bigquery", marker = "extra == 'etl'", specifier = ">=3.0.0" },
     { name = "google-cloud-bigquery-storage", marker = "extra == 'etl'", specifier = ">=2.0.0" },
     { name = "pandas", marker = "extra == 'etl'", specifier = ">=2.0.0" },

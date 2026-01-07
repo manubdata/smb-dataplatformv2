@@ -158,7 +158,7 @@ resource "google_cloud_run_v2_job" "shopify_ingestion_runner" {
       timeout         = "300s" # 5 minutes
       containers {
         image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/ingestion:latest"
-        command = ["python", "pipelines/run_pipeline.py", "run_pipeline", "shopify", "--destination", "bigquery"]
+        command = ["python", "-m", "pipelines.run_pipeline", "shopify", "--destination", "bigquery"]
 
         env {
           name = "SOURCES__SHOPIFY__SHOP_URL"
@@ -210,7 +210,7 @@ resource "google_cloud_run_v2_job" "facebook_ads_ingestion_runner" {
       timeout         = "300s" # 5 minutes
       containers {
         image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/ingestion:latest"
-        command = ["python", "pipelines/run_pipeline.py", "run_pipeline", "facebook_ads", "--destination", "bigquery"]
+        command = ["python", "-m", "pipelines.run_pipeline", "facebook_ads", "--destination", "bigquery"]
       }
     }
   }
@@ -229,7 +229,7 @@ resource "google_cloud_run_v2_job" "tiktok_ads_ingestion_runner" {
       timeout         = "300s" # 5 minutes
       containers {
         image = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/ingestion:latest"
-        command = ["python", "pipelines/run_pipeline.py", "run_pipeline", "tiktok_ads", "--destination", "bigquery"]
+        command = ["python", "-m", "pipelines.run_pipeline", "tiktok_ads", "--destination", "bigquery"]
       }
     }
   }
@@ -246,6 +246,11 @@ resource "google_cloud_run_v2_job" "transformation_runner" {
       containers {
         image   = "${var.gcp_region}-docker.pkg.dev/${var.gcp_project_id}/${google_artifact_registry_repository.repo.repository_id}/transformation:latest"
         command = ["uv", "run", "poe", "dbt-build-prod"]
+        resources {
+          limits = {
+            memory = "2Gi"
+          }
+        }
       }
     }
   }

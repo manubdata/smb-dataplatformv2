@@ -59,10 +59,16 @@ main:
           poll_interval_seconds: ${poll_interval_seconds}
           max_polls: ${max_polls}
         result: final_transformation_lro_status
-
+    - check_for_transformation_error:
+        try:
+          assign:
+            - transformation_error_payload: ${final_transformation_lro_status.body.error}
+        except:
+          assign:
+            - transformation_error_payload: null
     - check_transformation_result:
         switch:
-          - condition: ${final_transformation_lro_status.body.error}
+          - condition: ${transformation_error_payload != null}
             next: fail_transformation
         next: success
 
@@ -86,9 +92,16 @@ execute_single_ingestion_job:
           poll_interval_seconds: ${poll_interval_seconds}
           max_polls: ${max_polls}
         result: final_lro_status
+    - check_for_error:
+        try:
+          assign:
+            - error_payload: ${final_lro_status.body.error}
+        except:
+          assign:
+            - error_payload: null
     - check_job_result:
         switch:
-          - condition: ${final_lro_status.body.error}
+          - condition: ${error_payload != null}
             raise: ${"An ingestion job failed. Check Cloud Run job logs for " + job_name + " for details."}
         next: end_job
 

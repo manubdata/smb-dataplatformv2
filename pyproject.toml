@@ -17,6 +17,7 @@ etl = [
     "pandas>=2.0.0",
     "google-cloud-bigquery>=3.0.0",
     "google-cloud-bigquery-storage>=2.0.0",
+    "faker>=18.0.0", # Added faker for mock data generation
 ]
 
 # Dependencies for Transformation (Cloud Run Job B)
@@ -40,7 +41,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["dlt_pipelines"]
+packages = ["pipelines"]
 
 # Configure Pytest
 [tool.pytest.ini_options]
@@ -70,12 +71,12 @@ check = ["format", "lint", "test"]  # Runs all 3 in sequence, use: uv run poe ch
 # --- 2. Ingestion (dlt) ---
 # Runs the pipeline script. 
 # We use 'cmd' to ensure it runs with the 'etl' extras context if needed.
-run-pipeline-shopify-local = { cmd = "python pipelines/run_pipeline.py run-pipeline shopify --destination duckdb", help = "Run the Shopify pipeline to local DuckDB" }
-run-pipeline-shopify-gcp = { cmd = "python pipelines/run_pipeline.py run-pipeline shopify --destination bigquery", help = "Run the Shopify pipeline to GCP BigQuery" }
-run-pipeline-facebook-local = { cmd = "python pipelines/run_pipeline.py run-pipeline facebook_ads --destination duckdb", help = "Run the Facebook Ads pipeline to local DuckDB" }
-run-pipeline-facebook-gcp = { cmd = "python pipelines/run_pipeline.py run-pipeline facebook_ads --destination bigquery", help = "Run the Facebook Ads pipeline to GCP BigQuery" }
-run-pipeline-tiktok-local = { cmd = "python pipelines/run_pipeline.py run-pipeline tiktok_ads --destination duckdb", help = "Run the TikTok Ads pipeline to local DuckDB" }
-run-pipeline-tiktok-gcp = { cmd = "python pipelines/run_pipeline.py run-pipeline tiktok_ads --destination bigquery", help = "Run the TikTok Ads pipeline to GCP BigQuery" }
+run-pipeline-shopify-local = { cmd = "python -m pipelines.run_pipeline shopify --destination duckdb", help = "Run the Shopify pipeline to local DuckDB" }
+run-pipeline-shopify-gcp = { cmd = "python -m pipelines.run_pipeline shopify --destination bigquery", help = "Run the Shopify pipeline to GCP BigQuery" }
+run-pipeline-facebook-local = { cmd = "python -m pipelines.run_pipeline facebook_ads --destination duckdb", help = "Run the Facebook Ads pipeline to local DuckDB" }
+run-pipeline-facebook-gcp = { cmd = "python -m pipelines.run_pipeline facebook_ads --destination bigquery", help = "Run the Facebook Ads pipeline to GCP BigQuery" }
+run-pipeline-tiktok-local = { cmd = "python -m pipelines.run_pipeline tiktok_ads --destination duckdb", help = "Run the TikTok Ads pipeline to local DuckDB" }
+run-pipeline-tiktok-gcp = { cmd = "python -m pipelines.run_pipeline tiktok_ads --destination bigquery", help = "Run the TikTok Ads pipeline to GCP BigQuery" }
 
 # --- 3. Transformation (dbt) ---
 # dbt commands need to run inside the dbt_project folder

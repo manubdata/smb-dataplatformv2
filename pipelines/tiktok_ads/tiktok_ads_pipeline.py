@@ -1,7 +1,7 @@
 import dlt
 import pandas as pd
 from pipelines.mock_data.tiktok_faker import TikTokAdsDataGenerator
-import fire
+import argparse
 
 @dlt.source(name="tiktok_ads")
 def tiktok_ads_source(campaign_count: int = 8, days: int = 30):
@@ -35,20 +35,19 @@ def run_pipeline(destination: str = "duckdb", campaign_count: int = 8, days: int
     Loads mock TikTok Ads data to a specified destination (duckdb or bigquery).
     """
     pipeline_name = f"tiktok_ads_to_{destination}"
-    dataset_name = "tiktok_ads_data"
 
     if destination == "bigquery":
         pipeline = dlt.pipeline(
             pipeline_name=pipeline_name,
             destination="bigquery",
-            dataset_name=dataset_name,
+            dataset_name="tiktok_ads_data",
         )
     elif destination == "duckdb":
+        from dlt.destinations import duckdb
         pipeline = dlt.pipeline(
             pipeline_name=pipeline_name,
-            destination="duckdb",
-            dataset_name=dataset_name,
-            credentials={"database": f"./duckdb_files/{dataset_name}.duckdb"},
+            destination=duckdb(credentials="./duckdb_files/tiktok_ads.duckdb"),
+            dataset_name="main",
         )
     else:
         raise ValueError(f"Unsupported destination: {destination}")
@@ -59,4 +58,10 @@ def run_pipeline(destination: str = "duckdb", campaign_count: int = 8, days: int
     print(f"✅ TikTok Ads data loaded to {destination} successfully.")
 
 if __name__ == "__main__":
-    fire.Fire(run_pipeline)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--destination", default="duckdb", help="The destination to load data to (e.g., 'duckdb', 'bigquery')")
+    parser.add_argument("--campaign_count", type=int, default=8, help="Number of campaigns to generate.")
+    parser.add_argument("--days", type=int, default=30, help="Number of days for reports data.")
+    args = parser.parse_args()
+    
+    run_pipeline(args.destination, args.campaign_count, args.days)

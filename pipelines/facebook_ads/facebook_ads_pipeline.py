@@ -35,20 +35,19 @@ def run_pipeline(destination: str = "duckdb", campaign_count: int = 10, days: in
     Loads mock Facebook Ads data to a specified destination (duckdb or bigquery).
     """
     pipeline_name = f"facebook_ads_to_{destination}"
-    dataset_name = "facebook_ads_data"
 
     if destination == "bigquery":
         pipeline = dlt.pipeline(
             pipeline_name=pipeline_name,
             destination="bigquery",
-            dataset_name=dataset_name,
+            dataset_name="facebook_ads_data",
         )
     elif destination == "duckdb":
+        from dlt.destinations import duckdb
         pipeline = dlt.pipeline(
             pipeline_name=pipeline_name,
-            destination="duckdb",
-            dataset_name=dataset_name,
-            credentials={"database": f"./duckdb_files/{dataset_name}.duckdb"},
+            destination=duckdb(credentials="./duckdb_files/facebook_ads.duckdb"),
+            dataset_name="main",
         )
     else:
         raise ValueError(f"Unsupported destination: {destination}")

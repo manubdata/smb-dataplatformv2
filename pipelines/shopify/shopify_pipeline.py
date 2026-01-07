@@ -161,22 +161,22 @@ def shopify_source(
 
 def run_pipeline(destination: str = "duckdb"): # Modified function signature
     pipeline_name = f"shopify_to_{destination}" # Use f-string for pipeline name
-    dataset_name = "shopify_data_raw" # Use consistent dataset name
+    
 
     if destination == "bigquery":
         print("Running pipeline to BigQuery")
         pipeline = dlt.pipeline(
             pipeline_name=pipeline_name,
             destination="bigquery",
-            dataset_name=dataset_name,
+            dataset_name="shopify_data_raw",
         )
     elif destination == "duckdb": # Added elif for duckdb
         from dlt.destinations import duckdb
         print("Running pipeline to DuckDB")
         pipeline = dlt.pipeline(
             pipeline_name=pipeline_name, # Use consistent pipeline name
-            destination=duckdb(credentials=f"./duckdb_files/{dataset_name}.duckdb"), # Use f-string for credentials
-            dataset_name=dataset_name,
+            destination=duckdb(credentials="./duckdb_files/shopify.duckdb"), # Use f-string for credentials
+            dataset_name="shopify_data",
         )
     else: # Added else for unsupported destinations
         raise ValueError(f"Unsupported destination: {destination}")
