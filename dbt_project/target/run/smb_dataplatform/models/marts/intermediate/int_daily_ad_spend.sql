@@ -1,14 +1,11 @@
 
   
     
-
-    create or replace table `smb-dataplatform`.`smb_dataplatform`.`int_daily_ad_spend`
-      
-    
     
 
-    
-    OPTIONS()
+    create  table
+      "dbt_metrics"."main"."int_daily_ad_spend__dbt_tmp"
+  
     as (
       
 
@@ -17,13 +14,13 @@ with meta_insights as (
         date_day,
         spend,
         publisher_platform
-    from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+    from "dbt_metrics"."main"."stg_meta_ads"
 ),
 tiktok_spend as (
     select
         date_day,
         spend
-    from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+    from "dbt_metrics"."main"."stg_tiktok_ads"
 ),
 daily_meta_platform_spend as (
     select
@@ -43,4 +40,5 @@ select
 from daily_meta_platform_spend dmp
 full outer join tiktok_spend ts on dmp.date_day = ts.date_day
     );
+  
   

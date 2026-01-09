@@ -1,6 +1,6 @@
 
 
 select *
-from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+from "dbt_metrics"."main"."stg_meta_ads"
 where spend < 0
 

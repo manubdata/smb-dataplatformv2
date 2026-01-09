@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: shopify_raw
+    database: "{{ 'smb-dataplatform' if target.name == 'prod' else 'shopify_db' }}"
     schema: "{{ 'shopify_data_raw' if target.name == 'prod' else 'shopify_data' }}"
     description: "Raw data from Shopify, stored in the 'shopify_data' dataset in BigQuery."
     tables:
@@ -9,6 +10,7 @@ sources:
         description: "Raw orders data from Shopify."
 
   - name: meta_raw
+    database: "{{ 'smb-dataplatform' if target.name == 'prod' else 'facebook_db' }}"
     schema: "{{ 'facebook_ads_data' if target.name == 'prod' else 'main' }}"
     description: "Raw ad spend data from Meta (Facebook), stored in the 'facebook_ads_data' dataset in BigQuery."
     tables:
@@ -16,6 +18,7 @@ sources:
         description: "Raw daily ad spend from Meta."
 
   - name: tiktok_raw
+    database: "{{ 'smb-dataplatform' if target.name == 'prod' else 'tiktok_db' }}"
     schema: "{{ 'tiktok_ads_data' if target.name == 'prod' else 'main' }}"
     description: "Raw ad spend data from TikTok, stored in the 'tiktok_ads_data' dataset in BigQuery."
     tables:

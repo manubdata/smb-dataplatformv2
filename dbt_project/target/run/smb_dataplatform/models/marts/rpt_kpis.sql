@@ -15,6 +15,19 @@ with daily_orders as (
 daily_ad_spend as (
     select * from "dbt_metrics"."main"."int_daily_ad_spend"
 ),
+daily_orders_aggregated as (
+    select
+        date_day,
+        sum(total_net_sales) as total_net_sales,
+        sum(total_cogs) as total_cogs,
+        sum(total_shipping_cost) as total_shipping_cost,
+        sum(total_transaction_fee) as total_transaction_fee,
+        sum(total_orders) as total_orders,
+        sum(first_time_orders) as first_time_orders,
+        sum(total_customers) as total_customers
+    from daily_orders
+    group by 1
+),
 final_data as (
     select
         coalesce(d.date_day, ads.date_day) as date_day,
@@ -29,7 +42,7 @@ final_data as (
         coalesce(d.total_orders, 0) as total_orders,
         coalesce(d.first_time_orders, 0) as first_time_orders,
         coalesce(d.total_customers, 0) as total_customers
-    from daily_orders d
+    from daily_orders_aggregated d
     full outer join daily_ad_spend ads on d.date_day = ads.date_day
 )
 select

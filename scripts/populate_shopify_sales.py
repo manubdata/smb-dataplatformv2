@@ -2,95 +2,175 @@ import duckdb
 from datetime import datetime, timedelta
 import random
 from faker import Faker
-import uuid 
+import uuid
+import math
+import json
 
-def populate_shopify_sales(db_path: str, start_date_str: str, end_date_str: str, schema_name: str = "shopify_data"):
+# --- Configuration for the Story ---
+
+PRODUCTS = {
+    "prod_A": {"id": 1, "name": "The Best Seller", "price": 50.00, "return_rate": 0.30, "sales_weight": 0.6},
+    "prod_B": {"id": 2, "name": "The Sleeper", "price": 120.00, "return_rate": 0.02, "sales_weight": 0.3},
+    "prod_C": {"id": 3, "name": "The Dust Collector", "price": 75.00, "return_rate": 0.05, "sales_weight": 0.1},
+}
+
+# Trend parameters
+BASE_DAILY_ORDERS = 20
+GROWTH_FACTOR = 1.008 # This gives ~30% growth over 30 days.
+
+# --- End Configuration ---
+
+def create_tables(con, schema_name):
+    """Creates fresh tables for products and orders."""
+    con.execute(f"CREATE SCHEMA IF NOT EXISTS {schema_name};")
+    
+    con.execute(f"DROP TABLE IF EXISTS {schema_name}.products;")
+    con.execute(f"DROP TABLE IF EXISTS {schema_name}.orders;")
+
+    con.execute(f"""
+        CREATE TABLE {schema_name}.products (
+            id BIGINT PRIMARY KEY,
+            title VARCHAR,
+            vendor VARCHAR,
+            created_at TIMESTAMP,
+            updated_at TIMESTAMP,
+            product_type VARCHAR,
+            status VARCHAR,
+            handle VARCHAR,
+            tags VARCHAR,
+            admin_graphql_api_id VARCHAR,
+            _dlt_load_id VARCHAR,
+            _dlt_id VARCHAR
+        );
+    """)
+
+    con.execute(f"""
+        CREATE TABLE {schema_name}.orders (
+            id BIGINT PRIMARY KEY,
+            admin_graphql_api_id VARCHAR,
+            created_at TIMESTAMP,
+            processed_at TIMESTAMP,
+            updated_at TIMESTAMP,
+            total_price VARCHAR,
+            total_line_items_price VARCHAR,
+            total_discounts VARCHAR,
+            total_shipping_price_set__shop_money__amount VARCHAR,
+            customer__id BIGINT,
+            currency VARCHAR,
+            name VARCHAR,
+            number BIGINT,
+            order_number BIGINT,
+            financial_status VARCHAR,
+            product_id BIGINT,
+            product_title VARCHAR,
+            product_quantity BIGINT,
+            product_price DOUBLE,
+            _dlt_load_id VARCHAR,
+            _dlt_id VARCHAR
+        );
+    """)
+    print("✅ Fresh 'products' and 'orders' tables created with new schema.")
+
+def insert_products(con, schema_name):
+    """Populates the products table."""
+    fake = Faker()
+    product_records = []
+    for key, val in PRODUCTS.items():
+        created_at = fake.date_time_between(start_date="-2y", end_date="-1y").isoformat()
+        product_records.append(
+            (val['id'], val['name'], fake.company(), created_at, created_at,
+             'T-Shirt', 'active', val['name'].lower().replace(' ', '-'),
+             'mock, demo', str(uuid.uuid4()), str(uuid.uuid4()), str(uuid.uuid4()))
+        )
+
+    con.executemany(f"""
+        INSERT INTO {schema_name}.products 
+        (id, title, vendor, created_at, updated_at, product_type, status, handle, tags, admin_graphql_api_id, _dlt_load_id, _dlt_id) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    """, product_records)
+    print(f"✅ Inserted {len(product_records)} products.")
+
+def populate_shopify_sales(db_path: str, days_to_generate: int = 90, schema_name: str = "shopify_data"):
     fake = Faker()
     con = duckdb.connect(database=db_path)
 
-    # Get max existing order_id and customer_id
-    max_order_id = con.execute(f"SELECT MAX(id) FROM {schema_name}.orders").fetchone()[0] or 0
-    max_customer_id_query = con.execute(f"SELECT MAX(customer__id) FROM {schema_name}.orders").fetchone()
-    max_customer_id = max_customer_id_query[0] if max_customer_id_query and max_customer_id_query[0] is not None else 0
+    create_tables(con, schema_name)
+    insert_products(con, schema_name)
+
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=days_to_generate - 1)
     
-    current_order_id = max_order_id + 1
-    current_customer_id = max_customer_id + 1
+    date_generated = [start_date + timedelta(days=x) for x in range(days_to_generate)]
 
-    start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
-    end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+    order_records = []
+    current_order_id = 1
+    current_customer_id = 1
+    existing_customer_ids = []
 
-    date_generated = [start_date + timedelta(days=x) for x in range(0, (end_date-start_date).days + 1)]
+    print(f"Generating sales data from {start_date.date()} to {end_date.date()}...")
 
-    records = []
-    
-    # Fetch existing customer IDs to reuse some of them
-    existing_customer_ids_raw = con.execute(f"SELECT DISTINCT customer__id FROM {schema_name}.orders WHERE customer__id IS NOT NULL").fetchall()
-    existing_customer_ids = [c[0] for c in existing_customer_ids_raw if c[0] is not None]
-
-    for day in date_generated:
-        num_orders_today = random.randint(5, 20) # 5 to 20 orders per day
+    for i, day in enumerate(date_generated):
+        num_orders_today = int(BASE_DAILY_ORDERS * (GROWTH_FACTOR ** i))
+        
         for _ in range(num_orders_today):
-            order_id = current_order_id
+            product_key = random.choices(list(PRODUCTS.keys()), weights=[p['sales_weight'] for p in PRODUCTS.values()], k=1)[0]
+            product = PRODUCTS[product_key]
+
+            quantity = random.randint(1, 3)
+            line_item_price = product['price'] * quantity
+
+            is_returned = random.random() < product['return_rate']
+            refund_amount = 0
+            if is_returned:
+                refund_amount = line_item_price
+                financial_status = "partially_refunded"
+            else:
+                financial_status = "paid"
             
-            # Randomly pick an existing customer or create a new one
-            if random.random() < 0.7 and existing_customer_ids: # 70% chance to be an existing customer
+            shipping_cost = round(random.uniform(5.00, 20.00), 2)
+            total_price = line_item_price + shipping_cost
+
+            if random.random() < 0.7 and existing_customer_ids:
                 customer_id = random.choice(existing_customer_ids)
             else:
                 customer_id = current_customer_id
                 existing_customer_ids.append(customer_id)
-                current_customer_id += 1 # Only increment if new customer is created
+                current_customer_id += 1
 
-            created_at = datetime.combine(day, datetime.min.time()) + timedelta(hours=random.randint(9, 17), minutes=random.randint(0, 59), seconds=random.randint(0, 59))
-            
-            total_price = round(random.uniform(50.00, 500.00), 2)
-            shipping_cost = round(random.uniform(5.00, 20.00), 2)
-            
-            # Minimal required fields for the dbt model and schema structure
-            records.append({
-                "id": order_id,
-                "admin_graphql_api_id": str(uuid.uuid4()), 
-                "created_at": created_at.isoformat(), 
-                "total_price": str(total_price), # Cast to VARCHAR as per schema
-                "total_shipping_price_set__shop_money__amount": str(shipping_cost), # Cast to VARCHAR
+            created_at = datetime.combine(day, datetime.min.time()) + timedelta(hours=random.randint(0, 23), minutes=random.randint(0, 59))
+
+            order_records.append({
+                "id": current_order_id,
+                "admin_graphql_api_id": f"gid://shopify/Order/{current_order_id}",
+                "created_at": created_at,
+                "processed_at": created_at + timedelta(minutes=random.randint(5, 60)),
+                "updated_at": created_at,
+                "total_price": str(total_price),
+                "total_line_items_price": str(line_item_price),
+                "total_discounts": str(refund_amount),
+                "total_shipping_price_set__shop_money__amount": str(shipping_cost),
                 "customer__id": customer_id,
-                "currency": "USD", 
-                "processed_at": created_at.isoformat(),
-                "name": fake.word().upper() + str(random.randint(1000,9999)), # Random order name
-                "number": random.randint(1000, 9999),
-                "order_number": random.randint(1000, 9999),
-                "subtotal_price": str(total_price - shipping_cost), # Mock
-                "updated_at": created_at.isoformat(),
-                "_dlt_load_id": str(uuid.uuid4()),
+                "currency": "USD",
+                "name": f"#{1000 + current_order_id}",
+                "number": current_order_id,
+                "order_number": 1000 + current_order_id,
+                "financial_status": financial_status,
+                "product_id": product['id'],
+                "product_title": product['name'],
+                "product_quantity": quantity,
+                "product_price": product['price'],
+                "_dlt_load_id": "load_id_mock_data",
                 "_dlt_id": str(uuid.uuid4())
             })
             current_order_id += 1
             
-    # Define columns to insert based on the `dlt` pipeline schema
-    columns_to_insert = [
-        "id", "admin_graphql_api_id", "created_at", "total_price",
-        "total_shipping_price_set__shop_money__amount", "customer__id",
-        "currency", "processed_at", "name", "number", "order_number", "subtotal_price",
-        "updated_at", "_dlt_load_id", "_dlt_id" # dlt internal columns also populated
-    ]
-    
-    placeholders = ', '.join(['?' for _ in columns_to_insert])
-    column_names_sql = ', '.join([f'"{col}"' for col in columns_to_insert])
-    
-    insert_sql = f"INSERT INTO {schema_name}.orders ({column_names_sql}) VALUES ({placeholders})"
-    
-    for rec in records:
-        # Ensure values are in the correct order for the INSERT statement
-        values = [rec.get(col) for col in columns_to_insert]
-        con.execute(insert_sql, values)
-        
-    con.commit()
-    con.close()
-    print(f"Successfully added {len(records)} sales records to {db_path} for dates {start_date_str} to {end_date_str}")
+    con.executemany(f"""
+        INSERT INTO {schema_name}.orders VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, [list(rec.values()) for rec in order_records])
 
+    con.close()
+    print(f"✅ Successfully generated and inserted {len(order_records)} orders into {db_path}")
 
 if __name__ == "__main__":
-    db_file_path = "C:/Users/manubdata/Desktop/Workspace/smb-dataplatformV2/duckdb_files/shopify.duckdb"
-    start_date = "2025-12-20" # Start from the day after the existing sales
-    end_date = "2025-12-31"
-    
-    populate_shopify_sales(db_file_path, start_date, end_date)
+    db_file_path = "./duckdb_files/shopify.duckdb"
+    populate_shopify_sales(db_file_path, days_to_generate=90)

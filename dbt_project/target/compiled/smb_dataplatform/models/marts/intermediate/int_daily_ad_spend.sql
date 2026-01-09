@@ -5,13 +5,13 @@ with meta_insights as (
         date_day,
         spend,
         publisher_platform
-    from `smb-dataplatform`.`smb_dataplatform`.`stg_meta_ads`
+    from "dbt_metrics"."main"."stg_meta_ads"
 ),
 tiktok_spend as (
     select
         date_day,
         spend
-    from `smb-dataplatform`.`smb_dataplatform`.`stg_tiktok_ads`
+    from "dbt_metrics"."main"."stg_tiktok_ads"
 ),
 daily_meta_platform_spend as (
     select

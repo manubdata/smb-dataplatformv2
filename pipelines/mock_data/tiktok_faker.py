@@ -10,41 +10,30 @@ import pandas as pd
 # Initialize Faker
 fake = Faker()
 
-
 class TikTokAdsDataGenerator:
     """
-    Generates mock advertising data for TikTok platform, structured as dlt would output.
+    Generates mock advertising data for TikTok, telling a specific story.
+    - Medium spend, trending up.
+    - Lower reported ROAS of 2.5.
     """
 
     def __init__(self) -> None:
-        self.ctr_range = (0.005, 0.045)  # TikTok may have slightly different CTRs
-        self.cpc_range = (0.30, 2.50)
-        self.cvr_range = (0.01, 0.12)
         self.advertiser_id = str(fake.random_number(digits=19, fix_len=True))
+        # Ad Spend Trend: ~30% MoM growth. Total spend over 90 days is ~15k.
+        self.base_spend = 80  # Starting daily spend 90 days ago
+        self.growth_factor = 1.01 # Approx 30% MoM growth
+        self.target_roas = 2.5
 
-    def _generate_base_metrics(self) -> tuple[int, int, float, int]:
-        """
-        Generates mathematically consistent base metrics for advertising data.
-        """
-        impressions = random.randint(500, 150000)
-        ctr = random.uniform(*self.ctr_range)
-        clicks = int(impressions * ctr)
-        cpc = random.uniform(*self.cpc_range)
-        spend = round(clicks * cpc, 2)
-        cvr = random.uniform(*self.cvr_range)
-        conversions = int(clicks * cvr)
-        return impressions, clicks, spend, conversions
-
-    def generate_campaigns(self, count: int = 5) -> list[dict]:
-        """Generates a list of mock campaigns."""
+    def generate_campaigns(self, count: int = 2) -> list[dict]:
+        """Generates a few active, high-intent campaigns."""
         campaigns = []
         for _ in range(count):
-            created_time = fake.date_time_between(start_date="-1y", end_date="now")
+            created_time = fake.date_time_between(start_date="-1y", end_date="-6m")
             campaign = {
                 "id": str(fake.random_number(digits=19, fix_len=True)),
-                "name": f"TT_{{fake.word().upper()}}_{fake.color_name()}_Campaign",
-                "objective": random.choice(["REACH", "VIDEO_VIEWS", "CONVERSIONS"]),
-                "status": random.choice(["CAMPAIGN_STATUS_ACTIVE", "CAMPAIGN_STATUS_PAUSED", "CAMPAIGN_STATUS_DELETED"]),
+                "name": f"TT_Performance_{fake.word().upper()}",
+                "objective": "CONVERSIONS",
+                "status": "CAMPAIGN_STATUS_ACTIVE",
                 "created_time": created_time.isoformat(),
                 "updated_time": fake.date_time_between(start_date=created_time, end_date="now").isoformat(),
                 "advertiser_id": self.advertiser_id,
@@ -56,13 +45,13 @@ class TikTokAdsDataGenerator:
         """Generates mock ad groups for the given campaigns."""
         adgroups = []
         for campaign in campaigns_df.to_dict("records"):
-            for _ in range(random.randint(1, 4)):  # 1 to 4 adgroups per campaign
+            for _ in range(random.randint(1, 2)):
                 created_time = pd.to_datetime(campaign["created_time"])
                 adgroup = {
                     "id": str(fake.random_number(digits=19, fix_len=True)),
-                    "name": f"AdGroup_{{fake.word()}}_{random.choice(['Lookalike', 'Interest'])}",
+                    "name": f"AdGroup_Interest_{fake.word()}",
                     "campaign_id": campaign["id"],
-                    "status": random.choice(["ADGROUP_STATUS_ACTIVE", "ADGROUP_STATUS_PAUSED", "ADGROUP_STATUS_DELETED"]),
+                    "status": "ADGROUP_STATUS_ACTIVE",
                     "created_time": created_time.isoformat(),
                     "updated_time": fake.date_time_between(start_date=created_time, end_date="now").isoformat(),
                     "advertiser_id": self.advertiser_id,
@@ -76,14 +65,14 @@ class TikTokAdsDataGenerator:
         ads = []
         adgroup_map = adgroups_df[['id', 'campaign_id']].set_index('id').to_dict()['campaign_id']
         for adgroup_id in adgroups_df["id"]:
-            for _ in range(random.randint(1, 3)):  # 1 to 3 ads per adgroup
+            for _ in range(random.randint(1, 2)):
                 created_time = fake.date_time_between(start_date="-1y", end_date="now")
                 ad = {
                     "id": str(fake.random_number(digits=19, fix_len=True)),
-                    "name": f"Creative_{{fake.slug()}}",
+                    "name": f"SparkAd_{fake.slug()}",
                     "adgroup_id": adgroup_id,
                     "campaign_id": adgroup_map[adgroup_id],
-                    "status": random.choice(["AD_STATUS_ACTIVE", "AD_STATUS_PAUSED", "AD_STATUS_DELETED"]),
+                    "status": "AD_STATUS_ACTIVE",
                     "created_time": created_time.isoformat(),
                     "updated_time": fake.date_time_between(start_date=created_time, end_date="now").isoformat(),
                     "advertiser_id": self.advertiser_id,
@@ -91,22 +80,45 @@ class TikTokAdsDataGenerator:
                 ads.append(ad)
         return ads
 
-    def generate_ad_reports(self, ads_df: pd.DataFrame, days: int = 30) -> list[dict]:
-        """Generates mock daily ad reports for the given ads."""
+    def generate_ad_reports(self, ads_df: pd.DataFrame, days: int = 90) -> list[dict]:
+        """
+        Generates mock daily ad reports with a deliberate trend.
+        - Spend increases exponentially.
+        - Reported ROAS stays at 2.5.
+        """
         reports = []
-        for ad_id in ads_df["id"]:
-            for i in range(days):
-                imp, clicks, spend, conv = self._generate_base_metrics()
-                ctr = (clicks / imp) if imp > 0 else 0
-                report_date = (datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d")
+        active_ads = [ad_id for ad_id in ads_df["id"]]
+        if not active_ads:
+            return []
+
+        for i in range(days):
+            daily_spend = self.base_spend * (self.growth_factor ** (days - 1 - i))
+            
+            report_date = (datetime.now() - timedelta(days=i)).strftime("%Y-%m-%d")
+            
+            spend_per_ad = daily_spend / len(active_ads)
+
+            for ad_id in active_ads:
+                spend = round(spend_per_ad * random.uniform(0.8, 1.2), 2)
+                
+                # Engineer metrics to hit target ROAS
+                purchase_value = spend * self.target_roas
+                conversions = int(purchase_value / 100) # Assume $100 AOV
+
+                clicks = int(spend / random.uniform(0.50, 2.00))
+                impressions = int(clicks / random.uniform(0.015, 0.045))
+
+                ctr = (clicks / impressions) if impressions > 0 else 0
+                
                 report = {
                     "ad_id": ad_id,
                     "stat_time_day": report_date,
                     "spend": spend,
-                    "impressions": imp,
+                    "impressions": impressions,
                     "clicks": clicks,
                     "ctr": ctr,
-                    "conversions": conv,
+                    "conversions": conversions,
+                    "conversion_value": purchase_value,
                 }
                 reports.append(report)
         return reports
@@ -117,10 +129,10 @@ def main() -> None:
     Main function to parse arguments and generate mock TikTok Ads data, saving it to DuckDB.
     """
     parser = argparse.ArgumentParser(description="Generate mock TikTok Ads data and save to DuckDB.")
-    parser.add_argument("--count", type=int, default=8, help="Number of campaigns to generate.")
+    parser.add_argument("--count", type=int, default=2, help="Number of campaigns to generate.")
     parser.add_argument("--output_dir", type=str, default="./duckdb_files", help="Directory to save the DuckDB file.")
     parser.add_argument("--db_name", type=str, default="tiktok_ads.duckdb", help="Name of the DuckDB database file.")
-    parser.add_argument("--days", type=int, default=30, help="Number of days for report data.")
+    parser.add_argument("--days", type=int, default=90, help="Number of days for report data.")
     args = parser.parse_args()
 
     generator = TikTokAdsDataGenerator()
@@ -151,13 +163,6 @@ def main() -> None:
         con.execute("CREATE OR REPLACE TABLE ad_reports AS SELECT * FROM ad_reports_df")
     
     print("✅ All tables created successfully in DuckDB.")
-    
-    # Example of how to query
-    print("\n--- Example Query ---")
-    with duckdb.connect(db_path, read_only=True) as con:
-        result = con.execute("SELECT status, COUNT(*) as count FROM campaigns GROUP BY status").fetchdf()
-        print("Campaign count by status:")
-        print(result)
 
 if __name__ == "__main__":
     main()
