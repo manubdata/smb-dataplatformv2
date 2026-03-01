@@ -1,5 +1,6 @@
 ---
-title: Monthly Recap
+title: Daily Health Check
+sidebar_label: Daily Health Check
 ---
 
 <style>
@@ -7,7 +8,6 @@ title: Monthly Recap
         background-color: #1a1a1a !important;
     }
 
-    /* Target the main content area in Evidence */
     :global(#evidence-main-content) {
         background-color: #1a1a1a !important;
     }
@@ -79,111 +79,100 @@ title: Monthly Recap
     }
 </style>
 
-```sql kpis_all_monthly
-  select
-    date_trunc('month', date_day)::date as month_date,
-    sum(total_net_sales) as total_net_sales,
-    sum(total_ad_spend) as total_ad_spend,
-    sum(contribution_margin) as contribution_margin,
-    avg(mer_total_paid_ads) as mer_total_paid_ads,
-    avg(nc_cpa) as nc_cpa,
-    avg(npoas) as npoas,
-    avg(ltv_cac_ratio) as ltv_cac_ratio
-  from metrics.rpt_kpis
-  group by 1
-  order by 1 desc
+```sql kpis_all
+  select * from metrics.rpt_kpis order by date_day desc
 ```
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
     <div></div>
     <DateRange
         name=date_filter
-        data={kpis_all_monthly}
-        dates=month_date
-        defaultValue={'last6months'}
+        data={kpis_all}
+        dates=date_day
+        defaultValue={'last30days'}
     />
 </div>
 
-```sql kpis_monthly
+```sql kpis
   select 
     *,
-    -- Achievement logic (Current / Target) - Note: Targets are now monthly
-    total_net_sales / 150000.0 as sales_ach,
-    contribution_margin / 75000.0 as margin_ach,
-    total_ad_spend / 30000.0 as spend_ach,
+    -- Achievement logic (Current / Target)
+    total_net_sales / 5000.0 as sales_ach,
+    contribution_margin / 2500.0 as margin_ach,
+    total_ad_spend / 1000.0 as spend_ach, 
     mer_total_paid_ads / 8.0 as mer_ach
-  from ${kpis_all_monthly}
-  where month_date between '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
-  order by month_date desc
+  from metrics.rpt_kpis
+  where date_day between '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
+  order by date_day desc
 ```
 
-```sql latest_month_kpis
-  select * from ${kpis_monthly} limit 1
+```sql latest_kpis
+  select * from ${kpis} limit 1
 ```
 
-```sql kpi_averages_monthly
+```sql kpi_averages
   select 
     avg(total_net_sales) as avg_sales,
     avg(contribution_margin) as avg_margin,
     avg(total_ad_spend) as avg_spend,
     avg(mer_total_paid_ads) as avg_mer
-  from ${kpis_monthly}
+  from ${kpis}
 ```
 
 <Grid columns=4 gap=4>
     <!-- Net Sales -->
     <div class="health-card">
         <h3>Net Sales</h3>
-        <div class="value" style="color: {latest_month_kpis[0]?.sales_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_month_kpis} column=total_net_sales fmt='usd0k'/>
+        <div class="value" style="color: {latest_kpis[0]?.sales_ach >= 1 ? '#03c4a1' : '#c52a87'}">
+            <Value data={latest_kpis} column=total_net_sales fmt='usd0k'/>
         </div>
         <div class="target">
-            <Value data={latest_month_kpis} column=sales_ach fmt='0.0%'/> of target (150K)
+            <Value data={latest_kpis} column=sales_ach fmt='0.0%'/> of target (5.0K)
         </div>
         <div class="progress-bar-container">
-            <div class="progress-bar" style="width: {Math.min(latest_month_kpis[0]?.sales_ach * 100, 100)}%; background-color: {latest_month_kpis[0]?.sales_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
+            <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.sales_ach * 100, 100)}%; background-color: {latest_kpis[0]?.sales_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 
     <!-- Margin -->
     <div class="health-card">
         <h3>Contribution Margin</h3>
-        <div class="value" style="color: {latest_month_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_month_kpis} column=contribution_margin fmt='usd0k'/>
+        <div class="value" style="color: {latest_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'}">
+            <Value data={latest_kpis} column=contribution_margin fmt='usd0k'/>
         </div>
         <div class="target">
-            <Value data={latest_month_kpis} column=margin_ach fmt='0.0%'/> of target (75K)
+            <Value data={latest_kpis} column=margin_ach fmt='0.0%'/> of target (2.5K)
         </div>
         <div class="progress-bar-container">
-            <div class="progress-bar" style="width: {Math.min(latest_month_kpis[0]?.margin_ach * 100, 100)}%; background-color: {latest_month_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
+            <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.margin_ach * 100, 100)}%; background-color: {latest_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 
     <!-- Ad Spend -->
     <div class="health-card">
         <h3>Ad Spend</h3>
-        <div class="value" style="color: {latest_month_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_month_kpis} column=total_ad_spend fmt='usd0k'/>
+        <div class="value" style="color: {latest_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'}">
+            <Value data={latest_kpis} column=total_ad_spend fmt='usd0k'/>
         </div>
         <div class="target">
-            <Value data={latest_month_kpis} column=spend_ach fmt='0.0%'/> of budget (30K)
+            <Value data={latest_kpis} column=spend_ach fmt='0.0%'/> of budget (1.0K)
         </div>
         <div class="progress-bar-container">
-            <div class="progress-bar" style="width: {Math.min(latest_month_kpis[0]?.spend_ach * 100, 100)}%; background-color: {latest_month_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'};"></div>
+            <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.spend_ach * 100, 100)}%; background-color: {latest_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 
     <!-- MER -->
     <div class="health-card">
         <h3>Marketing Efficiency</h3>
-        <div class="value" style="color: {latest_month_kpis[0]?.mer_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_month_kpis} column=mer_total_paid_ads fmt='0.1x'/>
+        <div class="value" style="color: {latest_kpis[0]?.mer_ach >= 1 ? '#03c4a1' : '#c52a87'}">
+            <Value data={latest_kpis} column=mer_total_paid_ads fmt='0.1x'/>
         </div>
         <div class="target">
-            <Value data={latest_month_kpis} column=mer_ach fmt='0.0%'/> of target (8.0x)
+            <Value data={latest_kpis} column=mer_ach fmt='0.0%'/> of target (8.0x)
         </div>
         <div class="progress-bar-container">
-            <div class="progress-bar" style="width: {Math.min(latest_month_kpis[0]?.mer_ach * 100, 100)}%; background-color: {latest_month_kpis[0]?.mer_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
+            <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.mer_ach * 100, 100)}%; background-color: {latest_kpis[0]?.mer_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 </Grid>
@@ -193,8 +182,8 @@ title: Monthly Recap
 <div class="chart-container">
     <h2>Performance Trends</h2>
     <LineChart 
-        data={kpis_monthly} 
-        x=month_date 
+        data={kpis} 
+        x=date_day 
         y={['total_net_sales', 'contribution_margin', 'total_ad_spend', 'mer_total_paid_ads']}
         colorPalette={['#03c4a1', '#03c4a1', '#03c4a1', '#03c4a1']}
         yGridlines=false
@@ -211,6 +200,6 @@ title: Monthly Recap
             }
         }}
     >
-        <ReferenceLine y={kpi_averages_monthly[0].avg_sales} label="Average" color="#666666" />
+        <ReferenceLine y={kpi_averages[0].avg_sales} label="Average" color="#666666" />
     </LineChart>
 </div>

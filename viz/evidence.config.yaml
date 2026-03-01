@@ -6,27 +6,13 @@ layout: false
 
 theme:
   colors:
-    primary:
-      light: "#14b8a6" # Teal
-      dark: "#14b8a6"
-    accent:
-      light: "#e11d48" # Rose/Pink
-      dark: "#e11d48"
-    base:
-      light: "#ffffff"
-      dark: "#1a1a1a" # Dark background
-    info:
-      light: "#0284c7"
-      dark: "#38bdf8"
-    positive:
-      light: "#10b981"
-      dark: "#10b981"
-    warning:
-      light: "#f59e0b"
-      dark: "#f59e0b"
-    negative:
-      light: "#ef4444"
-      dark: "#ef4444"
+    primary: "#03c4a1"
+    accent: "#c52a87"
+    base: "#1a1a1a"
+    info: "#38bdf8"
+    positive: "#03c4a1"
+    warning: "#f59e0b"
+    negative: "#c52a87"
 
 plugins:
   components:
@@ -49,4 +35,3 @@ plugins:
     "@evidence-dev/sqlite": { }
     "@evidence-dev/trino": { }
     "@evidence-dev/motherduck": { }
-
