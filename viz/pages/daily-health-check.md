@@ -21,7 +21,7 @@ sidebar_label: Daily Health Check
         background-color: #1e1e1e;
         border: 1px solid #333333;
         border-radius: 12px;
-        padding: 1.5rem;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -32,28 +32,29 @@ sidebar_label: Daily Health Check
     .health-card h3 {
         color: #b8b8b8;
         text-transform: uppercase;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        font-weight: 800;
         letter-spacing: 0.1em;
-        margin-bottom: 1rem;
-    }
-
-    .health-card .value {
-        font-size: 2.25rem;
-        font-weight: bold;
         margin-bottom: 0.5rem;
     }
 
+    .health-card .value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+
     .health-card .target {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         color: #b8b8b8;
     }
 
     .progress-bar-container {
         width: 100%;
-        height: 8px;
+        height: 9px;
         background-color: #333333;
-        border-radius: 4px;
-        margin-top: 1.5rem;
+        border-radius: 4.5px;
+        margin-top: 1rem;
         overflow: hidden;
     }
 
@@ -76,6 +77,13 @@ sidebar_label: Daily Health Check
         color: #f5f5f5;
         margin: 0 0 1.5rem 0;
     }
+
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
 </style>
 
 ```sql kpis_all
@@ -97,7 +105,9 @@ sidebar_label: Daily Health Check
     net_sales / 5000.0 as sales_ach,
     gross_margin / 3000.0 as margin_ach,
     ad_spend / 1500.0 as spend_ach, 
-    marketing_efficiency / 3.5 as mer_ach
+    marketing_efficiency / 3.5 as mer_ach,
+    cart_abandon_rate / 0.6 as abandon_ach,
+    refund_rate / 0.06 as refund_ach
   from metrics.rpt_kpis
   where date_day between '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
   order by date_day desc
@@ -107,11 +117,11 @@ sidebar_label: Daily Health Check
   select * from ${kpis} limit 1
 ```
 
-<Grid columns=4 gap=4>
+<div class="metrics-grid">
     <div class="health-card">
         <h3>Net Sales</h3>
         <div class="value" style="color: {latest_kpis[0]?.sales_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_kpis} column=net_sales fmt='usd0k'/>
+            <Value data={latest_kpis} column=net_sales fmt='usd2k'/>
         </div>
         <div class="target">
             <Value data={latest_kpis} column=sales_ach fmt='0.0%'/> of target (5.0K)
@@ -124,7 +134,7 @@ sidebar_label: Daily Health Check
     <div class="health-card">
         <h3>Gross Margin</h3>
         <div class="value" style="color: {latest_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_kpis} column=gross_margin fmt='usd0k'/>
+            <Value data={latest_kpis} column=gross_margin fmt='usd2k'/>
         </div>
         <div class="target">
             <Value data={latest_kpis} column=margin_ach fmt='0.0%'/> of target (3.0K)
@@ -137,7 +147,7 @@ sidebar_label: Daily Health Check
     <div class="health-card">
         <h3>Ad Spend</h3>
         <div class="value" style="color: {latest_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_kpis} column=ad_spend fmt='usd0k'/>
+            <Value data={latest_kpis} column=ad_spend fmt='usd2k'/>
         </div>
         <div class="target">
             <Value data={latest_kpis} column=spend_ach fmt='0.0%'/> of budget (1.5K)
@@ -162,21 +172,33 @@ sidebar_label: Daily Health Check
 
     <div class="health-card">
         <h3>Cart Abandon Rate</h3>
-        <div class="value" style="color: #b8b8b8">
-            <Value data={latest_kpis} column=cart_abandon_rate fmt='0.1%'/>
+        <div class="value" style="color: {latest_kpis[0]?.abandon_ach <= 1 ? '#03c4a1' : '#c52a87'}">
+            <Value data={latest_kpis} column=cart_abandon_rate fmt='0%'/>
+        </div>
+        <div class="target">
+            <Value data={latest_kpis} column=abandon_ach fmt='0%'/> of limit (60%)
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.abandon_ach * 100, 100)}%; background-color: {latest_kpis[0]?.abandon_ach <= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 
     <div class="health-card">
         <h3>Refund Rate</h3>
-        <div class="value" style="color: #b8b8b8">
-            <Value data={latest_kpis} column=refund_rate fmt='0.1%'/>
+        <div class="value" style="color: {latest_kpis[0]?.refund_ach <= 1 ? '#03c4a1' : '#c52a87'}">
+            <Value data={latest_kpis} column=refund_rate fmt='0%'/>
+        </div>
+        <div class="target">
+            <Value data={latest_kpis} column=refund_ach fmt='0%'/> of limit (6%)
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.refund_ach * 100, 100)}%; background-color: {latest_kpis[0]?.refund_ach <= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 
     <div class="health-card">
         <h3>High Velocity Alert</h3>
-        <div class="value" style="color: #c52a87">
+        <div class="value" style="color: {latest_kpis[0]?.high_velocity_alerts !== 0 ? '#c52a87' : '#03c4a1'}">
             <Value data={latest_kpis} column=high_velocity_alerts/>
         </div>
         <div class="target">Items running out in 7 days</div>
@@ -184,12 +206,12 @@ sidebar_label: Daily Health Check
 
     <div class="health-card">
         <h3>Low Velocity Alert</h3>
-        <div class="value" style="color: #03c4a1">
+        <div class="value" style="color: {latest_kpis[0]?.low_velocity_alerts !== 0 ? '#c52a87' : '#03c4a1'}">
             <Value data={latest_kpis} column=low_velocity_alerts/>
         </div>
         <div class="target">Items over 1 month threshold</div>
     </div>
-</Grid>
+</div>
 
 <div style="margin-top: 3rem;"></div>
 
@@ -227,7 +249,8 @@ sidebar_label: Daily Health Check
     SELECT
         date_day,
         metric_value,
-        (SELECT m FROM stats) * x + (SELECT b FROM stats) as trend_line
+        (SELECT m FROM stats) * x + (SELECT b FROM stats) as trend_line,
+        (SELECT m FROM stats) as slope
     FROM base
     ORDER BY date_day
 ```
@@ -240,7 +263,14 @@ sidebar_label: Daily Health Check
         x=date_day 
         y={['metric_value', 'trend_line']}
         xFmt="dd mmm yyyy"
-        colorPalette={['#03c4a1', '#666666']}
+        colorPalette={
+            ( ['ad_spend', 'cart_abandon_rate'].includes(inputs.metric_daily) 
+                ? daily_chart_data[0]?.slope <= 0 
+                : daily_chart_data[0]?.slope >= 0
+            ) 
+            ? ['#03c4a1', '#666666'] 
+            : ['#c52a87', '#666666']
+        }
         yGridlines=false
         legend=false
         echartsOptions={{

@@ -112,6 +112,15 @@ Understanding the color coding in our KPI cards:
 *   <span class="color-swatch" style="background-color: #03c4a1;"></span> **Green (#03c4a1):** Target achieved or budget respected.
 *   <span class="color-swatch" style="background-color: #c52a87;"></span> **Red (#c52a87):** Performance below target or budget exceeded.
 
+## How Date Filters Work
+
+The dashboard uses a reactive loop to ensure your view is always synchronized:
+
+*   **Selection:** When you pick a range in the **Date Filter** component at the top of a page, it updates the global input variables for that session.
+*   **Reactive SQL:** These variables are instantly injected into the underlying SQL queries (e.g., `WHERE date_day BETWEEN start AND end`).
+*   **Most Recent Day Snapshot:** The **Metric Cards** specifically calculate values for the **most recent day** available within your selected period, giving you an "up-to-the-minute" snapshot relative to your filter.
+*   **Automatic Refresh:** Because all metric cards, progress bars, and trend charts depend on these queries, they recalculate and refresh automatically without needing a page reload.
+
 ---
 
 <p style="text-align: center; margin-top: 4rem; opacity: 0.5;">
