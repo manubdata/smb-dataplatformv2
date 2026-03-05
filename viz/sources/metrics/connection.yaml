@@ -1,4 +1,4 @@
 name: metrics
 type: duckdb
 options:
-  filename: ../../../duckdb_files/dbt_metrics.duckdb
+  filename: ../../../duckdb_files/mock_metrics.duckdb

@@ -70,21 +70,19 @@ sidebar_label: Daily Health Check
         margin-top: 1rem;
     }
 
-    .chart-container h2 {
-        margin-top: 0;
-        margin-bottom: 1.5rem;
+    .chart-title {
         font-size: 1.25rem;
         font-weight: 600;
         color: #f5f5f5;
+        margin: 0 0 1.5rem 0;
     }
 </style>
 
 ```sql kpis_all
-  select * from metrics.rpt_kpis order by date_day desc
+  select date_day::DATE as date_day, * EXCLUDE (date_day) from metrics.rpt_kpis order by date_day desc
 ```
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-    <div></div>
+<div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 2rem;">
     <DateRange
         name=date_filter
         data={kpis_all}
@@ -96,11 +94,10 @@ sidebar_label: Daily Health Check
 ```sql kpis
   select 
     *,
-    -- Achievement logic (Current / Target)
-    total_net_sales / 5000.0 as sales_ach,
-    contribution_margin / 2500.0 as margin_ach,
-    total_ad_spend / 1000.0 as spend_ach, 
-    mer_total_paid_ads / 8.0 as mer_ach
+    net_sales / 5000.0 as sales_ach,
+    gross_margin / 3000.0 as margin_ach,
+    ad_spend / 1500.0 as spend_ach, 
+    marketing_efficiency / 3.5 as mer_ach
   from metrics.rpt_kpis
   where date_day between '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
   order by date_day desc
@@ -110,21 +107,11 @@ sidebar_label: Daily Health Check
   select * from ${kpis} limit 1
 ```
 
-```sql kpi_averages
-  select 
-    avg(total_net_sales) as avg_sales,
-    avg(contribution_margin) as avg_margin,
-    avg(total_ad_spend) as avg_spend,
-    avg(mer_total_paid_ads) as avg_mer
-  from ${kpis}
-```
-
 <Grid columns=4 gap=4>
-    <!-- Net Sales -->
     <div class="health-card">
         <h3>Net Sales</h3>
         <div class="value" style="color: {latest_kpis[0]?.sales_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_kpis} column=total_net_sales fmt='usd0k'/>
+            <Value data={latest_kpis} column=net_sales fmt='usd0k'/>
         </div>
         <div class="target">
             <Value data={latest_kpis} column=sales_ach fmt='0.0%'/> of target (5.0K)
@@ -134,72 +121,134 @@ sidebar_label: Daily Health Check
         </div>
     </div>
 
-    <!-- Margin -->
     <div class="health-card">
-        <h3>Contribution Margin</h3>
+        <h3>Gross Margin</h3>
         <div class="value" style="color: {latest_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_kpis} column=contribution_margin fmt='usd0k'/>
+            <Value data={latest_kpis} column=gross_margin fmt='usd0k'/>
         </div>
         <div class="target">
-            <Value data={latest_kpis} column=margin_ach fmt='0.0%'/> of target (2.5K)
+            <Value data={latest_kpis} column=margin_ach fmt='0.0%'/> of target (3.0K)
         </div>
         <div class="progress-bar-container">
             <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.margin_ach * 100, 100)}%; background-color: {latest_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 
-    <!-- Ad Spend -->
     <div class="health-card">
         <h3>Ad Spend</h3>
         <div class="value" style="color: {latest_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_kpis} column=total_ad_spend fmt='usd0k'/>
+            <Value data={latest_kpis} column=ad_spend fmt='usd0k'/>
         </div>
         <div class="target">
-            <Value data={latest_kpis} column=spend_ach fmt='0.0%'/> of budget (1.0K)
+            <Value data={latest_kpis} column=spend_ach fmt='0.0%'/> of budget (1.5K)
         </div>
         <div class="progress-bar-container">
             <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.spend_ach * 100, 100)}%; background-color: {latest_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
 
-    <!-- MER -->
     <div class="health-card">
         <h3>Marketing Efficiency</h3>
         <div class="value" style="color: {latest_kpis[0]?.mer_ach >= 1 ? '#03c4a1' : '#c52a87'}">
-            <Value data={latest_kpis} column=mer_total_paid_ads fmt='0.1x'/>
+            <Value data={latest_kpis} column=marketing_efficiency fmt='0.1x'/>
         </div>
         <div class="target">
-            <Value data={latest_kpis} column=mer_ach fmt='0.0%'/> of target (8.0x)
+            <Value data={latest_kpis} column=mer_ach fmt='0.0%'/> of target (3.5x)
         </div>
         <div class="progress-bar-container">
             <div class="progress-bar" style="width: {Math.min(latest_kpis[0]?.mer_ach * 100, 100)}%; background-color: {latest_kpis[0]?.mer_ach >= 1 ? '#03c4a1' : '#c52a87'};"></div>
         </div>
     </div>
+
+    <div class="health-card">
+        <h3>Cart Abandon Rate</h3>
+        <div class="value" style="color: #b8b8b8">
+            <Value data={latest_kpis} column=cart_abandon_rate fmt='0.1%'/>
+        </div>
+    </div>
+
+    <div class="health-card">
+        <h3>Refund Rate</h3>
+        <div class="value" style="color: #b8b8b8">
+            <Value data={latest_kpis} column=refund_rate fmt='0.1%'/>
+        </div>
+    </div>
+
+    <div class="health-card">
+        <h3>High Velocity Alert</h3>
+        <div class="value" style="color: #c52a87">
+            <Value data={latest_kpis} column=high_velocity_alerts/>
+        </div>
+        <div class="target">Items running out in 7 days</div>
+    </div>
+
+    <div class="health-card">
+        <h3>Low Velocity Alert</h3>
+        <div class="value" style="color: #03c4a1">
+            <Value data={latest_kpis} column=low_velocity_alerts/>
+        </div>
+        <div class="target">Items over 1 month threshold</div>
+    </div>
 </Grid>
 
 <div style="margin-top: 3rem;"></div>
 
+<div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+    <ButtonGroup name=metric_daily>
+        <ButtonGroupItem valueLabel="Net Sales" value="net_sales" default />
+        <ButtonGroupItem valueLabel="Gross Margin" value="gross_margin" />
+        <ButtonGroupItem valueLabel="Ad Spend" value="ad_spend" />
+        <ButtonGroupItem valueLabel="MER" value="marketing_efficiency" />
+        <ButtonGroupItem valueLabel="Abandon Rate" value="cart_abandon_rate" />
+    </ButtonGroup>
+</div>
+
+```sql daily_chart_data
+    WITH base AS (
+        SELECT 
+            date_day,
+            CASE 
+                WHEN '${inputs.metric_daily}' = 'net_sales' THEN net_sales
+                WHEN '${inputs.metric_daily}' = 'gross_margin' THEN gross_margin
+                WHEN '${inputs.metric_daily}' = 'ad_spend' THEN ad_spend
+                WHEN '${inputs.metric_daily}' = 'marketing_efficiency' THEN marketing_efficiency
+                WHEN '${inputs.metric_daily}' = 'cart_abandon_rate' THEN cart_abandon_rate
+                ELSE net_sales
+            END as metric_value,
+            extract(epoch from date_day::timestamp) as x
+        FROM ${kpis}
+    ),
+    stats AS (
+        SELECT
+            regr_slope(metric_value, x) as m,
+            regr_intercept(metric_value, x) as b
+        FROM base
+    )
+    SELECT
+        date_day,
+        metric_value,
+        (SELECT m FROM stats) * x + (SELECT b FROM stats) as trend_line
+    FROM base
+    ORDER BY date_day
+```
+
 <div class="chart-container">
-    <h2>Performance Trends</h2>
+    <p class="chart-title">Metric Trend</p>
+
     <LineChart 
-        data={kpis} 
+        data={daily_chart_data} 
         x=date_day 
-        y={['total_net_sales', 'contribution_margin', 'total_ad_spend', 'mer_total_paid_ads']}
-        colorPalette={['#03c4a1', '#03c4a1', '#03c4a1', '#03c4a1']}
+        y={['metric_value', 'trend_line']}
+        xFmt="dd mmm yyyy"
+        colorPalette={['#03c4a1', '#666666']}
         yGridlines=false
+        legend=false
         echartsOptions={{
             backgroundColor: '#1e1e1e',
-            legend: {
-                selectedMode: 'single',
-                selected: {
-                    'total_net_sales': true,
-                    'contribution_margin': false,
-                    'total_ad_spend': false,
-                    'mer_total_paid_ads': false
-                }
-            }
+            series: [
+                { }, 
+                { lineStyle: { type: 'dashed', width: 1 } }
+            ]
         }}
-    >
-        <ReferenceLine y={kpi_averages[0].avg_sales} label="Average" color="#666666" />
-    </LineChart>
+    />
 </div>
