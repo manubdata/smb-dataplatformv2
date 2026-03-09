@@ -1,6 +1,7 @@
 ---
 title: Daily Health Check
 sidebar_label: Daily Health Check
+sidebar_position: 1
 ---
 
 <style>
@@ -119,7 +120,7 @@ sidebar_label: Daily Health Check
 
 <div class="metrics-grid">
     <div class="health-card">
-        <h3>Net Sales</h3>
+        <h3 title="Sum of total net sales.">Net Sales</h3>
         <div class="value" style="color: {latest_kpis[0]?.sales_ach >= 1 ? '#03c4a1' : '#c52a87'}">
             <Value data={latest_kpis} column=net_sales fmt='usd2k'/>
         </div>
@@ -132,7 +133,7 @@ sidebar_label: Daily Health Check
     </div>
 
     <div class="health-card">
-        <h3>Gross Margin</h3>
+        <h3 title="Net Sales minus Cost of Goods Sold (COGS).">Gross Margin</h3>
         <div class="value" style="color: {latest_kpis[0]?.margin_ach >= 1 ? '#03c4a1' : '#c52a87'}">
             <Value data={latest_kpis} column=gross_margin fmt='usd2k'/>
         </div>
@@ -145,7 +146,7 @@ sidebar_label: Daily Health Check
     </div>
 
     <div class="health-card">
-        <h3>Ad Spend</h3>
+        <h3 title="Sum of total ad spend across all platforms.">Ad Spend</h3>
         <div class="value" style="color: {latest_kpis[0]?.spend_ach <= 1 ? '#03c4a1' : '#c52a87'}">
             <Value data={latest_kpis} column=ad_spend fmt='usd2k'/>
         </div>
@@ -158,7 +159,7 @@ sidebar_label: Daily Health Check
     </div>
 
     <div class="health-card">
-        <h3>Marketing Efficiency</h3>
+        <h3 title="Total Net Sales divided by Total Ad Spend.">Marketing Efficiency</h3>
         <div class="value" style="color: {latest_kpis[0]?.mer_ach >= 1 ? '#03c4a1' : '#c52a87'}">
             <Value data={latest_kpis} column=marketing_efficiency fmt='0.1x'/>
         </div>
@@ -171,7 +172,7 @@ sidebar_label: Daily Health Check
     </div>
 
     <div class="health-card">
-        <h3>Cart Abandon Rate</h3>
+        <h3 title="Ratio of abandoned carts to total carts.">Cart Abandon Rate</h3>
         <div class="value" style="color: {latest_kpis[0]?.abandon_ach <= 1 ? '#03c4a1' : '#c52a87'}">
             <Value data={latest_kpis} column=cart_abandon_rate fmt='0%'/>
         </div>
@@ -184,7 +185,7 @@ sidebar_label: Daily Health Check
     </div>
 
     <div class="health-card">
-        <h3>Refund Rate</h3>
+        <h3 title="Ratio of refunded orders to total orders.">Refund Rate</h3>
         <div class="value" style="color: {latest_kpis[0]?.refund_ach <= 1 ? '#03c4a1' : '#c52a87'}">
             <Value data={latest_kpis} column=refund_rate fmt='0%'/>
         </div>
@@ -197,7 +198,7 @@ sidebar_label: Daily Health Check
     </div>
 
     <div class="health-card">
-        <h3>High Velocity Alert</h3>
+        <h3 title="Count of items predicted to run out within 7 days.">High Velocity Alert</h3>
         <div class="value" style="color: {latest_kpis[0]?.high_velocity_alerts !== 0 ? '#c52a87' : '#03c4a1'}">
             <Value data={latest_kpis} column=high_velocity_alerts/>
         </div>
@@ -205,24 +206,12 @@ sidebar_label: Daily Health Check
     </div>
 
     <div class="health-card">
-        <h3>Low Velocity Alert</h3>
+        <h3 title="Count of items not sold for over 1 month.">Low Velocity Alert</h3>
         <div class="value" style="color: {latest_kpis[0]?.low_velocity_alerts !== 0 ? '#c52a87' : '#03c4a1'}">
             <Value data={latest_kpis} column=low_velocity_alerts/>
         </div>
         <div class="target">Items over 1 month threshold</div>
     </div>
-</div>
-
-<div style="margin-top: 3rem;"></div>
-
-<div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
-    <ButtonGroup name=metric_daily>
-        <ButtonGroupItem valueLabel="Net Sales" value="net_sales" default />
-        <ButtonGroupItem valueLabel="Gross Margin" value="gross_margin" />
-        <ButtonGroupItem valueLabel="Ad Spend" value="ad_spend" />
-        <ButtonGroupItem valueLabel="MER" value="marketing_efficiency" />
-        <ButtonGroupItem valueLabel="Abandon Rate" value="cart_abandon_rate" />
-    </ButtonGroup>
 </div>
 
 ```sql daily_chart_data
@@ -256,7 +245,18 @@ sidebar_label: Daily Health Check
 ```
 
 <div class="chart-container">
-    <p class="chart-title">Metric Trend</p>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <p class="chart-title" style="margin: 0;">Metric Trend</p>
+        <div style="font-size: 0.75rem;">
+            <ButtonGroup name=metric_daily>
+                <ButtonGroupItem valueLabel="Sales" value="net_sales" default />
+                <ButtonGroupItem valueLabel="Margin" value="gross_margin" />
+                <ButtonGroupItem valueLabel="Ads" value="ad_spend" />
+                <ButtonGroupItem valueLabel="MER" value="marketing_efficiency" />
+                <ButtonGroupItem valueLabel="Rate" value="cart_abandon_rate" />
+            </ButtonGroup>
+        </div>
+    </div>
 
     <LineChart 
         data={daily_chart_data} 

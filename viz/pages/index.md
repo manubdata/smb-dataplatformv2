@@ -70,6 +70,11 @@ sidebar_label: Home
     }
 </style>
 
+<div style="display: flex; align-items: center; margin-bottom: 2rem;">
+    <img src="/logo.svg" alt="SMB Data Platform Logo" style="width: 64px; height: 64px; margin-right: 1.5rem;"/>
+    <h1 style="margin-bottom: 0 !important;">SMB Data Platform</h1>
+</div>
+
 <div class="guide-card">
     <p>
         Welcome to the <strong>SMB Data Platform</strong>. This dashboard provides a comprehensive view of your business performance, 
@@ -98,6 +103,22 @@ sidebar_label: Home
 
     <div class="feature-item">
         <div class="feature-icon">3</div>
+        <div>
+            <strong>Monthly Financial Overview</strong>
+            <p>A detailed P&L view and unit economics analysis. Track gross sales, contribution margins, and LTV:CAC trends.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <div class="feature-icon">4</div>
+        <div>
+            <strong>Weekly Tactical Allocation</strong>
+            <p>Optimize your weekly budget. Compare platform performance (Meta vs TikTok), analyze the marketing funnel, and monitor product stock velocity.</p>
+        </div>
+    </div>
+
+    <div class="feature-item">
+        <div class="feature-icon">5</div>
         <div>
             <strong>Filters & Interactivity</strong>
             <p>Use the date range filters at the top of each page to zoom into specific periods. Most charts and tables update automatically based on your selection.</p>

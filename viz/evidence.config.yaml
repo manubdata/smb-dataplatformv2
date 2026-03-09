@@ -1,6 +1,7 @@
 appearance:
   default: dark
   switcher: false
+  logo: logo.svg
 
 layout: false
 
