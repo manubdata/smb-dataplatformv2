@@ -74,16 +74,6 @@ sidebar_position: 2
         color: #666;
     }
 
-    .funnel-svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        opacity: 0.2;
-    }
-
     .platform-metrics {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -109,29 +99,6 @@ sidebar_position: 2
         font-size: 1.1rem;
         font-weight: bold;
     }
-
-    .product-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .product-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem;
-        border-radius: 4px;
-    }
-
-    .product-name {
-        font-size: 0.85rem;
-    }
-
-    .product-val {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.85rem;
-    }
 </style>
 
 ```sql kpis_raw
@@ -147,38 +114,61 @@ sidebar_position: 2
     />
 </div>
 
-```sql funnel_data
+```sql funnel_data_split
   WITH base AS (
     SELECT
         sum(net_sales) as total_net_sales,
         sum(ad_spend) as total_ad_spend,
-        sum(net_sales) / 45 as simulated_orders -- Assume $45 AOV
+        sum(net_sales) / 45 as total_simulated_orders
     FROM metrics.rpt_kpis
     WHERE date_day BETWEEN '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
+  ),
+  split AS (
+    SELECT
+        total_net_sales * 0.3 as organic_sales,
+        total_net_sales * 0.7 as paid_sales,
+        total_ad_spend,
+        total_simulated_orders * 0.3 as organic_orders,
+        total_simulated_orders * 0.7 as paid_orders,
+        total_net_sales / NULLIF(total_simulated_orders, 0) as aov
+    FROM base
   )
   SELECT
-    total_net_sales,
-    total_ad_spend,
-    simulated_orders as orders,
-    simulated_orders * 5 as clicks, -- 20% CVR (visual friendly)
-    simulated_orders * 25 as impressions, -- 20% CTR (visual friendly)
-    simulated_orders * 2 as carts, -- 50% Cart-to-Order (visual friendly)
-    total_ad_spend / (NULLIF(simulated_orders * 25, 0) / 1000) as cpm,
-    total_ad_spend / NULLIF(simulated_orders * 5, 0) as cpc,
-    simulated_orders / NULLIF(simulated_orders * 5, 0) as cvr,
-    total_ad_spend / NULLIF(simulated_orders, 0) as cac,
-    total_net_sales / NULLIF(simulated_orders, 0) as aov
-  FROM base
+    *,
+    -- Organic steps (simulated)
+    organic_orders * 2 as organic_carts,
+    organic_orders * 10 as organic_clicks,
+    organic_orders * 100 as organic_impressions,
+    -- Paid steps (simulated)
+    paid_orders * 2 as paid_carts,
+    paid_orders * 5 as paid_clicks,
+    paid_orders * 25 as paid_impressions,
+    -- Paid efficiency
+    total_ad_spend / (NULLIF(paid_orders * 25, 0) / 1000) as paid_cpm,
+    total_ad_spend / NULLIF(paid_orders * 5, 0) as paid_cpc,
+    paid_orders / NULLIF(paid_orders * 5, 0) as paid_cvr,
+    total_ad_spend / NULLIF(paid_orders, 0) as paid_cac
+  FROM split
 ```
 
-```sql funnel_steps
-  SELECT 'Impressions' as step, impressions as val FROM ${funnel_data}
+```sql organic_funnel_steps
+  SELECT 'Impressions' as step, organic_impressions as val FROM ${funnel_data_split}
   UNION ALL
-  SELECT 'Clicks' as step, clicks as val FROM ${funnel_data}
+  SELECT 'Clicks' as step, organic_clicks as val FROM ${funnel_data_split}
   UNION ALL
-  SELECT 'Carts' as step, carts as val FROM ${funnel_data}
+  SELECT 'Carts' as step, organic_carts as val FROM ${funnel_data_split}
   UNION ALL
-  SELECT 'Checkouts' as step, orders as val FROM ${funnel_data}
+  SELECT 'Orders' as step, organic_orders as val FROM ${funnel_data_split}
+```
+
+```sql paid_funnel_steps
+  SELECT 'Impressions' as step, paid_impressions as val FROM ${funnel_data_split}
+  UNION ALL
+  SELECT 'Clicks' as step, paid_clicks as val FROM ${funnel_data_split}
+  UNION ALL
+  SELECT 'Carts' as step, paid_carts as val FROM ${funnel_data_split}
+  UNION ALL
+  SELECT 'Orders' as step, paid_orders as val FROM ${funnel_data_split}
 ```
 
 ```sql platform_data
@@ -194,26 +184,26 @@ sidebar_position: 2
     'Meta' as platform,
     fb_spend as spend,
     (total_sales * 0.6) / fb_spend as roas,
-    (total_sales * 0.6 * 0.15) / fb_spend as poas, -- Simplified POAS
-    0.024 as cvr, -- Simulated
-    fb_spend / (total_sales * 0.6 / 48) as cac -- Simulated
+    (total_sales * 0.6 * 0.15) / fb_spend as poas,
+    0.024 as cvr,
+    fb_spend / (total_sales * 0.6 / 48) as cac
   UNION ALL
   SELECT
     'TikTok' as platform,
     tt_spend as spend,
     (total_sales * 0.4) / tt_spend as roas,
-    (total_sales * 0.4 * 0.12) / tt_spend as poas, -- Simplified POAS
-    0.018 as cvr, -- Simulated
-    tt_spend / (total_sales * 0.4 / 42) as cac -- Simulated
+    (total_sales * 0.4 * 0.12) / tt_spend as poas,
+    0.018 as cvr,
+    tt_spend / (total_sales * 0.4 / 42) as cac
 ```
 
 ```sql product_profit
   -- Mocked product profit data
-  SELECT 'Premium Coffee Blend' as product, 1250 as profit, 0.22 as margin, '#03c4a1' as bar_color UNION ALL
-  SELECT 'Eco-Friendly Filter' as product, 850 as profit, 0.18 as margin, '#03c4a1' as bar_color UNION ALL
-  SELECT 'Cold Brew Kit' as product, 620 as profit, 0.15 as margin, '#03c4a1' as bar_color UNION ALL
-  SELECT 'Ceramic Mug Set' as product, 310 as profit, 0.08 as margin, '#c52a87' as bar_color UNION ALL
-  SELECT 'Travel Tumbler' as product, 150 as profit, 0.04 as margin, '#c52a87' as bar_color
+  SELECT 'Premium Coffee Blend' as product, 1250 as profit, 0.22 as margin UNION ALL
+  SELECT 'Eco-Friendly Filter' as product, 850 as profit, 0.18 as margin UNION ALL
+  SELECT 'Cold Brew Kit' as product, 620 as profit, 0.15 as margin UNION ALL
+  SELECT 'Ceramic Mug Set' as product, 310 as profit, 0.08 as margin UNION ALL
+  SELECT 'Travel Tumbler' as product, -50 as profit, -0.04 as margin
 ```
 
 ```sql sorted_product_profit
@@ -224,11 +214,11 @@ sidebar_position: 2
 
 ```sql stock_velocity
   -- Mocked stock velocity
-  SELECT 'Premium Coffee Blend' as product, 24 as days_left, '#03c4a1' as bar_color UNION ALL
-  SELECT 'Eco-Friendly Filter' as product, 15 as days_left, '#03c4a1' as bar_color UNION ALL
-  SELECT 'Cold Brew Kit' as product, 4 as days_left, '#c52a87' as bar_color UNION ALL
-  SELECT 'Ceramic Mug Set' as product, 12 as days_left, '#03c4a1' as bar_color UNION ALL
-  SELECT 'Travel Tumbler' as product, 32 as days_left, '#03c4a1' as bar_color
+  SELECT 'Premium Coffee Blend' as product, 24 as days_left UNION ALL
+  SELECT 'Eco-Friendly Filter' as product, 15 as days_left UNION ALL
+  SELECT 'Cold Brew Kit' as product, 4 as days_left UNION ALL
+  SELECT 'Ceramic Mug Set' as product, 12 as days_left UNION ALL
+  SELECT 'Travel Tumbler' as product, 32 as days_left
 ```
 
 ```sql sorted_stock_velocity
@@ -238,125 +228,123 @@ sidebar_position: 2
 ```
 
 <div class="tactical-grid">
+    <!-- TOP SECTION: ORGANIC vs PAID -->
     <div class="card">
-        <p class="card-title">Customer related -> funnel health</p>
-        
+        <p class="card-title">Organic Reach -> Conversion</p>
         <FunnelChart 
-            data={funnel_steps} 
+            data={organic_funnel_steps} 
             nameCol="step" 
             valueCol="val" 
-            colorPalette={['#b8b8b8', '#7cc0b0', '#3fc2a8', '#03c4a1']}
+            colorPalette={['#c52a87', '#ae6f90', '#879c99', '#03c4a1']}
             echartsOptions={{
                 backgroundColor: 'transparent',
-                series: [{
-                    minSize: '5%',
-                    gap: 2
-                }]
+                series: [{ minSize: '5%', gap: 2 }]
             }}
         />
-
         <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border-top: 1px solid #333; padding-top: 1.5rem;">
             <div class="funnel-step">
-                <span class="funnel-label">CPM</span>
-                <span class="funnel-value"><Value data={funnel_data} column=cpm fmt=usd2k/></span>
+                <span class="funnel-label">Organic Sales</span>
+                <span class="funnel-value"><Value data={funnel_data_split} column=organic_sales fmt=usd0k/></span>
             </div>
             <div class="funnel-step">
-                <span class="funnel-label">CPC</span>
-                <span class="funnel-value"><Value data={funnel_data} column=cpc fmt=usd2k/></span>
-            </div>
-            <div class="funnel-step">
-                <span class="funnel-label">CVR</span>
-                <span class="funnel-value"><Value data={funnel_data} column=cvr fmt=pct1/></span>
-            </div>
-            <div class="funnel-step">
-                <span class="funnel-label">CAC/AOV</span>
-                <span class="funnel-value"><Value data={funnel_data} column=cac fmt=usd0/>/<Value data={funnel_data} column=aov fmt=usd0/></span>
+                <span class="funnel-label">Contribution</span>
+                <span class="funnel-value">30%</span>
             </div>
         </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-        <div class="card">
-            <p class="card-title">Marketing related: platform comparison</p>
-            <div class="platform-metrics">
-                {#each platform_data as platform}
-                    <div class="metric-box" style="border-left: 4px solid {platform.platform === 'Meta' ? '#03c4a1' : '#c52a87'}">
-                        <span class="metric-box-label">{platform.platform}</span>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-                            <div>
-                                <div class="funnel-subtext">ROAS</div>
-                                <div class="metric-box-value">{platform.roas.toFixed(2)}x</div>
-                            </div>
-                            <div>
-                                <div class="funnel-subtext">POAS</div>
-                                <div class="metric-box-value">{platform.poas.toFixed(2)}x</div>
-                            </div>
-                            <div>
-                                <div class="funnel-subtext">CVR</div>
-                                <div class="metric-box-value">{(platform.cvr * 100).toFixed(1)}%</div>
-                            </div>
-                            <div>
-                                <div class="funnel-subtext">CAC</div>
-                                <div class="metric-box-value">${platform.cac.toFixed(2)}</div>
-                            </div>
-                        </div>
-                    </div>
-                {/each}
+    <div class="card">
+        <p class="card-title">Paid Ads -> Funnel Health</p>
+        <FunnelChart 
+            data={paid_funnel_steps} 
+            nameCol="step" 
+            valueCol="val" 
+            colorPalette={['#c52a87', '#ae6f90', '#879c99', '#03c4a1']}
+            echartsOptions={{
+                backgroundColor: 'transparent',
+                series: [{ minSize: '5%', gap: 2 }]
+            }}
+        />
+        <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border-top: 1px solid #333; padding-top: 1.5rem;">
+            <div class="funnel-step">
+                <span class="funnel-label">Paid Sales</span>
+                <span class="funnel-value"><Value data={funnel_data_split} column=paid_sales fmt=usd0k/></span>
+            </div>
+            <div class="funnel-step">
+                <span class="funnel-label">CAC/AOV</span>
+                <span class="funnel-value"><Value data={funnel_data_split} column=paid_cac fmt=usd0/>/<Value data={funnel_data_split} column=aov fmt=usd0/></span>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
-                <p class="card-title" style="margin: 0;">Product Related: Profit</p>
-                <div style="font-size: 0.75rem;">
-                    <ButtonGroup name=profit_sort>
-                        <ButtonGroupItem value="desc" valueLabel="High" default />
-                        <ButtonGroupItem value="asc" valueLabel="Low" />
-                    </ButtonGroup>
-                </div>
+<div class="tactical-grid" style="margin-top: 1.5rem;">
+    <!-- BOTTOM SECTION: PRODUCT PROFIT vs STOCK VELOCITY -->
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+            <p class="card-title" style="margin: 0;">Product Related: Profit</p>
+            <div style="font-size: 0.75rem;">
+                <ButtonGroup name=profit_sort>
+                    <ButtonGroupItem value="desc" valueLabel="High" default />
+                    <ButtonGroupItem value="asc" valueLabel="Low" />
+                </ButtonGroup>
             </div>
-            <BarChart 
-                data={sorted_product_profit}
-                x=product
-                y=profit 
-                swapXY=true
-                yFmt=usd0k
-                fillColor='#03c4a1'
-                yGridlines=false
-                xGridlines=false
-                sort=false
-                echartsOptions={{ 
-                    backgroundColor: 'transparent'
-                }}
-            />
-            <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">Margin health: bars turn red when margin is under 10%</p>
         </div>
+        <BarChart 
+            data={sorted_product_profit}
+            x=product
+            y=profit 
+            swapXY=true
+            yFmt=usd0k
+            yGridlines=false
+            xGridlines=false
+            sort=false
+            echartsOptions={{ 
+                backgroundColor: 'transparent',
+                visualMap: {
+                    show: false,
+                    dimension: 0,
+                    pieces: [
+                        {gt: 0, color: '#03c4a1'},
+                        {lte: 0, color: '#c52a87'}
+                    ]
+                }
+            }}
+        />
+        <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">Profitability risk: bars turn pink when profit is $0 or less</p>
+    </div>
 
-        <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
-                <p class="card-title" style="margin: 0;">Stock Velocity (Days Left)</p>
-                <div style="font-size: 0.75rem;">
-                    <ButtonGroup name=stock_sort>
-                        <ButtonGroupItem value="desc" valueLabel="High" default />
-                        <ButtonGroupItem value="asc" valueLabel="Low" />
-                    </ButtonGroup>
-                </div>
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+            <p class="card-title" style="margin: 0;">Stock Velocity (Days Left)</p>
+            <div style="font-size: 0.75rem;">
+                <ButtonGroup name=stock_sort>
+                    <ButtonGroupItem value="desc" valueLabel="High" default />
+                    <ButtonGroupItem value="asc" valueLabel="Low" />
+                </ButtonGroup>
             </div>
-            <BarChart 
-                data={sorted_stock_velocity}
-                x=product
-                y=days_left 
-                swapXY=true
-                yFmt=num0
-                fillColor='#03c4a1'
-                yGridlines=false
-                xGridlines=false
-                sort=false
-                echartsOptions={{ 
-                    backgroundColor: 'transparent'
-                }}
-            />
-            <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">Inventory risk: bars turn red when stock is under 7 days</p>
         </div>
+        <BarChart 
+            data={sorted_stock_velocity}
+            x=product
+            y=days_left 
+            swapXY=true
+            yFmt=num0
+            yGridlines=false
+            xGridlines=false
+            sort=false
+            echartsOptions={{ 
+                backgroundColor: 'transparent',
+                visualMap: {
+                    show: false,
+                    dimension: 0,
+                    pieces: [
+                        {gt: 5, color: '#03c4a1'},
+                        {lte: 5, color: '#c52a87'}
+                    ]
+                }
+            }}
+        />
+        <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">Inventory risk: bars turn pink when stock is 5 days or less</p>
     </div>
 </div>

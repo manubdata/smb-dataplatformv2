@@ -135,6 +135,7 @@ sidebar_position: 3
   SELECT
     *,
     (contribution_margin_val / gross_sales) as cm_pct,
+    (net_profit_val / NULLIF(gross_sales, 0)) as net_margin_pct,
     (net_profit_val - prev_month_profit) / NULLIF(prev_month_profit, 0) as profit_growth_yoy,
     ltv_val / NULLIF(cac_val, 0) as ltv_to_cac
   FROM calculated
@@ -205,23 +206,24 @@ sidebar_position: 3
 
     <div class="charts-column">
         <div class="card">
-            <p class="card-title">Gross Revenue & Contribution Margin %</p>
+            <p class="card-title">Gross Revenue & Net Profit</p>
             <BarChart 
                 data={monthly_data} 
                 x=month_date 
-                y=gross_sales 
+                y={['gross_sales', 'net_profit_val']}
+                type=grouped
                 yFmt=usd0k
-                y2=cm_pct
+                y2=net_margin_pct
                 y2SeriesType=line
                 y2Fmt=pct0
                 xFmt="mmm yyyy" 
-                colorPalette={['#03c4a1', '#c52a87']}
+                colorPalette={['#03c4a1', '#c52a87', '#947744']}
                 yGridlines=false
                 y2Gridlines=false
                 xGridlines=false
                 echartsOptions={{ backgroundColor: 'transparent' }}
             />
-            <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">Scaling broke indicator: revenue up, CM % should be stable</p>
+            <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">Profitability overview: gross sales vs net profit (bars) and net margin % (line)</p>
         </div>
 
         <div class="card">
