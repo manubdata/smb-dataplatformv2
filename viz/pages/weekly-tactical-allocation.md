@@ -99,10 +99,62 @@ sidebar_position: 2
         font-size: 1.1rem;
         font-weight: bold;
     }
+
+    /* Hide selection chips and separators in multi-select dropdowns */
+    .hide-selection :global(div.sm\:flex),
+    .hide-selection :global(span.bg-base-200),
+    .hide-selection :global(div[role="separator"]),
+    .hide-selection :global(.mx-2.h-4) {
+        display: none !important;
+    }
+
+    /* Prevent the dropdown button from expanding */
+    .hide-selection :global(button) {
+        max-width: 180px;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 </style>
 
 ```sql kpis_raw
   select * from metrics.rpt_kpis order by date_day
+```
+
+```sql channel_metrics
+  WITH base AS (
+    SELECT
+        sum(net_sales) as total_net_sales,
+        sum(ad_spend) as total_ad_spend,
+        sum(net_sales) / 45 as total_simulated_orders
+    FROM metrics.rpt_kpis
+    WHERE date_day BETWEEN '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
+  ),
+  channels AS (
+    SELECT 'SEO' as channel, 'Organic' as type, 0.12 as order_share, 0 as spend_share
+    UNION ALL SELECT 'Social Media', 'Organic', 0.08, 0
+    UNION ALL SELECT 'Email', 'Organic', 0.10, 0
+    UNION ALL SELECT 'FB Ads', 'Paid', 0.40, 0.4
+    UNION ALL SELECT 'Instagram Ads', 'Paid', 0.10, 0.2
+    UNION ALL SELECT 'TikTok Ads', 'Paid', 0.20, 0.3
+  )
+  SELECT
+    c.channel,
+    c.type,
+    b.total_simulated_orders * c.order_share as orders,
+    b.total_simulated_orders * c.order_share * 2 as carts,
+    CASE WHEN c.type = 'Organic' THEN b.total_simulated_orders * c.order_share * 10 ELSE b.total_simulated_orders * c.order_share * 5 END as clicks,
+    CASE WHEN c.type = 'Organic' THEN b.total_simulated_orders * c.order_share * 100 ELSE b.total_simulated_orders * c.order_share * 25 END as impressions,
+    b.total_net_sales * c.order_share as revenue,
+    b.total_ad_spend * c.spend_share as spend
+  FROM channels c, base b
+```
+
+```sql organic_channels
+  SELECT 'SEO' as channel UNION ALL SELECT 'Social Media' UNION ALL SELECT 'Email'
+```
+
+```sql paid_channels
+  SELECT 'FB Ads' as channel UNION ALL SELECT 'Instagram Ads' UNION ALL SELECT 'TikTok Ads'
 ```
 
 <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 2rem;">
@@ -114,7 +166,76 @@ sidebar_position: 2
     />
 </div>
 
-```sql funnel_data_split
+```sql organic_funnel_filtered
+  SELECT
+    COALESCE(sum(impressions), 0) as impressions,
+    COALESCE(sum(clicks), 0) as clicks,
+    COALESCE(sum(carts), 0) as carts,
+    COALESCE(sum(orders), 0) as orders,
+    COALESCE(sum(revenue), 0) as revenue
+  FROM ${channel_metrics}
+  WHERE channel IN ${inputs.organic_channels_filter.value}
+```
+
+```sql paid_funnel_filtered
+  SELECT
+    COALESCE(sum(impressions), 0) as impressions,
+    COALESCE(sum(clicks), 0) as clicks,
+    COALESCE(sum(carts), 0) as carts,
+    COALESCE(sum(orders), 0) as orders,
+    COALESCE(sum(revenue), 0) as revenue,
+    COALESCE(sum(spend), 0) as spend,
+    COALESCE(sum(revenue) / NULLIF(sum(orders), 0), 0) as aov
+  FROM ${channel_metrics}
+  WHERE channel IN ${inputs.paid_channels_filter.value}
+```
+
+```sql organic_funnel_steps
+  SELECT 'Impressions' as step, impressions as val FROM ${organic_funnel_filtered}
+  UNION ALL
+  SELECT 'Clicks' as step, clicks as val FROM ${organic_funnel_filtered}
+  UNION ALL
+  SELECT 'Carts' as step, carts as val FROM ${organic_funnel_filtered}
+  UNION ALL
+  SELECT 'Orders' as step, orders as val FROM ${organic_funnel_filtered}
+```
+
+```sql paid_funnel_steps
+  SELECT 'Impressions' as step, impressions as val FROM ${paid_funnel_filtered}
+  UNION ALL
+  SELECT 'Clicks' as step, clicks as val FROM ${paid_funnel_filtered}
+  UNION ALL
+  SELECT 'Carts' as step, carts as val FROM ${paid_funnel_filtered}
+  UNION ALL
+  SELECT 'Orders' as step, orders as val FROM ${paid_funnel_filtered}
+```
+
+```sql platform_data
+  WITH base AS (
+    SELECT
+        sum(ad_spend) as total_ad_spend,
+        sum(net_sales) as total_sales
+    FROM metrics.rpt_kpis
+    WHERE date_day BETWEEN '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
+  )
+  SELECT
+    'Meta' as platform,
+    total_ad_spend * 0.7 as spend,
+    (total_sales * 0.6) / NULLIF(total_ad_spend * 0.7, 0) as roas,
+    (total_sales * 0.6 * 0.15) / NULLIF(total_ad_spend * 0.7, 0) as poas,
+    0.024 as cvr,
+    (total_ad_spend * 0.7) / (total_sales * 0.6 / 48) as cac
+  UNION ALL
+  SELECT
+    'TikTok' as platform,
+    total_ad_spend * 0.3 as spend,
+    (total_sales * 0.4) / NULLIF(total_ad_spend * 0.3, 0) as roas,
+    (total_sales * 0.4 * 0.12) / NULLIF(total_ad_spend * 0.3, 0) as poas,
+    0.018 as cvr,
+    (total_ad_spend * 0.3) / (total_sales * 0.4 / 42) as cac
+```
+
+```sql channel_health
   WITH base AS (
     SELECT
         sum(net_sales) as total_net_sales,
@@ -123,78 +244,44 @@ sidebar_position: 2
     FROM metrics.rpt_kpis
     WHERE date_day BETWEEN '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
   ),
-  split AS (
+  channels AS (
+    SELECT 'SEO' as channel, 'Organic' as type, 0.12 as order_share, 0 as spend
+    UNION ALL SELECT 'Social Media', 'Organic', 0.08, 0
+    UNION ALL SELECT 'Email', 'Organic', 0.10, 0
+    UNION ALL SELECT 'FB Ads', 'Paid', 0.40, total_ad_spend * 0.4 FROM base
+    UNION ALL SELECT 'Instagram Ads', 'Paid', 0.10, total_ad_spend * 0.2 FROM base
+    UNION ALL SELECT 'TikTok Ads', 'Paid', 0.20, total_ad_spend * 0.3 FROM base
+  ),
+  calculated AS (
     SELECT
-        total_net_sales * 0.3 as organic_sales,
-        total_net_sales * 0.7 as paid_sales,
-        total_ad_spend,
-        total_simulated_orders * 0.3 as organic_orders,
-        total_simulated_orders * 0.7 as paid_orders,
-        total_net_sales / NULLIF(total_simulated_orders, 0) as aov
-    FROM base
+        c.channel,
+        c.type,
+        b.total_simulated_orders * c.order_share as orders,
+        c.spend,
+        b.total_net_sales * c.order_share as revenue
+    FROM channels c, base b
   )
   SELECT
-    *,
-    -- Organic steps (simulated)
-    organic_orders * 2 as organic_carts,
-    organic_orders * 10 as organic_clicks,
-    organic_orders * 100 as organic_impressions,
-    -- Paid steps (simulated)
-    paid_orders * 2 as paid_carts,
-    paid_orders * 5 as paid_clicks,
-    paid_orders * 25 as paid_impressions,
-    -- Paid efficiency
-    total_ad_spend / (NULLIF(paid_orders * 25, 0) / 1000) as paid_cpm,
-    total_ad_spend / NULLIF(paid_orders * 5, 0) as paid_cpc,
-    paid_orders / NULLIF(paid_orders * 5, 0) as paid_cvr,
-    total_ad_spend / NULLIF(paid_orders, 0) as paid_cac
-  FROM split
-```
-
-```sql organic_funnel_steps
-  SELECT 'Impressions' as step, organic_impressions as val FROM ${funnel_data_split}
-  UNION ALL
-  SELECT 'Clicks' as step, organic_clicks as val FROM ${funnel_data_split}
-  UNION ALL
-  SELECT 'Carts' as step, organic_carts as val FROM ${funnel_data_split}
-  UNION ALL
-  SELECT 'Orders' as step, organic_orders as val FROM ${funnel_data_split}
-```
-
-```sql paid_funnel_steps
-  SELECT 'Impressions' as step, paid_impressions as val FROM ${funnel_data_split}
-  UNION ALL
-  SELECT 'Clicks' as step, paid_clicks as val FROM ${funnel_data_split}
-  UNION ALL
-  SELECT 'Carts' as step, paid_carts as val FROM ${funnel_data_split}
-  UNION ALL
-  SELECT 'Orders' as step, paid_orders as val FROM ${funnel_data_split}
-```
-
-```sql platform_data
-  WITH base AS (
-    SELECT
-        sum(facebook_spend) as fb_spend,
-        sum(tiktok_spend) as tt_spend,
-        sum(net_sales) as total_sales
-    FROM metrics.rpt_kpis
-    WHERE date_day BETWEEN '${inputs.date_filter.start}' and '${inputs.date_filter.end}'
-  )
-  SELECT
-    'Meta' as platform,
-    fb_spend as spend,
-    (total_sales * 0.6) / fb_spend as roas,
-    (total_sales * 0.6 * 0.15) / fb_spend as poas,
-    0.024 as cvr,
-    fb_spend / (total_sales * 0.6 / 48) as cac
-  UNION ALL
-  SELECT
-    'TikTok' as platform,
-    tt_spend as spend,
-    (total_sales * 0.4) / tt_spend as roas,
-    (total_sales * 0.4 * 0.12) / tt_spend as poas,
-    0.018 as cvr,
-    tt_spend / (total_sales * 0.4 / 42) as cac
+    channel,
+    CASE WHEN type = 'Organic' THEN orders * 100 ELSE orders * 25 END as impressions,
+    CASE WHEN spend > 0 THEN (spend / (orders * 25)) * 1000 ELSE 0 END as cpm,
+    CASE WHEN type = 'Organic' THEN orders * 10 ELSE orders * 5 END as clicks,
+    CASE WHEN type = 'Organic' THEN 0.10 ELSE 0.20 END as ctr,
+    CASE WHEN spend > 0 THEN spend / (orders * 5) ELSE 0 END as cpc,
+    orders * 2 as carts,
+    0.40 as atc_rate,
+    CASE WHEN spend > 0 THEN spend / (orders * 2) ELSE 0 END as atc_cost,
+    orders,
+    CASE WHEN type = 'Organic' THEN 0.10 ELSE 0.20 END as cvr,
+    CASE WHEN spend > 0 THEN spend / orders ELSE 0 END as cac,
+    revenue / NULLIF(orders, 0) as aov,
+    CASE WHEN spend > 0 THEN revenue / spend ELSE 0 END as roas,
+    CASE 
+        WHEN channel IN ('FB Ads', 'Instagram Ads') THEN (revenue * 0.15) / NULLIF(spend, 0)
+        WHEN channel = 'TikTok Ads' THEN (revenue * 0.12) / NULLIF(spend, 0)
+        ELSE 0 
+    END as poas
+  FROM calculated
 ```
 
 ```sql product_profit
@@ -230,7 +317,18 @@ sidebar_position: 2
 <div class="tactical-grid">
     <!-- TOP SECTION: ORGANIC vs PAID -->
     <div class="card">
-        <p class="card-title">Organic Reach -> Conversion</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <p class="card-title" style="margin: 0;">Organic Reach -> Conversion</p>
+            <div class="hide-selection" style="font-size: 0.8rem; width: 180px;">
+                <Dropdown
+                    name=organic_channels_filter
+                    data={organic_channels}
+                    value=channel
+                    multiple=true
+                    selectAllByDefault=true
+                />
+            </div>
+        </div>
         <FunnelChart 
             data={organic_funnel_steps} 
             nameCol="step" 
@@ -244,17 +342,28 @@ sidebar_position: 2
         <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border-top: 1px solid #333; padding-top: 1.5rem;">
             <div class="funnel-step">
                 <span class="funnel-label">Organic Sales</span>
-                <span class="funnel-value"><Value data={funnel_data_split} column=organic_sales fmt=usd0k/></span>
+                <span class="funnel-value"><Value data={organic_funnel_filtered} column=revenue fmt=usd0k/></span>
             </div>
             <div class="funnel-step">
-                <span class="funnel-label">Contribution</span>
-                <span class="funnel-value">30%</span>
+                <span class="funnel-label">Orders</span>
+                <span class="funnel-value"><Value data={organic_funnel_filtered} column=orders fmt=num0/></span>
             </div>
         </div>
     </div>
 
     <div class="card">
-        <p class="card-title">Paid Ads -> Funnel Health</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <p class="card-title" style="margin: 0;">Paid Ads -> Funnel Health</p>
+            <div class="hide-selection" style="font-size: 0.8rem; width: 180px;">
+                <Dropdown
+                    name=paid_channels_filter
+                    data={paid_channels}
+                    value=channel
+                    multiple=true
+                    selectAllByDefault=true
+                />
+            </div>
+        </div>
         <FunnelChart 
             data={paid_funnel_steps} 
             nameCol="step" 
@@ -268,14 +377,38 @@ sidebar_position: 2
         <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border-top: 1px solid #333; padding-top: 1.5rem;">
             <div class="funnel-step">
                 <span class="funnel-label">Paid Sales</span>
-                <span class="funnel-value"><Value data={funnel_data_split} column=paid_sales fmt=usd0k/></span>
+                <span class="funnel-value"><Value data={paid_funnel_filtered} column=revenue fmt=usd0k/></span>
             </div>
             <div class="funnel-step">
                 <span class="funnel-label">CAC/AOV</span>
-                <span class="funnel-value"><Value data={funnel_data_split} column=paid_cac fmt=usd0/>/<Value data={funnel_data_split} column=aov fmt=usd0/></span>
+                <span class="funnel-value">
+                    <Value data={paid_funnel_filtered} column=spend fmt=usd0/> / 
+                    <Value data={paid_funnel_filtered} column=aov fmt=usd0/>
+                </span>
             </div>
         </div>
     </div>
+</div>
+
+<div class="card" style="margin-top: 1.5rem;">
+    <p class="card-title">Channel Funnel Health</p>
+    <DataTable data={channel_health}>
+        <Column id="channel" label="Channel"/>
+        <Column id="impressions" label="Impr." fmt=num0k/>
+        <Column id="cpm" label="CPM" fmt=usd/>
+        <Column id="clicks" label="Clicks" fmt=num0/>
+        <Column id="ctr" label="CTR" fmt=pct/>
+        <Column id="cpc" label="CPC" fmt=usd/>
+        <Column id="carts" label="Carts" fmt=num0/>
+        <Column id="atc_rate" label="ATC %" fmt=pct/>
+        <Column id="atc_cost" label="ATC Cost" fmt=usd/>
+        <Column id="orders" label="Orders" fmt=num0/>
+        <Column id="cvr" label="CVR" fmt=pct/>
+        <Column id="cac" label="CAC" fmt=usd/>
+        <Column id="aov" label="AOV" fmt=usd/>
+        <Column id="roas" label="ROAS" fmt=num2/>
+        <Column id="poas" label="POAS" fmt=num2/>
+    </DataTable>
 </div>
 
 <div class="tactical-grid" style="margin-top: 1.5rem;">
