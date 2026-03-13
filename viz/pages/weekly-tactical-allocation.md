@@ -263,6 +263,7 @@ sidebar_position: 2
   )
   SELECT
     channel,
+    type,
     CASE WHEN type = 'Organic' THEN orders * 100 ELSE orders * 25 END as impressions,
     CASE WHEN spend > 0 THEN (spend / (orders * 25)) * 1000 ELSE 0 END as cpm,
     CASE WHEN type = 'Organic' THEN orders * 10 ELSE orders * 5 END as clicks,
@@ -282,6 +283,18 @@ sidebar_position: 2
         ELSE 0 
     END as poas
   FROM calculated
+```
+
+```sql organic_channel_health
+  SELECT * FROM ${channel_health} 
+  WHERE type = 'Organic' 
+  AND channel IN ${inputs.organic_channels_filter.value}
+```
+
+```sql paid_channel_health
+  SELECT * FROM ${channel_health} 
+  WHERE type = 'Paid' 
+  AND channel IN ${inputs.paid_channels_filter.value}
 ```
 
 ```sql product_profit
@@ -333,7 +346,7 @@ sidebar_position: 2
             data={organic_funnel_steps} 
             nameCol="step" 
             valueCol="val" 
-            colorPalette={['#c52a87', '#ae6f90', '#879c99', '#03c4a1']}
+            colorPalette={['#b8b8b8', '#95bdb0', '#69c1a9', '#03c4a1']}
             echartsOptions={{
                 backgroundColor: 'transparent',
                 series: [{ minSize: '5%', gap: 2 }]
@@ -368,7 +381,7 @@ sidebar_position: 2
             data={paid_funnel_steps} 
             nameCol="step" 
             valueCol="val" 
-            colorPalette={['#c52a87', '#ae6f90', '#879c99', '#03c4a1']}
+            colorPalette={['#b8b8b8', '#95bdb0', '#69c1a9', '#03c4a1']}
             echartsOptions={{
                 backgroundColor: 'transparent',
                 series: [{ minSize: '5%', gap: 2 }]
@@ -391,24 +404,39 @@ sidebar_position: 2
 </div>
 
 <div class="card" style="margin-top: 1.5rem;">
-    <p class="card-title">Channel Funnel Health</p>
-    <DataTable data={channel_health}>
+    <p class="card-title">Organic Channel Funnel Health</p>
+    <DataTable data={organic_channel_health}>
         <Column id="channel" label="Channel"/>
         <Column id="impressions" label="Impr." fmt=num0k/>
-        <Column id="cpm" label="CPM" fmt=usd/>
         <Column id="clicks" label="Clicks" fmt=num0/>
         <Column id="ctr" label="CTR" fmt=pct/>
-        <Column id="cpc" label="CPC" fmt=usd/>
         <Column id="carts" label="Carts" fmt=num0/>
         <Column id="atc_rate" label="ATC %" fmt=pct/>
-        <Column id="atc_cost" label="ATC Cost" fmt=usd/>
         <Column id="orders" label="Orders" fmt=num0/>
         <Column id="cvr" label="CVR" fmt=pct/>
-        <Column id="cac" label="CAC" fmt=usd/>
         <Column id="aov" label="AOV" fmt=usd/>
-        <Column id="roas" label="ROAS" fmt=num2/>
-        <Column id="poas" label="POAS" fmt=num2/>
     </DataTable>
+
+    <div style="margin-top: 1rem; border-top: 1px solid #333; padding-top: 1rem;">
+        <p class="card-title">Paid Channel Funnel Health</p>
+        <DataTable data={paid_channel_health}>
+            <Column id="channel" label="Channel"/>
+            <Column id="impressions" label="Impr." fmt=num0k/>
+            <Column id="cpm" label="CPM" fmt=usd/>
+            <Column id="clicks" label="Clicks" fmt=num0/>
+            <Column id="ctr" label="CTR" fmt=pct/>
+            <Column id="cpc" label="CPC" fmt=usd/>
+            <Column id="carts" label="Carts" fmt=num0/>
+            <Column id="atc_rate" label="ATC %" fmt=pct/>
+            <Column id="atc_cost" label="ATC Cost" fmt=usd/>
+            <Column id="orders" label="Orders" fmt=num0/>
+            <Column id="cvr" label="CVR" fmt=pct/>
+            <Column id="cac" label="CAC" fmt=usd/>
+            <Column id="aov" label="AOV" fmt=usd/>
+            <Column id="roas" label="ROAS" fmt=num2/>
+            <Column id="poas" label="POAS" fmt=num2/>
+        </DataTable>
+    </div>
 </div>
 
 <div class="tactical-grid" style="margin-top: 1.5rem;">
